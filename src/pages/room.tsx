@@ -13,7 +13,13 @@ const Room: FC = () => {
 
 
     return (
-    <div className="w-screen h-screen text-black text-3xl flex items-center justify-center">
+    <div className="
+     w-screen h-screen 
+    text-lime-50S
+    text-3xl flex 
+    text-bold
+    items-center justify-center
+    room-bg">
       Логово ведьмы
     </div>
    )

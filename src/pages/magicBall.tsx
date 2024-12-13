@@ -14,7 +14,14 @@ const MagicBall: FC = () => {
 
 
     return (
-    <div className="w-screen h-screen text-black text-3xl flex items-center justify-center">
+    <div className="
+    w-screen h-screen 
+  text-gray-50
+    text-3xl flex 
+    text-bold
+    items-center justify-center
+    magic-ball-bg
+    ">
       Магический шар
     </div>
    )

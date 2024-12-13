@@ -105,6 +105,42 @@ footer {
   /*background-repeat: round;*/
 }
 
+.room-bg {
+  background-image: url('bg/room.webp'); /* Путь к картинке */
+  background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
+  background-repeat: no-repeat; /* Отключает повторение изображения */
+  background-position: center center; /* Выравнивает изображение по центру */
+}
+
+.secret-bg {
+  background-image: url('bg/secret.webp'); /* Путь к картинке */
+  background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
+  background-repeat: no-repeat; /* Отключает повторение изображения */
+  background-position: center center; /* Выравнивает изображение по центру */
+}
+
+
+.magic-ball-bg {
+  background-image: url('bg/magic-ball.webp'); /* Путь к картинке */
+  background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
+  background-repeat: no-repeat; /* Отключает повторение изображения */
+  background-position: center center; /* Выравнивает изображение по центру */
+}
+
+.tasks-bg {
+  background-image: url('/bg/tasks.jpg'); /* Путь к картинке */
+  background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
+  background-repeat: no-repeat; /* Отключает повторение изображения */
+  background-position: center center; /* Выравнивает изображение по центру */
+}
+
+.friends-bg {
+  background-image: url('bg/friends.jpg'); /* Путь к картинке */
+  background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
+  background-repeat: no-repeat; /* Отключает повторение изображения */
+  background-position: center center; /* Выравнивает изображение по центру */
+}
+
 /* loaders */
 .coin-loader {
   transform: translateZ(1px);
@@ -1119,7 +1155,7 @@ footer {
   -webkit-text-fill-color: transparent;
 }
 
-/* Tasks */
+/* Tasks
 .tasks-bg {
   background-image: url("/tasks/tasks-bg.png");
   background-position: left top;
@@ -1127,7 +1163,7 @@ footer {
   background-repeat: no-repeat;
   width: 560px;
   height: 260px;
-}
+} */
 
 .tasks-list-title {
   font-size: 18px;

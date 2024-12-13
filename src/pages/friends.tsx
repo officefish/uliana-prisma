@@ -110,7 +110,13 @@ const Friends: FC = () => {
 //   }
 
   return (
-    <div  className="w-screen h-screen text-black text-3xl flex items-center justify-center">
+    <div  className="
+      w-screen h-screen 
+      text-gray-500
+    text-3xl flex 
+    text-bold
+    items-center justify-center
+    friends-bg">
       Друзья       
     </div>
   )
