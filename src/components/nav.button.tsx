@@ -15,11 +15,11 @@ const NavButton:FC<INavButton> = (props) => {
 
     const svgByIndex = (index: number) => {
         switch(index) {
-            case 0: return <img className="w-8 h-8" src="/nav/airdrop.webp" alt="airdrop" />
-            case 1: return <img className="w-8 h-8" src="/nav/room.jpg" alt="room" />
-            case 2: return <img className="w-8 h-8" src="/nav/sphere.jpg" alt="sphere" />
-            case 3: return <img className="w-8 h-8" src="/nav/tasks.jpg" alt="tasks" />
-            case 4: return <img className="w-8 h-8" src="/nav/friends.webp" alt="friends" />
+            case 0: return <img className="w-12 h-12" src="/nav/secret.jpg" alt="secret" />
+            case 1: return <img className="w-12 h-12" src="/nav/room.png" alt="room" />
+            case 2: return <img className="w-12 h-12" src="/nav/sphere.png" alt="sphere" />
+            case 3: return <img className="w-12 h-12" src="/nav/tasks.png" alt="tasks" />
+            case 4: return <img className="w-12 h-12" src="/nav/friends.png" alt="friends" />
         }
     }
 
@@ -33,7 +33,7 @@ const NavButton:FC<INavButton> = (props) => {
                 ${notification ? 'nav-notification' : ''}`
             }>
                 <div className={`
-                    w-12 h-12 flex items-center justify-between flex-col gap-1
+                    w-15 h-15 flex items-center justify-between flex-col gap-1
                     `}>
                     {svgByIndex(index)}
                     {title}
