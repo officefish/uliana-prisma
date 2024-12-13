@@ -17,10 +17,11 @@ const Navigation: FC = () => {
     mx-2 
     pb-7 pt-2
     z-40`}>
-      <NavButton notification={getIsNotification(Page.AIRDROP)} selected={page === Page.AIRDROP} to={'/airdrop'} title={t('navigation.airdrop')} index={0}/>
-      <NavButton notification={getIsNotification(Page.FARM)} selected={page === Page.FARM} to={'/'} title={t('navigation.game')} index={1}/>
-      <NavButton notification={getIsNotification(Page.TASKS)} selected={page === Page.TASKS} to={'/tasks'} title={t('navigation.tasks')} index={2}/>
-      <NavButton notification={getIsNotification(Page.FRIENDS)} selected={page === Page.FRIENDS} to={'/friends'} title={t('navigation.friends')} index={3}/>
+      <NavButton notification={getIsNotification(Page.SECRET)} selected={page === Page.SECRET} to={'/secret'} title={t('navigation.secret')} index={0}/>
+      <NavButton notification={getIsNotification(Page.ROOM)} selected={page === Page.ROOM} to={'/room'} title={t('navigation.room')} index={1}/>
+      <NavButton notification={getIsNotification(Page.MAGIC_BALL)} selected={page === Page.MAGIC_BALL} to={'/'} title={t('navigation.magic_ball')} index={2}/>
+      <NavButton notification={getIsNotification(Page.TASKS)} selected={page === Page.TASKS} to={'/tasks'} title={t('navigation.tasks')} index={3}/>
+      <NavButton notification={getIsNotification(Page.FRIENDS)} selected={page === Page.FRIENDS} to={'/friends'} title={t('navigation.friends')} index={4}/>
     </div>
 }
 export default Navigation

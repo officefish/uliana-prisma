@@ -1,7 +1,7 @@
 import {
     Page,
   } from "@/types"
-  export type PageNotificationType = Page.AIRDROP | Page.FARM | Page.TASKS | Page.FRIENDS
+  export type PageNotificationType = Page.MAGIC_BALL | Page.SECRET | Page.ROOM | Page.TASKS | Page.FRIENDS
 
   export interface IStoreState {
     page: Page

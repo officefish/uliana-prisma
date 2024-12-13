@@ -99,6 +99,7 @@ footer {
   width: 100vw;
   min-height: 100vh;
   --tw-bg-opacity: 1;
+  background-color: #00FF5E;
 
   /*background-image: url("/bg.webp");*/
   /*background-repeat: round;*/

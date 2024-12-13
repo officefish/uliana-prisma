@@ -8,7 +8,7 @@ type IStore = IStoreState & IStoreActions
 
 const createSiteStore = () =>
   createStore<IStore>()((set) => ({
-    page: Page.FARM,
+    page: Page.MAGIC_BALL,
     setPage: (page: Page) => set(() => ({ page })),
     isLoading: 0,
     addLoading: () => set((state) => ({ isLoading: state.isLoading + 1 })),

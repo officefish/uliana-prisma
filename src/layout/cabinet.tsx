@@ -6,7 +6,6 @@ import Screen from "./screen"
 
 import { Route, Routes } from "react-router-dom"
 
-import Farm from "@/pages/farm"
 import Friends from "@/pages/friends"
 import Tasks from "@/pages/tasks"
 
@@ -25,6 +24,9 @@ import { apiFetch } from "@/services/api"
 //import useGetOKXStatus from "@/hooks/api/useGetOKXStatus"
 import {useUnsafeRegister} from "@/hooks/api/useUnsafeRegister.tsx";
 import { useRegister } from "@/hooks/api/useRegister"
+import MagicBall from "@/pages/magicBall"
+import Secret from "@/pages/secret"
+import Room from "@/pages/room"
 //import Mobile from "@/pages/mobile.tsx";
 
 
@@ -134,7 +136,9 @@ return (
           <Route path='*' element={<Mobile/>}/>
         ) : ( */}
           <>
-            <Route path='/' element={<Farm/>}/>
+            <Route path='/' element={<MagicBall/>}/>
+            <Route path='/secret' element={<Secret/>}/>
+            <Route path='/room' element={<Room/>}/>
             <Route path='/friends' element={<Friends/>}/>
             <Route path='/tasks' element={<Tasks/>}/>
             {/* <Route path='/airdrop' element={<Airdrop/>}/>
