@@ -1,8 +1,8 @@
-import useUpdateTotalBalance from "@/hooks/api/useUpdateTotalBalance"
-import { useUserStore } from "@/providers/user"
-import { apiFetch } from "@/services/api"
+//import useUpdateTotalBalance from "@/hooks/api/useUpdateTotalBalance"
+//import { useUserStore } from "@/providers/user"
+//import { apiFetch } from "@/services/api"
 import { FC, useEffect } from "react"
-import { useTranslation } from "react-i18next";
+//import { useTranslation } from "react-i18next";
 import {useSiteStore} from "@/providers/store";
 
 interface GameStatsProps {
@@ -13,24 +13,58 @@ interface GameStatsProps {
 
 const GameStats:FC<GameStatsProps> = (props) => {
 
-  const { onBuyKeys, onWithdraw, onMenu } = props
+  console.log(props)
+  //const { onBuyKeys, onWithdraw, onMenu } = props
 
-  const { player, isAuth } = useUserStore()
+  //const { player, isAuth } = useUserStore()
   const { isEmptyPage } = useSiteStore()
 
-  const balance = player?.balance || 0
-  const usdt = player?.usdt || 0
-  const numKeys = player?.numKeys || 0
+  //const balance = player?.balance || 0
+  //const usdt = player?.usdt || 0
+  //const numKeys = player?.numKeys || 0
 
-  const { updateTotalBalance } = useUpdateTotalBalance(apiFetch)
+  //const { updateTotalBalance } = useUpdateTotalBalance(apiFetch)
 
   useEffect(() => {
-    if (isAuth) updateTotalBalance()
-  }, [isAuth])
+    //if (isAuth) updateTotalBalance()
+  }, [
+    //isAuth
+  ])
 
-  const { t } = useTranslation();
+  //const { t } = useTranslation();
 
   return (
+    <div className={`header fixed w-screen p-4 flex flex-row z-10 ${isEmptyPage ? 'hidden' : ''}`}>
+      <div className="grid grid-cols-4 text-white text-xs">
+        <div className="">
+          <label htmlFor="">Серебряные монеты</label>
+          <img src="" alt="silver" />
+          <div>500</div>
+        </div>
+        <div>
+          <label htmlFor="">Лунные силы</label>
+          <img src="" alt="silver" />
+          <div>44</div>
+        </div>
+        <div>
+          <label htmlFor="">Самоцветы</label>
+          <img src="" alt="silver" />
+          <div>12</div>
+        </div>
+        <div>
+          <label htmlFor="">Шестеренки</label>
+          <img src="" alt="silver" />
+          <div>4</div>
+        </div>
+      </div>
+    </div>  
+  )
+}
+
+export default GameStats
+
+/*
+return (
     <div className={`header fixed w-screen p-4 flex flex-row z-10 ${isEmptyPage ? 'hidden' : ''}`}>
       <div className="w-[24%] flex flex-row gap-1 items-center">
         <img className="w-8 h-8" src="/stats/coin.webp" alt="coin" />
@@ -68,6 +102,4 @@ const GameStats:FC<GameStatsProps> = (props) => {
       <img className="w-8 h-8" src="/stats/menu.svg" alt="plus coin" onClick={onMenu} />
     </div>
   )
-}
-
-export default GameStats
+*/

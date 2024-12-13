@@ -16,10 +16,10 @@ const NavButton:FC<INavButton> = (props) => {
     const svgByIndex = (index: number) => {
         switch(index) {
             case 0: return <img className="w-8 h-8" src="/nav/airdrop.webp" alt="airdrop" />
-            // case 1: return <img className="w-8 h-8" src="/nav/shop.png" alt="shop" />
-            case 1: return <img className="w-8 h-8" src="/nav/game.webp" alt="game" />
-            case 2: return <img className="w-8 h-8" src="/nav/tasks.webp" alt="tasks" />
-            case 3: return <img className="w-8 h-8" src="/nav/friends.webp" alt="friends" />
+            case 1: return <img className="w-8 h-8" src="/nav/room.jpg" alt="room" />
+            case 2: return <img className="w-8 h-8" src="/nav/sphere.jpg" alt="sphere" />
+            case 3: return <img className="w-8 h-8" src="/nav/tasks.jpg" alt="tasks" />
+            case 4: return <img className="w-8 h-8" src="/nav/friends.webp" alt="friends" />
         }
     }
 
