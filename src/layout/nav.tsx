@@ -13,7 +13,7 @@ const Navigation: FC = () => {
 
     return <div className={`
     ${isEmptyPage ? 'hidden' : ''}
-    grid grid-cols-4 gap-2.5
+    grid grid-cols-5 gap-1
     mx-2 
     pb-7 pt-2
     z-40`}>
