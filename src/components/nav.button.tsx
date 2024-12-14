@@ -19,7 +19,7 @@ const NavButton:FC<INavButton> = (props) => {
             case 1: return <img className="w-12 h-12" src="/nav/room.png" alt="room" />
             case 2: return <img className="w-12 h-12" src="/nav/sphere.png" alt="sphere" />
             case 3: return <img className="w-12 h-12" src="/nav/tasks.png" alt="tasks" />
-            case 4: return <img className="w-12 h-12" src="/nav/friends.png" alt="friends" />
+            case 4: return <img className="w-12 h-12" src="/nav/friends-2.png" alt="friends" />
         }
     }
 
