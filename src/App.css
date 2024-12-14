@@ -1163,19 +1163,19 @@ box-shadow:  5px 5px 5px #2a1b25,
   bottom: 2px;
 
   padding: 2px 8px;
-  background: linear-gradient(-180deg, #E9EEFF 0%, rgba(255, 255, 255, 68%) 60%, rgba(255, 255, 255, 30%) 100%);
+  background: linear-gradient(-180deg, #8a5e7a 0%, rgba(104, 51, 51, 0.68) 60%, rgba(51, 5, 5, 0.3) 100%);
   border-radius: 100px;
-  color: #0B0E26;
+  color: #FFF;
 
-  font-size: 12px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 800;
 }
 
 .shop-dialog-item-buy {
-  font-size: 12px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 500;
 
-  background: linear-gradient(180deg, #3EBD1E 0%, #08B859 100%);
+  background: linear-gradient(180deg, #c1f503 0%, #92b808 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

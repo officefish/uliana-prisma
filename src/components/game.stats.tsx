@@ -14,7 +14,7 @@ interface GameStatsProps {
 const GameStats:FC<GameStatsProps> = (props) => {
 
   console.log(props)
-  //const { onBuyKeys, onWithdraw, onMenu } = props
+  const { onBuyKeys } = props
 
   //const { player, isAuth } = useUserStore()
   const { isEmptyPage } = useSiteStore()
@@ -47,17 +47,20 @@ const GameStats:FC<GameStatsProps> = (props) => {
           <div>44</div>
         </div>
         <div className="flex flex-col gap-1 w-full items-center justify-center text-red-200 select-none	">
-          <div className="flex flex-row gap-1 items-center justify-center btn-no-body">
+          <div className="flex flex-row gap-1 items-center justify-center btn-no-body" onClick={onBuyKeys}>
             <img className="w-10 h-10" src="nav/gems.png" alt="silver" />
             <span>X</span>
             <div className="text-lg font-bold">12</div>
           </div>
           {/* <label htmlFor="">Самоцветы</label>      */}
         </div>
-        <div>
-          <label htmlFor="">Шестеренки</label>
-          <img src="" alt="silver" />
-          <div>4</div>
+        <div className="flex flex-col gap-1 w-full items-center justify-center text-blue-200 select-none	">
+          <div className="flex flex-row gap-1 items-center justify-center btn-no-body">
+            <img className="w-10 h-10" src="nav/crystalls.png" alt="crystals" />
+            <span>X</span>
+            <div className="text-lg font-bold">3</div>
+          </div>
+          {/* <label htmlFor="">Самоцветы</label>      */}
         </div>
       </div>
     </div>  
