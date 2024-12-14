@@ -41,10 +41,13 @@ const GameStats:FC<GameStatsProps> = (props) => {
           <img src="" alt="silver" />
           <div>500</div>
         </div>
-        <div>
-          <label htmlFor="">Лунные силы</label>
-          <img src="" alt="silver" />
-          <div>44</div>
+        <div className="flex flex-col gap-1 w-full items-center justify-center text-orange-200 select-none	">
+          <div className="flex flex-row gap-1 items-center justify-center btn-no-body">
+            <img className="w-10 h-10" src="nav/energy.png" alt="silver" />
+            <span>X</span>
+            <div className="text-lg font-bold">400</div>
+          </div>
+          {/* <label htmlFor="">Самоцветы</label>      */}
         </div>
         <div className="flex flex-col gap-1 w-full items-center justify-center text-red-200 select-none	">
           <div className="flex flex-row gap-1 items-center justify-center btn-no-body" onClick={onBuyKeys}>

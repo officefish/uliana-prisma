@@ -1,15 +1,15 @@
 import { useCallback } from 'react'
 import { useSnackbar } from 'notistack' // Assuming you're using notistack for notifications
 
-export const useBuyKeys = (apiFetch: any, onSuccess?: (link: string, numKeys: number) => void) => {
+export const useBuyGems = (apiFetch: any, onSuccess?: (link: string, numKeys: number) => void) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const buyKeys = useCallback(
-    async (numKeys: number) => {
+  const buyGems = useCallback(
+    async (numGems: number) => {
    
       try {
-        const res = await apiFetch('/for-stars-shop/keys/buy', 'POST', { numKeys }, enqueueSnackbar);
-        onSuccess && onSuccess(res.invoiceLink, numKeys);
+        const res = await apiFetch('/for-stars-shop/gems/buy', 'POST', { numGems }, enqueueSnackbar);
+        onSuccess && onSuccess(res.invoiceLink, numGems);
         
       } catch (error: any) {
         enqueueSnackbar(`Error during buy card: ${error}`, { variant: 'error' });
@@ -19,5 +19,5 @@ export const useBuyKeys = (apiFetch: any, onSuccess?: (link: string, numKeys: nu
     [apiFetch, enqueueSnackbar] // Dependencies
   )
 
-  return { buyKeys }
+  return { buyGems }
 }

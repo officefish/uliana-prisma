@@ -1,5 +1,5 @@
 import GameStats from "@/components/game.stats";
-import { useBuyKeys } from "@/hooks/api/useBuyKeys";
+import { useBuyGems } from "@/hooks/api/useBuyKeys";
 import { useNewWithdrawProposal } from "@/hooks/api/useNewWithdrawProposal";
 import { useSimpleBuyKeys } from "@/hooks/api/useSimpleBuyKeys";
 import { useSiteStore } from "@/providers/store";
@@ -35,16 +35,16 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
     }
     const { simpleBuyKeys } = useSimpleBuyKeys(apiFetch, onSimpleBuyKeysSuccess)
 
-    const onBuyKeysSuccess = (invoiceLink: string, numKeys: number) => {
+    const onBuyGemsSuccess = (invoiceLink: string, numGems: number) => {
       console.log('Invoice link:', invoiceLink);
       window.Telegram.WebApp.openInvoice(invoiceLink, (status) => {
         if (status === "paid") {
-          simpleBuyKeys(getValueByCoast(numKeys)); return
+          simpleBuyKeys(getValueByCoast(numGems)); return
         }
       });
     } 
 
-    const { buyKeys } = useBuyKeys(apiFetch, onBuyKeysSuccess) 
+    const { buyGems } = useBuyGems(apiFetch, onBuyGemsSuccess) 
 
     const handleBuyKeys = () => {
       setKeyShopOpen(true)
@@ -59,7 +59,7 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
     }
 
     const onShopItemSelect = (coast: number) => {    
-      buyKeys(coast)
+      buyGems(coast)
     }
 
   useEffect(() => {
