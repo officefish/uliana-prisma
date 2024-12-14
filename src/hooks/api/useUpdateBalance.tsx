@@ -1,4 +1,5 @@
 //import { useCallback } from 'react';
+import { useBalanceStore } from '@/providers/balance';
 import { useSnackbar } from 'notistack'; // Assuming you're using notistack for notifications
 
 import { useCallback } from 'react';
@@ -8,7 +9,7 @@ import { useCallback } from 'react';
   const useUpdateBalance = (apiFetch: any, onSuccess?: () => void) => {
     const { enqueueSnackbar } = useSnackbar();
   
-    //const { setTape, setItems, setChests, setBaunty } = useChestsStore();
+    const { setCoins, setEnergy, setGems, setCrystals } = useBalanceStore();
   
     const updateBalance = useCallback(
       async () => {
@@ -16,16 +17,22 @@ import { useCallback } from 'react';
         try {
           const res = await apiFetch('/balance', 'GET', null, enqueueSnackbar);
           console.log(res);        
-          //if (res.tape) {
-            //setTape(res.tape)
-            //setChests(res.tape.chests)
-  
-            //const baunty = res.item;
-            //setBaunty(baunty);
-   
-            //const items = res.tape.chests.map((chest: any) => chest.item);
-            //setItems(items);
-          //}
+
+          if (res?.balance?.coins) {
+            setCoins(res.balance.coins);
+          }
+
+          if (res?.balance?.energyLatest) {
+            setEnergy(res.balance.energyLatest);
+          }
+
+          if (res?.balance?.gems) {
+            setGems(res.balance.gems);
+          }
+
+          if (res?.balance?.crystals) {
+            setCrystals(res.balance.crystals);
+          }
   
           onSuccess && onSuccess()
           //if (res.energyLatest && res.energyMax) {

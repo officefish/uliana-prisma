@@ -27,6 +27,7 @@ import { useRegister } from "@/hooks/api/useRegister"
 import MagicBall from "@/pages/magicBall"
 import Secret from "@/pages/secret"
 import Room from "@/pages/room"
+import useUpdateBalance from "@/hooks/api/useUpdateBalance"
 //import Mobile from "@/pages/mobile.tsx";
 
 
@@ -45,24 +46,26 @@ const Cabinet:FC = () => {
     setIsLoading
   ] = useState(true);
 
+  const { updateBalance } = useUpdateBalance(apiFetch)
+
   const loadResources = async () => {
     // console.log("Loading resources")
 
-    // const apiRequests = [
-    //   updateBalance(),
-    //   //updateWalletStatus(),
-    //   //updateReferrals(),
-    //   //updateTasks(),
-    //   //updateDailyQuest(),
-    //   //getOKXStatus(),
-    // ];
+    const apiRequests = [
+      updateBalance(),
+      //updateWalletStatus(),
+      //updateReferrals(),
+      //updateTasks(),
+      //updateDailyQuest(),
+      //getOKXStatus(),
+    ];
 
-    // Promise.all([...apiRequests],).then(() => {
-    //   
-    //   console.log('complete load resources')
-    //   // TODO: все ресурсы загружены можно выходить из прелоадера
-    // })
-    setIsLoading(false)
+    Promise.all([...apiRequests],).then(() => {
+      setIsLoading(false)
+      console.log('complete load resources')
+      // TODO: все ресурсы загружены можно выходить из прелоадера
+    })
+    
   }
 
  
