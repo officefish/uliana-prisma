@@ -19,7 +19,7 @@ const MagicBall: FC = () => {
 
     return (
      <div className=" w-screen h-screen 
-         text-[#240919]
+      text-[#ead4e1]
      flex  
      items-center justify-center
      magic-ball-bg">

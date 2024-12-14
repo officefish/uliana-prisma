@@ -107,14 +107,14 @@ footer {
 }
 
 .room-bg {
-  background-image: url('public/bg/room.webp'); /* Путь к картинке */
+  background-image: url('https://kubiki.io/public/bg/room.webp'); /* Путь к картинке */
   background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
   background-repeat: no-repeat; /* Отключает повторение изображения */
   background-position: center center; /* Выравнивает изображение по центру */
 }
 
 .secret-bg {
-  background-image: url('public/bg/secret.webp'); /* Путь к картинке */
+  background-image: url('https://kubiki.io/public/bg/secret.webp'); /* Путь к картинке */
   background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
   background-repeat: no-repeat; /* Отключает повторение изображения */
   background-position: center center; /* Выравнивает изображение по центру */
@@ -122,21 +122,21 @@ footer {
 
 
 .magic-ball-bg {
-  background-image: url('public/bg/magic-ball.webp'); /* Путь к картинке */
+  background-image: url('https://kubiki.io/public/bg/magic-ball.webp'); /* Путь к картинке */
   background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
   background-repeat: no-repeat; /* Отключает повторение изображения */
   background-position: center center; /* Выравнивает изображение по центру */
 }
 
 .tasks-bg {
-  background-image: url('public/bg/tasks.jpg'); /* Путь к картинке */
+  background-image: url('https://kubiki.io/public/bg/tasks.jpg'); /* Путь к картинке */
   background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
   background-repeat: no-repeat; /* Отключает повторение изображения */
   background-position: center center; /* Выравнивает изображение по центру */
 }
 
 .friends-bg {
-  background-image: url('public/bg/friends.jpg'); /* Путь к картинке */
+  background-image: url('https://kubiki.io/public/bg/friends.jpg'); /* Путь к картинке */
   background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
   background-repeat: no-repeat; /* Отключает повторение изображения */
   background-position: center center; /* Выравнивает изображение по центру */

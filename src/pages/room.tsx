@@ -20,7 +20,7 @@ const Room: FC = () => {
      text-[#ead4e1]
      flex  
      items-center justify-center
-     tasks-bg">
+     room-bg">
        <div className="flex flex-col gap-3 w-full gray-glass mx-2 px-4 py-8">
            <div className="text-3xl text-bold w-full text-center">{t("room.title")}</div>
            <div className="text-md w-full text-center">{t("room.description")}</div>         

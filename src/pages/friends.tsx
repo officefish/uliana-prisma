@@ -113,7 +113,6 @@ const Friends: FC = () => {
   return (
     <div className=" w-screen h-screen 
          text-[#ead4e1]
-
     flex  
     items-center justify-center
     friends-bg">
