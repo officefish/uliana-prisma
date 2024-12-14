@@ -40,7 +40,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 
-  background-image: url("/bg.webp");
+  background-image: url("bg/loading.jpg");
   background-repeat: round;
 
   /*overscroll-behavior: none;*/
@@ -208,7 +208,7 @@ box-shadow:  5px 5px 5px #2a1b25,
   width: 50px;
   aspect-ratio: 1;
   display: flex;
-  color: orange;
+  color: rgb(188, 39, 163);
   background: linear-gradient(currentColor 0 0) right  /51% 100%,
   linear-gradient(currentColor 0 0) bottom /100% 51%;
   background-repeat: no-repeat;
@@ -261,8 +261,13 @@ box-shadow:  5px 5px 5px #2a1b25,
 
   display: none;
   pointer-events: none;
-  background-image: url("/bg.webp");
+  /* background-image: url("bg/loading-woman.jpg"); */
   overflow: hidden;
+
+  background-image: url('bg/loading.jpg'); /* Путь к картинке */
+  background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
+  background-repeat: no-repeat; /* Отключает повторение изображения */
+  background-position: center center; /* Выравнивает изображение по центру */
 }
 
 .loader-wrapper.active {
@@ -289,7 +294,7 @@ box-shadow:  5px 5px 5px #2a1b25,
   height: 100%;
   width: 0;
 
-  background: linear-gradient(90deg, #BF8226 0%, #FFC163 100%);
+  background: linear-gradient(90deg, #bf2666 0%, #ff63e0 100%);
 
   animation: 10s progress-first ease-in forwards;
 }
@@ -1826,7 +1831,7 @@ box-shadow:  5px 5px 5px #2a1b25,
   height: 100%;
 
   padding: 24px 20px;
-  background-image: url("/bg.webp");
+  background-image: url("bg/loading.jpg");
   background-repeat: round;
   overscroll-behavior: none;
   overflow-x: hidden;
