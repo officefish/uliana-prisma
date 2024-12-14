@@ -6,6 +6,7 @@ import { TonClientProvider } from "./ton"
 import { WalletProvider } from "./wallet"
 import { ChestsProvider } from "./chests"
 import { OKXProvider } from "./okx"
+import { BalanceProvider } from "./balance"
 import {Snackbar} from "@/providers/snackbar.tsx";
 
 const Providers: FC <PropsWithChildren> = ({ children }) => {
@@ -18,7 +19,9 @@ const Providers: FC <PropsWithChildren> = ({ children }) => {
             <ChestsProvider>
             <TonClientProvider>
             <OKXProvider>
+            <BalanceProvider>
                 {children}
+            </BalanceProvider>
             </OKXProvider>
             </TonClientProvider>
             </ChestsProvider>

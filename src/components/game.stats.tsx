@@ -4,6 +4,7 @@
 import { FC, useEffect } from "react"
 //import { useTranslation } from "react-i18next";
 import {useSiteStore} from "@/providers/store";
+import { useBalanceStore } from "@/providers/balance";
 
 interface GameStatsProps {
   onBuyKeys: () => void
@@ -18,6 +19,8 @@ const GameStats:FC<GameStatsProps> = (props) => {
 
   //const { player, isAuth } = useUserStore()
   const { isEmptyPage } = useSiteStore()
+
+  const {coins, energy, gems, crystals} = useBalanceStore()
 
   //const balance = player?.balance || 0
   //const usdt = player?.usdt || 0
@@ -35,17 +38,20 @@ const GameStats:FC<GameStatsProps> = (props) => {
 
   return (
     <div className={`header fixed w-screen p-4 flex flex-row z-10 ${isEmptyPage ? 'hidden' : ''}`}>
-      <div className="grid grid-cols-4 text-white text-xs">
-        <div className="">
-          <label htmlFor="">Серебряные монеты</label>
-          <img src="" alt="silver" />
-          <div>500</div>
+      <div className="grid grid-cols-4 text-white text-xs gap-2 w-full">
+        <div className="flex flex-col gap-1 w-full items-center justify-center text-gray-200 select-none	">
+          <div className="flex flex-row gap-1 items-center justify-center btn-no-body">
+            <img className="w-10 h-10" src="nav/coins.png" alt="silver" />
+            <span>X</span>
+            <div className="text-lg font-bold">{coins}</div>
+          </div>
+          {/* <label htmlFor="">Самоцветы</label>      */}
         </div>
         <div className="flex flex-col gap-1 w-full items-center justify-center text-orange-200 select-none	">
           <div className="flex flex-row gap-1 items-center justify-center btn-no-body">
             <img className="w-10 h-10" src="nav/energy.png" alt="silver" />
             <span>X</span>
-            <div className="text-lg font-bold">400</div>
+            <div className="text-lg font-bold">{energy}</div>
           </div>
           {/* <label htmlFor="">Самоцветы</label>      */}
         </div>
@@ -53,7 +59,7 @@ const GameStats:FC<GameStatsProps> = (props) => {
           <div className="flex flex-row gap-1 items-center justify-center btn-no-body" onClick={onBuyKeys}>
             <img className="w-10 h-10" src="nav/gems.png" alt="silver" />
             <span>X</span>
-            <div className="text-lg font-bold">12</div>
+            <div className="text-lg font-bold">{gems}</div>
           </div>
           {/* <label htmlFor="">Самоцветы</label>      */}
         </div>
@@ -61,7 +67,7 @@ const GameStats:FC<GameStatsProps> = (props) => {
           <div className="flex flex-row gap-1 items-center justify-center btn-no-body">
             <img className="w-10 h-10" src="nav/crystalls.png" alt="crystals" />
             <span>X</span>
-            <div className="text-lg font-bold">3</div>
+            <div className="text-lg font-bold">{crystals}</div>
           </div>
           {/* <label htmlFor="">Самоцветы</label>      */}
         </div>

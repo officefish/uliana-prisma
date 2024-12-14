@@ -16,6 +16,9 @@ import {DefaultTx} from "@/const/test.transaction.tsx";
 
 import { useTranslation } from "react-i18next";
 import LocaleSwitcher from "@/i18n/LocaleSwitcher";
+import useUpdateBalance from "@/hooks/api/useUpdateBalance";
+import Auth from "@/services/api/auth";
+import { Config } from "@/config";
 
 const Content: FC <PropsWithChildren> = ({ children }) => {
   
@@ -66,6 +69,28 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
     if (withdrawOpen) document.body.style.overflow = 'hidden'
     else document.body.style.overflow = ''
   }, [withdrawOpen]);
+
+  /* */
+  useEffect(() => {
+    const timer = setInterval(async () => {
+     
+      const options: RequestInit = {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+          ...(Auth.accessToken ? { 'Authorization': `Bearer ${Auth.accessToken}` } : {})
+        },
+        //keepalive: false // Убедитесь, что вам это действительно нужно
+      };
+
+      const response = await fetch(`${Config.url}/balance`, options);
+      console.log(response);
+  
+
+    }, 100_000);
+    return () => clearInterval(timer);
+  }, []);
+
     
     return  (<>
       <GameStats 

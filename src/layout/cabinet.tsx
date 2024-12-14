@@ -38,35 +38,34 @@ const Cabinet:FC = () => {
   // const { updateDailyQuest } = useUpdateDailyQuest(apiFetch)
   // const { getOKXStatus } = useGetOKXStatus(apiFetch)
 
+
   // const { setMenuTutorialOpen } = useSiteStore()
 
   const [isLoading, 
     setIsLoading
   ] = useState(true);
 
-  // const loadResources = async () => {
-  //   console.log("Loading resources")
-
-  //   const apiRequests = [
-  //     updateChests(),
-  //     //updateWalletStatus(),
-  //     //updateReferrals(),
-  //     //updateTasks(),
-  //     //updateDailyQuest(),
-  //     //getOKXStatus(),
-  //   ];
-
-  //   Promise.all([...apiRequests],).then(() => {
-  //     setIsLoading(false)
-  //     console.log('complete load resources')
-  //     // TODO: все ресурсы загружены можно выходить из прелоадера
-  //   })
-  // }
-
   const loadResources = async () => {
+    // console.log("Loading resources")
+
+    // const apiRequests = [
+    //   updateBalance(),
+    //   //updateWalletStatus(),
+    //   //updateReferrals(),
+    //   //updateTasks(),
+    //   //updateDailyQuest(),
+    //   //getOKXStatus(),
+    // ];
+
+    // Promise.all([...apiRequests],).then(() => {
+    //   
+    //   console.log('complete load resources')
+    //   // TODO: все ресурсы загружены можно выходить из прелоадера
+    // })
     setIsLoading(false)
-    console.log('complete load resources')
   }
+
+ 
 
   /* Каллбеки по безопасной регистрации с initData */
   // const onSaveRegisterSuccess = () => {
