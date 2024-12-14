@@ -35,8 +35,8 @@
     "room": "Room",
     "secret": "Secret",
     "magic_ball":"Magic Ball",
-    "tasks": "Tasks",
-    "friends": "Friends"
+    "tasks": "Fortune",
+    "friends": "Fair"
   },
   "game": {
     "title": "Game",
@@ -75,33 +75,11 @@
     "telegram_channel": "Our Telegram channel",
     "add_keys": "Get additional keys"
   },
-  "airdrop": {
-    "title": "Airdrop",
-    "description": "By connecting your Ton Wallet, you can participate in the airdrop and receive rewards directly into your wallet.",
-    "steps_list": "To join the airdrop, follow these steps:",
-    "first_step": "1. Connect your Ton Wallet.",
-    "connect_wallet": "Connect Wallet",
-    "second_step": "2. Make a simple test transaction..",
-    "make_transaction": "MAKE AN APPROVAL TRANSACTION",
-    "third_step": "Wait for the airdrop rewards to be distributed!",
-    "details_first_question": "What will affect the amount of tokens you receive?",
-    "details_first_answer_1": "Your current income in the game.",
-    "details_first_answer_2": "Your activity and engagement in the game.",
-    "details_first_answer_3": "The number of friends you invite to the game.",
-    "details_second_question": "The more you interact with the game and share it with others, the higher your token rewards will be!",
-    "details_second_answer_1": "Once you’ve received your tokens, you’ll be able to exchange them on popular exchanges such as OKX and ByBit for USDT (Tether). Keep an eye on the airdrop page for updates and detailed instructions on how to exchange your tokens." 
-  },
-  "withdraw": {
-    "title": "Withdraw",
-    "false_condition": "Withdrawal is available from 10 USDT",
-    "true_condition": "Withdraw from 10 USDT",
-    "withdraw_steps": "To make withdraw, follow these steps:",
-    "ammount": "You have:"
-  },
+ 
   "friends": {
     "title": "Friends",
-    "invite": "Invite friends!",
-    "description": "You and your friend will get bonus",
+    "invite": "City fair",
+    "description": "You can find many friends and admirers at the city fair, but you will have to fork out some money.",
     "telegram": "Telegram",
     "telegram_premium": "Telegram Premium",
     "complex_baunty": "both for you and your friend",
@@ -113,6 +91,7 @@
   },
   "tasks": {
     "title": "Tasks",
+    "description": "Trials of fate open up many new opportunities and grant prosperity, but they take away vitality.",
     "login": "Log in Once a Day",
     "login_description": "Log in to the app every day to complete this task and track your daily streak. The more days in a row you log in, the bigger the reward!",
     "open_chest": "Open a Chest",
@@ -163,5 +142,17 @@
       "claim_reward": "Claim reward"
     },
     "check": "check"
+  },
+  "secret": {
+    "title": "Secret place",
+    "description": "A secret place usually gives new impressions, opens up new abilities, brings many gifts, but at what cost?"
+  },
+  "room": {
+    "title": "Native lair",
+    "description": "A place where you can hide from the cold nights and gain vitality, but it requires care and order."
+  },
+  "prisma": {
+    "title": "Magic ball",
+    "description": "Magic items will answer any question for gems. Do you have them with you?"
   }
 }

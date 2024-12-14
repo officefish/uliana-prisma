@@ -6,6 +6,7 @@ import {
   useEffect,
  
 } from "react";
+import { useTranslation } from "react-i18next";
 
 
 const Friends: FC = () => {
@@ -69,7 +70,6 @@ const Friends: FC = () => {
 //      window.open(telegramUrl, '_blank');
 //   };
 
-//   const { t } = useTranslation();
 
 //   const handleCopy = () => {
 //     // Using the Clipboard API to copy text
@@ -108,17 +108,19 @@ const Friends: FC = () => {
 //   const handleClaimedAll = () => {
 //     if (!bauntyLoading) claimBauntyForAll(1, 10)
 //   }
+  const { t } = useTranslation();
 
   return (
-    <div  className="
-      w-screen h-screen 
-      text-gray-500
-    text-3xl flex 
-    text-bold
+    <div className=" w-screen h-screen 
+    text-gray-100
+    flex  
     items-center justify-center
     friends-bg">
-      Друзья       
-    </div>
+      <div className="flex flex-col gap-3 w-full gray-glass mx-2 px-4 py-8">
+          <div className="text-3xl text-bold w-full text-center">{t("friends.title")}</div>
+          <div className="text-md w-full text-center">{t("friends.description")}</div>         
+      </div>
+   </div>
   )
 }
 

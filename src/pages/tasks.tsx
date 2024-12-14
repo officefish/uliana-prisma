@@ -1,6 +1,7 @@
 import {useSiteStore} from "@/providers/store";
 import {Page} from "@/types";
 import {FC, useEffect} from "react"
+import { useTranslation } from "react-i18next";
 
 const Tasks: FC = () => {
 
@@ -59,16 +60,18 @@ const Tasks: FC = () => {
   //     }
   // }
 
-  // const { t } = useTranslation();
+    const { t } = useTranslation();
 
     return (
     <div className=" w-screen h-screen 
-    text-gray-500
-    text-3xl flex 
-    text-bold
+    text-gray-100
+    flex  
     items-center justify-center
     tasks-bg">
-      Задания       
-    </div>
+      <div className="flex flex-col gap-3 w-full gray-glass mx-2 px-4 py-8">
+          <div className="text-3xl text-bold w-full text-center">{t("tasks.title")}</div>
+          <div className="text-md w-full text-center">{t("tasks.description")}</div>         
+      </div>
+   </div>
   )}
 export default Tasks
