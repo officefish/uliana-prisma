@@ -100,7 +100,7 @@ footer {
   width: 100vw;
   min-height: 100vh;
   --tw-bg-opacity: 1;
-  background-color: #00FF5E;
+  background-color: #5a2d5a;
 
   /*background-image: url("/bg.webp");*/
   /*background-repeat: round;*/
@@ -129,14 +129,14 @@ footer {
 }
 
 .tasks-bg {
-  background-image: url('https://kubiki.io/public/bg/tasks.jpg'); /* Путь к картинке */
+  background-image: url('https://kubiki.io/public/bg/tasks-2.webp'); /* Путь к картинке */
   background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
   background-repeat: no-repeat; /* Отключает повторение изображения */
   background-position: center center; /* Выравнивает изображение по центру */
 }
 
 .friends-bg {
-  background-image: url('https://kubiki.io/public/bg/friends.jpg'); /* Путь к картинке */
+  background-image: url('https://kubiki.io/public/bg/friends-2.webp'); /* Путь к картинке */
   background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
   background-repeat: no-repeat; /* Отключает повторение изображения */
   background-position: center center; /* Выравнивает изображение по центру */

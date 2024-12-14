@@ -14,7 +14,6 @@ interface GameStatsProps {
 
 const GameStats:FC<GameStatsProps> = (props) => {
 
-  console.log(props)
   const { onBuyKeys } = props
 
   //const { player, isAuth } = useUserStore()
