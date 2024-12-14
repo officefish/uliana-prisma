@@ -16,7 +16,7 @@ import {DefaultTx} from "@/const/test.transaction.tsx";
 
 import { useTranslation } from "react-i18next";
 import LocaleSwitcher from "@/i18n/LocaleSwitcher";
-import useUpdateBalance from "@/hooks/api/useUpdateBalance";
+//import useUpdateBalance from "@/hooks/api/useUpdateBalance";
 import Auth from "@/services/api/auth";
 import { Config } from "@/config";
 
