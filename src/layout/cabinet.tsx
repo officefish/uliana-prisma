@@ -40,9 +40,9 @@ const Cabinet:FC = () => {
 
   // const { setMenuTutorialOpen } = useSiteStore()
 
-  // const [isLoading, 
-  //   setIsLoading
-  // ] = useState(true);
+  const [isLoading, 
+    setIsLoading
+  ] = useState(true);
 
   // const loadResources = async () => {
   //   console.log("Loading resources")
@@ -64,7 +64,8 @@ const Cabinet:FC = () => {
   // }
 
   const loadResources = async () => {
-    
+    setIsLoading(false)
+    console.log('complete load resources')
   }
 
   /* Каллбеки по безопасной регистрации с initData */
@@ -128,7 +129,7 @@ const Cabinet:FC = () => {
 
 
 return (
-  <WithLoader isLoading={false}>
+  <WithLoader isLoading={isLoading}>
     <Screen>
       <Content>
       <Routes>

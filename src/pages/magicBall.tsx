@@ -1,5 +1,3 @@
-
-
 import { useSiteStore } from "@/providers/store";
 import { Page } from "@/types";
 import { FC, useEffect } from "react";
@@ -7,17 +5,21 @@ import { useTranslation } from "react-i18next";
 
 const MagicBall: FC = () => {
 
-  const { setPage } = useSiteStore();
+  const { setPage, setIsFooterTransparent } = useSiteStore();
  
   useEffect(() => {
     setPage(Page.MAGIC_BALL);
   }, [setPage]);
 
+  useEffect(() => {
+    setIsFooterTransparent(false);
+  }, [setIsFooterTransparent]);
+
   const { t } = useTranslation();
 
     return (
      <div className=" w-screen h-screen 
-     text-gray-100
+         text-[#240919]
      flex  
      items-center justify-center
      magic-ball-bg">

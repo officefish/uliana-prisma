@@ -13,9 +13,11 @@ const Navigation: FC = () => {
 
     return <div className={`
     ${isEmptyPage ? 'hidden' : ''}
-    grid grid-cols-5 gap-1
+    grid grid-cols-5 gap-2.5
+    text-xs
     mx-2 
     pb-7 pt-2
+    text-purple-950
     z-40`}>
       <NavButton notification={getIsNotification(Page.SECRET)} selected={page === Page.SECRET} to={'/secret'} title={t('navigation.secret')} index={0}/>
       <NavButton notification={getIsNotification(Page.ROOM)} selected={page === Page.ROOM} to={'/room'} title={t('navigation.room')} index={1}/>

@@ -64,7 +64,7 @@ const Tasks: FC = () => {
 
     return (
     <div className=" w-screen h-screen 
-    text-gray-100
+     text-[#ead4e1]
     flex  
     items-center justify-center
     tasks-bg">

@@ -16,7 +16,7 @@ const Secret: FC = () => {
 
     return (
       <div className=" w-screen h-screen 
-      text-gray-100
+         text-[#240919]
       flex  
       items-center justify-center
       secret-bg">

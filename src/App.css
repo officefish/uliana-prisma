@@ -91,7 +91,8 @@ button {
 }
 
 footer {
-  background: #130F29;
+  /* background: #130F29; */
+  background: #3b2633;
 }
 
 
@@ -141,14 +142,28 @@ footer {
   background-position: center center; /* Выравнивает изображение по центру */
 }
 
-.gray-glass {
-  background: rgba( 157, 152, 152, 0.3 );
+.gray-glass {  
+  background: rgba( 255, 255, 255, 0 );
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 14px );
-  -webkit-backdrop-filter: blur( 14px );
+  backdrop-filter: blur( 18.5px );
+  -webkit-backdrop-filter: blur( 18.5px );
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
+
+.neumorphism-btn {
+border-radius: 20px;
+background: linear-gradient(145deg, #3f2937, #35222e);
+box-shadow:  5px 5px 5px #2a1b25,
+             -5px -5px 5px #4c3141;
+}
+
+.neumorphism-btn-select {
+  border-radius: 20px;
+  background: linear-gradient(145deg, #9b6386, #63214b);
+  box-shadow:  5px 5px 5px #523147,
+               -5px -5px 5px #22151d;
+  }
 
 /* loaders */
 .coin-loader {
@@ -429,6 +444,7 @@ footer {
   font-weight: 400;
   letter-spacing: 0.04em;
   text-align: center;
+  color: #e661b5;
 }
 
 .nav-item > div {
@@ -439,9 +455,10 @@ footer {
 .nav-select {
   /* background: linear-gradient(90deg, #BF8226 0%, #FFC163 100%); */
   /* border: 2px solid #695F1673; */
-  color: black;
-  background: linear-gradient(180deg, #E9EEFF 0%, rgba(255, 255, 255, 0.68) 93.95%, rgba(255, 255, 255, 0) 156.58%);
-  border-radius: 8px;
+  color: #eccadf;
+  /* background: linear-gradient(180deg, #E9EEFF 0%, rgba(255, 255, 255, 0.68) 93.95%, rgba(255, 255, 255, 0) 156.58%);
+  border-radius: 8px;  */
+ 
 }
 
 .nav-select > div {

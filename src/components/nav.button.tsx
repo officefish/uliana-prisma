@@ -29,7 +29,7 @@ const NavButton:FC<INavButton> = (props) => {
                 w-full h-full flex items-center justify-center flex-col
                 nav-item
                 py-1
-                ${selected ? 'nav-select' : 'text-white'}
+                ${selected ? 'nav-select neumorphism-btn-select' : 'neumorphism-btn'}
                 ${notification ? 'nav-notification' : ''}`
             }>
                 <div className={`
