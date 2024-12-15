@@ -28,6 +28,7 @@ import MagicBall from "@/pages/magicBall"
 import Secret from "@/pages/secret"
 import Room from "@/pages/room"
 import useUpdateBalance from "@/hooks/api/useUpdateBalance"
+import { useUpdateFortunes } from "@/hooks/api/useUpdateFortunes"
 //import Mobile from "@/pages/mobile.tsx";
 
 
@@ -47,12 +48,14 @@ const Cabinet:FC = () => {
   ] = useState(true);
 
   const { updateBalance } = useUpdateBalance(apiFetch)
+  const { updateFortunes } = useUpdateFortunes(apiFetch)
 
   const loadResources = async () => {
     // console.log("Loading resources")
 
     const apiRequests = [
       updateBalance(),
+      updateFortunes(),
       //updateWalletStatus(),
       //updateReferrals(),
       //updateTasks(),
