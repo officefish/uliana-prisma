@@ -2,7 +2,7 @@
    
 import usePageNotifications from "@/hooks/usePageNotifications";
 
-import { FC, PropsWithChildren, useEffect } from "react";
+import { FC, PropsWithChildren } from "react";
 import { useTranslation } from "react-i18next";
 
 

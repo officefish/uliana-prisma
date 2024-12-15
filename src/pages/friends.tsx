@@ -1,5 +1,4 @@
 //import usePageNotifications from "@/hooks/usePageNotifications";
-import { WithNotification } from "@/components/notifications/notification";
 import usePageNotifications from "@/hooks/usePageNotifications";
 import { useSiteStore } from "@/providers/store";
 
@@ -113,10 +112,6 @@ const Friends: FC = () => {
 //   const handleClaimedAll = () => {
 //     if (!bauntyLoading) claimBauntyForAll(1, 10)
 //   }
-
-  const handleClose = () => {
-    console.log('Close modal')
-  }
 
   useEffect(() => {
     if (FRIEND_PAGE) {
