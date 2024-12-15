@@ -1,7 +1,10 @@
+import usePageNotifications from "@/hooks/usePageNotifications";
 import {useSiteStore} from "@/providers/store";
 import {Page} from "@/types";
 import {FC, useEffect} from "react"
 import { useTranslation } from "react-i18next";
+
+const TASK_PAGE = "task_page";
 
 const Tasks: FC = () => {
 
@@ -62,16 +65,46 @@ const Tasks: FC = () => {
 
     const { t } = useTranslation();
 
+    const {
+      notificationsEnabled,
+      shouldShowNotification,
+      closeNotification,
+      setCurrentPage
+    } = usePageNotifications();
+  
+    useEffect(() => {
+      // Set the current page dynamically
+      if (TASK_PAGE) {
+        setCurrentPage(TASK_PAGE);
+      }
+    }, [TASK_PAGE]);
+
+    const handleConfirm = () => {
+      closeNotification(TASK_PAGE)
+    }
+
     return (
     <div className=" w-screen h-screen 
      text-[#ead4e1]
     flex  
     items-center justify-center
     tasks-bg">
-      <div className="flex flex-col gap-3 w-full gray-glass mx-2 px-4 py-8">
-          <div className="text-3xl text-bold w-full text-center">{t("tasks.title")}</div>
-          <div className="text-md w-full text-center">{t("tasks.description")}</div>         
+      
+     
+      {notificationsEnabled && shouldShowNotification(TASK_PAGE) && (
+        <div> 
+          <div className="flex flex-col gap-3 w-full gray-glass mx-2 px-4 py-8">
+          <div className="text-3xl text-bold w-full text-center">{t(`tasks.title`)}</div>
+          <div className="text-md w-full text-center">{t(`tasks.description`)}</div>         
+          <div className="btn btn-secondary m-2" onClick={() => handleConfirm()}>{t('additional.confirm').toUpperCase()}</div>
+        </div>
+        
       </div>
+      )}
+
+      {!notificationsEnabled || !shouldShowNotification(TASK_PAGE) && <div>
+        Main content
+      </div>}
    </div>
   )}
 export default Tasks

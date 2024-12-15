@@ -1,32 +1,63 @@
+import usePageNotifications from "@/hooks/usePageNotifications";
 import { useSiteStore } from "@/providers/store";
 import { Page } from "@/types";
 import { FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
+const MAGIC_BALL_PAGE = "mg_page";
+
 const MagicBall: FC = () => {
 
-  const { setPage, setIsFooterTransparent } = useSiteStore();
+  // Роутинг страниц
+  const { setPage } = useSiteStore();
  
   useEffect(() => {
     setPage(Page.MAGIC_BALL);
   }, [setPage]);
 
-  useEffect(() => {
-    setIsFooterTransparent(false);
-  }, [setIsFooterTransparent]);
-
+  // Поддержка нескольких языков
   const { t } = useTranslation();
+
+  // Уведомления локального хранилиша
+  const {
+    notificationsEnabled,
+    shouldShowNotification,
+    closeNotification,
+    resetNotifications,
+    setCurrentPage
+  } = usePageNotifications();
+
+  useEffect(() => {
+    // Set the current page dynamically
+    if (MAGIC_BALL_PAGE) {
+      setCurrentPage(MAGIC_BALL_PAGE);
+    }
+  }, [MAGIC_BALL_PAGE]);
+
+    const handleConfirm = () => {
+      closeNotification(MAGIC_BALL_PAGE)
+    }
 
     return (
      <div className=" w-screen h-screen 
       text-[#ead4e1]
-     flex  
+     flex flex-col gap-2 
      items-center justify-center
      magic-ball-bg">
-       <div className="flex flex-col gap-3 w-full gray-glass mx-2 px-4 py-8">
-           <div className="text-3xl text-bold w-full text-center">{t("prisma.title")}</div>
-           <div className="text-md w-full text-center">{t("prisma.description")}</div>         
-       </div>
+            {notificationsEnabled && shouldShowNotification(MAGIC_BALL_PAGE) && (
+        <div> 
+          <div className="flex flex-col gap-3 w-full gray-glass mx-2 px-4 py-8">
+          <div className="text-3xl text-bold w-full text-center">{t(`prisma.title`)}</div>
+          <div className="text-md w-full text-center">{t(`prisma.description`)}</div>         
+          <div className="btn btn-secondary m-2" onClick={() => handleConfirm()}>{t('additional.confirm').toUpperCase()}</div>
+        </div>
+      </div>
+      )}
+
+      {!notificationsEnabled || !shouldShowNotification(MAGIC_BALL_PAGE) && <div>
+        {/* Main content */}
+        <div className="btn btn-secondary" onClick={()=>resetNotifications()}>resetNotifications</div>
+      </div>}   
     </div>
    )
 }

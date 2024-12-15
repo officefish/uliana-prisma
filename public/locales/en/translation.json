@@ -25,7 +25,8 @@
     "buy": "buy",
     "claim_all": "claim all",
     "get_reward": "Get a reward!",
-    "do_it": "Do it!"
+    "do_it": "Do it!",
+    "confirm":"Confirm"
   },
   "navigation": {
     "title": "Navigation",

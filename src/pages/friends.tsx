@@ -1,3 +1,6 @@
+//import usePageNotifications from "@/hooks/usePageNotifications";
+import { WithNotification } from "@/components/notifications/notification";
+import usePageNotifications from "@/hooks/usePageNotifications";
 import { useSiteStore } from "@/providers/store";
 
 import { Page } from "@/types";
@@ -7,7 +10,9 @@ import {
  
 } from "react";
 import { useTranslation } from "react-i18next";
+//import { useTranslation } from "react-i18next";
 
+const FRIEND_PAGE = "friend_page"
 
 const Friends: FC = () => {
 
@@ -108,6 +113,28 @@ const Friends: FC = () => {
 //   const handleClaimedAll = () => {
 //     if (!bauntyLoading) claimBauntyForAll(1, 10)
 //   }
+
+  const handleClose = () => {
+    console.log('Close modal')
+  }
+
+  useEffect(() => {
+    if (FRIEND_PAGE) {
+      setCurrentPage(FRIEND_PAGE);
+    }
+  }, [FRIEND_PAGE]);
+
+  const {
+    notificationsEnabled,
+    shouldShowNotification,
+    closeNotification,
+    setCurrentPage
+  } = usePageNotifications();
+  
+  const handleConfirm = () => {
+    closeNotification(FRIEND_PAGE)
+  }
+
   const { t } = useTranslation();
 
   return (
@@ -116,12 +143,21 @@ const Friends: FC = () => {
     flex  
     items-center justify-center
     friends-bg">
-      <div className="flex flex-col gap-3 w-full gray-glass mx-2 px-4 py-8">
-          <div className="text-3xl text-bold w-full text-center">{t("friends.title")}</div>
-          <div className="text-md w-full text-center">{t("friends.description")}</div>         
+      {notificationsEnabled && shouldShowNotification(FRIEND_PAGE) && (
+        <div> 
+          <div className="flex flex-col gap-3 w-full gray-glass mx-2 px-4 py-8">
+          <div className="text-3xl text-bold w-full text-center">{t(`friends.title`)}</div>
+          <div className="text-md w-full text-center">{t(`friends.description`)}</div>         
+          <div className="btn btn-secondary m-4" onClick={() => handleConfirm()}>{t('additional.confirm').toUpperCase()}</div>
+        </div>
+        
       </div>
-   </div>
-  )
-}
+      )}
+
+      {!notificationsEnabled || !shouldShowNotification(FRIEND_PAGE) && <div>
+        Main content
+      </div>}
+    </div>
+  )}
 
 export default Friends
