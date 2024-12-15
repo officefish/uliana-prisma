@@ -40,8 +40,12 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 
-  background-image: url("https://kubiki.io/public/bg/loading.jpg");
+  --bg-image: url("bg/loading-2.jpg");
+  
+  background-image: var(--bg-image);
   background-repeat: round;
+
+  
 
   /*overscroll-behavior: none;*/
 }
@@ -264,7 +268,7 @@ box-shadow:  5px 5px 5px #2a1b25,
   /* background-image: url("bg/loading-woman.jpg"); */
   overflow: hidden;
 
-  background-image: url('https://kubiki.io/public/bg/loading.jpg'); /* Путь к картинке */
+  background-image: var(--bg-image); /* Путь к картинке */
   background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
   background-repeat: no-repeat; /* Отключает повторение изображения */
   background-position: center center; /* Выравнивает изображение по центру */
@@ -1820,9 +1824,6 @@ box-shadow:  5px 5px 5px #2a1b25,
   -webkit-text-fill-color: transparent;
 }
 
-.modal-menu-divider {
-
-}
 
 /* Modal tutorial */
 .modal-tutorial {
@@ -1831,7 +1832,7 @@ box-shadow:  5px 5px 5px #2a1b25,
   height: 100%;
 
   padding: 24px 20px;
-  background-image: url("https://kubiki.io/public/bg/loading.jpg");
+  background-image: var(--bg-image);
   background-repeat: round;
   overscroll-behavior: none;
   overflow-x: hidden;
