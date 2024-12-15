@@ -157,7 +157,8 @@
   },
   "prisma": {
     "title": "Magic ball",
-    "description": "Magic items will answer any question for gems. Do you have them with you?"
+    "description": "Magic items will answer any question for gems. Do you have them with you?",
+    "fortunes_list_title": "Your magic fortunes"
   },
   "fortunes": {
     "bawdry": {
