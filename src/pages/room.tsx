@@ -61,9 +61,11 @@ const Room: FC = () => {
       </div>
       )}
 
-      {!notificationsEnabled || !shouldShowNotification(ROOM_PAGE) && <div>
-        Main content
-      </div>}       
+      {!notificationsEnabled || !shouldShowNotification(ROOM_PAGE) && (
+        <div className="italic w-full text-center text-pink-100 px-4">
+          Высшее счастье жизни состоит в осознании, что тебя любят (Виктор Гюго).
+      </div>)}
+           
     </div>
    )
 }

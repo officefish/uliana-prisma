@@ -102,9 +102,10 @@ const Tasks: FC = () => {
       </div>
       )}
 
-      {!notificationsEnabled || !shouldShowNotification(TASK_PAGE) && <div>
-        Main content
-      </div>}
+      {!notificationsEnabled || !shouldShowNotification(TASK_PAGE) && (
+        <div className="italic w-full text-center text-pink-100 px-4">
+          Как всякий человек, я хочу быть счастлив, но, как всякий человек, быть им могу только на свой лад (Джейн Остин).
+      </div>)}
    </div>
   )}
 export default Tasks

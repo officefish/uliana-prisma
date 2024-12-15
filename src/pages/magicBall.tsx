@@ -53,9 +53,12 @@ const MagicBall: FC = () => {
       </div>
       )}
 
-      {!notificationsEnabled || !shouldShowNotification(MAGIC_BALL_PAGE) && <div>
-        {/* Main content */}
-      </div>}   
+{!notificationsEnabled || !shouldShowNotification(MAGIC_BALL_PAGE) && (
+        <div className="italic w-full text-center text-pink-100 px-4">
+           Большинство людей счастливы примерно настолько, насколько они позволяют себе это (Авраам Линкольн).
+      </div>)}
+
+     
     </div>
    )
 }

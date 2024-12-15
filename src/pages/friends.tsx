@@ -149,9 +149,10 @@ const Friends: FC = () => {
       </div>
       )}
 
-      {!notificationsEnabled || !shouldShowNotification(FRIEND_PAGE) && <div>
-        Main content
-      </div>}
+      {!notificationsEnabled || !shouldShowNotification(FRIEND_PAGE) && (
+        <div className="italic w-full text-center text-pink-100 px-4">
+          Самый верный и едва ли не единственный способ стать счастливым — это вообразить себя таким (Василий Ключевский).
+      </div>)}
     </div>
   )}
 

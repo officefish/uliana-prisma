@@ -62,9 +62,10 @@ const Secret: FC = () => {
       </div>
       )}
 
-      {!notificationsEnabled || !shouldShowNotification(SECRET_PAGE) && <div>
-        Main content
-      </div>}
+      {!notificationsEnabled || !shouldShowNotification(SECRET_PAGE) && (
+        <div className="italic w-full text-center text-pink-100 px-4">
+        Снежинки — одна из самых хрупких вещей в природе, но только посмотрите, что они могут сделать, когда склеиваются (Веста Кел).
+      </div>)}
        
      </div>
    )
