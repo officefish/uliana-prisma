@@ -40,7 +40,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
 
-  --bg-image: url("bg/loading-2.jpg");
+  --bg-image: url("https://kubiki.io/public/bg/loading-2.jpg");
   
   background-image: var(--bg-image);
   background-repeat: round;
