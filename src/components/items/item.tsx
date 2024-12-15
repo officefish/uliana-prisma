@@ -19,12 +19,12 @@ export const ItemFragment: FC<IItemFragmentProps> = (props) => {
   const { title, short, path, url, handleClick } = props
 
     return (
-    <div className="bg-purple-300 rounded-md h-56 cursor-pointer" 
+    <div className="bg-purple-300 rounded-md cursor-pointer" 
         onClick={() => handleClick('someId', path)}>
         <div className="w-full flex items-center justify-center p-4"><img className="w-24 h-24 rounded-md" src={url} alt={title} /></div>
         <div className="text-center w-full px-2">
-          <div className="text-xl font-bold">{title}</div>
-          <div className="text-xs mt-2">{short}</div>
+          <div className="text-xl font-bold h-8">{title}</div>
+          <div className="text-xs my-2 h-12">{short}</div>
         </div>
         
     </div>
