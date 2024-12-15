@@ -23,7 +23,6 @@ const MagicBall: FC = () => {
     notificationsEnabled,
     shouldShowNotification,
     closeNotification,
-    resetNotifications,
     setCurrentPage
   } = usePageNotifications();
 
@@ -40,7 +39,7 @@ const MagicBall: FC = () => {
 
     return (
      <div className=" w-screen h-screen 
-      text-[#ead4e1]
+        text-[#240919]
      flex flex-col gap-2 
      items-center justify-center
      magic-ball-bg">
@@ -56,7 +55,6 @@ const MagicBall: FC = () => {
 
       {!notificationsEnabled || !shouldShowNotification(MAGIC_BALL_PAGE) && <div>
         {/* Main content */}
-        <div className="btn btn-secondary" onClick={()=>resetNotifications()}>resetNotifications</div>
       </div>}   
     </div>
    )

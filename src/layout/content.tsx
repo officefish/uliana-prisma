@@ -16,6 +16,7 @@ import {DefaultTx} from "@/const/test.transaction.tsx";
 
 import { useTranslation } from "react-i18next";
 import LocaleSwitcher from "@/i18n/LocaleSwitcher";
+import usePageNotifications from "@/hooks/usePageNotifications";
 
 
 const Content: FC <PropsWithChildren> = ({ children }) => {
@@ -387,7 +388,7 @@ interface IMenuProps {
 }
 
 const Menu: FC<IMenuProps> = (props) => {
-  const { setMenuOpen, setMenuTutorialOpen, setKeyShopOpen } = props
+  const { setMenuOpen } = props
 
   const { t } = useTranslation();
 
@@ -395,14 +396,26 @@ const Menu: FC<IMenuProps> = (props) => {
     setMenuOpen(false)
   }
 
-  const handleOpenTutorial = () => {
-    setMenuOpen(false)
-    setMenuTutorialOpen(true)
-  }
+  // const handleOpenTutorial = () => {
+  //   setMenuOpen(false)
+  //   setMenuTutorialOpen(true)
+  // }
 
-  const handleOpenShop = () => {
-    setMenuOpen(false)
-    setKeyShopOpen(true)
+  // const handleOpenShop = () => {
+  //   setMenuOpen(false)
+  //   setKeyShopOpen(true)
+  // }
+
+  const {
+    resetNotifications,
+  } = usePageNotifications();
+
+  const handleEnableNotifications = () => {
+    // Reset notifications
+    //...
+//    <div className="btn btn-secondary" onClick={()=>resetNotifications()}>resetNotifications</div>
+    resetNotifications()
+    console.log('Reset notifications')
   }
 
   return (
@@ -426,15 +439,16 @@ const Menu: FC<IMenuProps> = (props) => {
           </div>
           <div className="divider my-0"></div>
 
-          <Link to={'/airdrop'} className="modal-menu-item py-2" onClick={handleClose}>{t("settings.airdrop")}</Link>
+
+          <div className="modal-menu-item py-2 btn-no-body cursor-pointer" onClick={handleEnableNotifications}>{t("settings.enable_notifications")}</div>
           <div className="divider my-0"></div>
 
-          <div className="modal-menu-item py-2" onClick={handleOpenTutorial}>{t("settings.tutorial")}</div>
-          <div className="divider my-0"></div>
+          <Link to={'https://t.me/uliana_prisma_bot'} target='_blank' className="modal-menu-item py-2">{t("settings.telegram_bot")}</Link>
 
-          <Link to={'https://t.me/TonCasesCrypto'} target='_blank' className="modal-menu-item py-2">{t("settings.telegram_channel")}</Link>
+          <Link to={'https://t.me/+sBMy1mIxT9U3OGMy'} target='_blank' className="modal-menu-item py-2">{t("settings.telegram_chat")}</Link>
+
+
         </div>
-        <div className="function-btn flex items-center uppercase" onClick={handleOpenShop}>{t("settings.add_keys")}</div>
       </div>
     </div>
   )

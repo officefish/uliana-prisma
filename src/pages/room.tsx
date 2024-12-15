@@ -37,7 +37,7 @@ const Room: FC = () => {
 
     return (
      <div className=" w-screen h-screen 
-     text-[#ead4e1]
+       text-[#240919]
      flex  
      items-center justify-center
      room-bg">

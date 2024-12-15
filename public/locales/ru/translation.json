@@ -73,6 +73,9 @@
     "airdrop": "Аирдроп",
     "tutorial": "Обучение",
     "telegram_channel": "Наш Telegram канал",
+    "telegram_bot": "Бот приложения",
+    "telegram_chat": "Ссылка на закрытое сообщество",
+    "enable_notifications": "Включить подсказки",
     "add_keys": "Забрать больше ключей"
   },
   "friends": {

@@ -74,6 +74,9 @@
     "airdrop": "Airdrop",
     "tutorial": "Tutorial",
     "telegram_channel": "Our Telegram channel",
+    "telegram_bot": "Web Telegram App bot",
+    "telegram_chat": "Community Chat",
+    "enable_notifications": "Enable notifications",
     "add_keys": "Get additional keys"
   },
  
