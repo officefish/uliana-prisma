@@ -1,4 +1,6 @@
+import { FortuneItem } from "@/components/items/item";
 import usePageNotifications from "@/hooks/usePageNotifications";
+import { useFortuneStore } from "@/providers/fortunes";
 import { useSiteStore } from "@/providers/store";
 import { Page } from "@/types";
 import { FC, useEffect } from "react";
@@ -37,6 +39,13 @@ const MagicBall: FC = () => {
       closeNotification(MAGIC_BALL_PAGE)
     }
 
+    // list of fortunes id exists 
+    const { fortunes } = useFortuneStore(); 
+   
+    const handleSelectFortune = (id: string, key: string) => {
+      console.log(id, key)
+    }
+
     return (
      <div className=" w-screen h-screen 
         text-[#240919]
@@ -52,10 +61,16 @@ const MagicBall: FC = () => {
         </div>
       </div>
       )}
+           {/* Большинство людей счастливы примерно настолько, насколько они позволяют себе это (Авраам Линкольн). */}
 
     {!notificationsEnabled || !shouldShowNotification(MAGIC_BALL_PAGE) && (
-        <div className="italic w-full text-center text-pink-100 px-4">
-           Большинство людей счастливы примерно настолько, насколько они позволяют себе это (Авраам Линкольн).
+        <div className="m-4 p-4 fortune-list-container absolute top-16 pb-8">
+          <div className="text-center text-pink-200 text-lg">Ваши магические предметы</div>
+           <div className="w-full mx-3 grid grid-cols-2 gap-2 mt-2">
+            {fortunes.length > 0 && fortunes.map( (fortune, index) => (
+              <FortuneItem key={index} itemKey={fortune.key} price={fortune.price} onClick={handleSelectFortune}  />
+           ))}
+           </div>
       </div>)}     
     </div>
    )

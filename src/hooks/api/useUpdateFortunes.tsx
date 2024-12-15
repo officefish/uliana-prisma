@@ -1,10 +1,12 @@
 import { useCallback } from 'react'
 import { useSnackbar } from 'notistack' // Assuming you're using notistack for notifications
+import { useFortuneStore } from '@/providers/fortunes';
 //import { useUserStore } from '@/providers/user'
 
 export const useUpdateFortunes = (apiFetch: any, onSuccess?: any) => {
   const { enqueueSnackbar } = useSnackbar();
-  //const { updatePlayerBalance, updatePlayerEnergy } = useUserStore();
+  //const { updatePlayerBalance, updatePlayerEnergy } = useFortuneSto();
+  const { setFortunes } = useFortuneStore()
   
   const updateFortunes = useCallback(
     async () => {
@@ -12,6 +14,22 @@ export const useUpdateFortunes = (apiFetch: any, onSuccess?: any) => {
         const res = await apiFetch('/fortune/all', 'GET', null, enqueueSnackbar);
 
         console.log(res);
+        //if (res?.fortunes) {
+
+        //}
+
+        if (res) {
+          setFortunes(res); // Update fortunes in the fortune store
+
+          // Update player balance and energy
+          //updatePlayerBalance(res.balance);
+          //updatePlayerEnergy(res.energy);
+
+          // ... other updates as needed
+
+          // If successful, call the onSuccess callback if provided
+          onSuccess?.(); // Call the onSuccess callback if provided
+        }
 
         onSuccess?.(); // Call the onSuccess callback if provided
 

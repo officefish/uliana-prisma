@@ -158,5 +158,11 @@
   "prisma": {
     "title": "Magic ball",
     "description": "Magic items will answer any question for gems. Do you have them with you?"
+  },
+  "fortunes": {
+    "bawdry": {
+      "title": "Bawdry",
+      "short": "A wooden polyhedron with rude curses."
+    }
   }
 }

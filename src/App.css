@@ -1593,6 +1593,14 @@ box-shadow:  5px 5px 5px #2a1b25,
   transition: backdrop-filter 1000ms linear;
 }
 
+.fortune-list-container {
+  background: rgba( 84, 9, 100, 0.6 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 19px );
+  -webkit-backdrop-filter: blur( 19px );
+  border-radius: 10px;
+}
+
 .modal-body {
   background: #151515;
   border-top: 1px solid currentColor;
