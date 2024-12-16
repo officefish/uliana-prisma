@@ -52,8 +52,26 @@ const Bawdry: FC = () => {
     setBawdry(null);
   }
 
+  const [telegramUrl, setTelegramUrl] = useState("")
+
+  useEffect(() => {
+    //if (referralsCode) {
+      //console.log('code:', referralsCode)
+      const msgBawdry = t(`fortunes.bawdry.${bawdry}`)
+      const message = `Обзывашка Маркуса сказала мне что ты: ${msgBawdry}`
+      const url = `https://t.me/uliana_prisma_bot/uliana_prisma?startapp=offenderId=${1}`
+      const tUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`;
+      setTelegramUrl(tUrl)
+    //}
+
+
+  }, [bawdry,
+  ])
+
   const handleSendBawdryClick = () => {
-    console.log('sendBawdryClick')
+    //console.log('sendBawdryClick')
+    window.open(telegramUrl, '_blank');
+    setBawdry(null); 
   }
 
   const {t} = useTranslation();
