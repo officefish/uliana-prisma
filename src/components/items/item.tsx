@@ -10,6 +10,7 @@ interface IItemFragmentProps {
 }
 
 interface IItemProps {
+    key: string | number
     itemKey: string
     price: { value: number, type: string }
     onClick: (id: string, key: string) => void

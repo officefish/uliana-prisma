@@ -19,7 +19,10 @@ function App() {
 
   return (
     <Providers>
-    <BrowserRouter>
+    <BrowserRouter future={{
+      v7_startTransition: true,
+      v7_relativeSplatPath: true
+    }}>
       <Cabinet />
     </BrowserRouter>
   </Providers>
