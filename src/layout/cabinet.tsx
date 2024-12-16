@@ -6,41 +6,26 @@ import Screen from "./screen"
 
 import { Route, Routes } from "react-router-dom"
 
-import Friends from "@/pages/friends"
-import Tasks from "@/pages/tasks"
-
 import { WithLoader } from "@/components/loading"
 import { apiFetch } from "@/services/api"
-//import useUpdateTasks from "@/hooks/api/useUpdateTasks"
-//import useUpdateChests from "@/hooks/api/useUpdateChests"
-//import useUpdateReferrals from "@/hooks/api/useUpdateReferrals"
-//import Airdrop from "@/pages/airdrop"
-//import useUpdateWalletStatus from "@/hooks/api/useUpdateWalletStatus"
-//import Baunty from "@/pages/baunty"
-//import ChestItems from "@/pages/chest-items"
-//import { useUpdateDailyQuest } from "@/hooks/api/useUpdateDailyQuest"
-//import Daily from "@/pages/daily"
-//import {useSiteStore} from "@/providers/store";
-//import useGetOKXStatus from "@/hooks/api/useGetOKXStatus"
-import {useUnsafeRegister} from "@/hooks/api/useUnsafeRegister.tsx";
+
+import { useUnsafeRegister } from "@/hooks/api/useUnsafeRegister.tsx";
 import { useRegister } from "@/hooks/api/useRegister"
+
+import { useUpdateBalance } from "@/hooks/api/useUpdateBalance"
+import { useUpdateFortunes } from "@/hooks/api/useUpdateFortunes"
+
+import Friends from "@/pages/friends"
+import Tasks from "@/pages/tasks"
 import MagicBall from "@/pages/magicBall"
 import Secret from "@/pages/secret"
 import Room from "@/pages/room"
-import useUpdateBalance from "@/hooks/api/useUpdateBalance"
-import { useUpdateFortunes } from "@/hooks/api/useUpdateFortunes"
+import Bawdry from "@/pages/bawdry"
 //import Mobile from "@/pages/mobile.tsx";
 
 
 const Cabinet:FC = () => {
-  // const { updateReferrals } = useUpdateReferrals(apiFetch, 1, 10);
-  // const { updateWalletStatus } = useUpdateWalletStatus(apiFetch)
-  // const { updateTasks } = useUpdateTasks(apiFetch)
-  // const { updateChests } = useUpdateChests(apiFetch)
-  // const { updateDailyQuest } = useUpdateDailyQuest(apiFetch)
-  // const { getOKXStatus } = useGetOKXStatus(apiFetch)
-
-
+  
   // const { setMenuTutorialOpen } = useSiteStore()
 
   const [isLoading, 
@@ -70,9 +55,6 @@ const Cabinet:FC = () => {
     })
     
   }
-
- 
-
   /* Каллбеки по безопасной регистрации с initData */
   // const onSaveRegisterSuccess = () => {
   //   // При удачной авторизации грузим ресурсы
@@ -147,6 +129,7 @@ return (
             <Route path='/room' element={<Room/>}/>
             <Route path='/friends' element={<Friends/>}/>
             <Route path='/tasks' element={<Tasks/>}/>
+            <Route path='/fortunes/bawdry' element={<Bawdry/>}/>
             {/* <Route path='/airdrop' element={<Airdrop/>}/>
             <Route path='/baunty' element={<Baunty/>}/>
             <Route path='/chest-items' element={<ChestItems/>}/>

@@ -110,6 +110,14 @@ footer {
   /*background-repeat: round;*/
 }
 
+/* fortunes */
+.bawdry-bg {
+  background-image: url('/fortunes/bawdry-bg.webp'); /* Путь к картинке */
+  background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
+  background-repeat: no-repeat; /* Отключает повторение изображения */
+  background-position: center center; /* Выравнивает изображение по центру */
+}
+
 .room-bg {
   background-image: url('https://kubiki.io/public/bg/room.webp'); /* Путь к картинке */
   background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
@@ -1129,6 +1137,16 @@ box-shadow:  5px 5px 5px #2a1b25,
   text-align: center;
 }
 
+.shop-dialog-legend {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  /* line-height: 16.8px; */
+  text-align: center;
+  color: #D6DEE7;
+  opacity: 75%;
+}
+
 .shop-dialog-description li {
   line-height: 120%;
 }
@@ -1591,6 +1609,16 @@ box-shadow:  5px 5px 5px #2a1b25,
   -webkit-transition: backdrop-filter 1000ms linear;
   -ms-transition: backdrop-filter 1000ms linear;
   transition: backdrop-filter 1000ms linear;
+}
+
+.bg-glass-xl {
+  /* From https://css.glass */
+  background: rgba( 58, 50, 50, 0.7 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 7.5px );
+  -webkit-backdrop-filter: blur( 7.5px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .fortune-list-container {

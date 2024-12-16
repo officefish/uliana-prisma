@@ -22,7 +22,7 @@ export const ItemFragment: FC<IItemFragmentProps> = (props) => {
     return (
     <div className="bg-fuchsia-200 rounded-md cursor-pointer btn-no-body
      border-purple-500
-    hover:border-pink-700 border-2" 
+    hover:border-pink-700 border-2 select-none" 
         onClick={() => handleClick('someId', itemKey)}>
         <div className="w-full flex items-center justify-center p-2"><img className="w-24 h-24 rounded-md" src={url} alt={title} /></div>
         <div className="text-center w-full px-2">

@@ -5,6 +5,7 @@ import { useSiteStore } from "@/providers/store";
 import { Page } from "@/types";
 import { FC, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const MAGIC_BALL_PAGE = "mg_page";
 
@@ -41,9 +42,13 @@ const MagicBall: FC = () => {
 
     // list of fortunes id exists 
     const { fortunes } = useFortuneStore(); 
+    
+    const navigate = useNavigate()
+    
    
     const handleSelectFortune = (id: string, key: string) => {
       console.log(id, key)
+      navigate(`/fortunes/${key}`)
     }
 
     return (

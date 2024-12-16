@@ -17,7 +17,9 @@ export enum Page {
     ROOM = "room",
     MAGIC_BALL = "magic_ball",
     FRIENDS = "friends",
-    TASKS = "tasks"
+    TASKS = "tasks",
+
+    BAWDRY = "bawdry",
 }
 
 export interface ITelegramUser {

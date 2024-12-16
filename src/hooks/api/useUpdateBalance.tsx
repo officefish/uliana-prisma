@@ -6,7 +6,7 @@ import { useCallback } from 'react';
 //import { useBalanceStore } from '@/providers/balance';
 
 
-  const useUpdateBalance = (apiFetch: any, onSuccess?: () => void) => {
+  export const useUpdateBalance = (apiFetch: any, onSuccess?: () => void) => {
     const { enqueueSnackbar } = useSnackbar();
   
     const { setCoins, setEnergy, setGems, setCrystals } = useBalanceStore();
@@ -51,5 +51,3 @@ import { useCallback } from 'react';
   
     return { updateBalance } 
   }
-
-export default useUpdateBalance;

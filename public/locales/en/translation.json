@@ -26,7 +26,9 @@
     "claim_all": "claim all",
     "get_reward": "Get a reward!",
     "do_it": "Do it!",
-    "confirm":"Confirm"
+    "confirm":"Confirm",
+    "play": "Play",
+    "legend": "Show legend"    
   },
   "navigation": {
     "title": "Navigation",
@@ -163,7 +165,8 @@
   "fortunes": {
     "bawdry": {
       "title": "Bawdry",
-      "short": "A wooden polyhedron with rude curses."
+      "short": "A wooden polyhedron with rude curses.",
+      "legend":"<p>You found this toy under the bed of your small room, which you rent in the attic from the grumpy carpenter Marcus.</p><br/><p>The local children in the yard say that they have such toys too. Marcus makes such a toy every time he wants to take out his anger on his unworthy customers when they forget to pay him for his work on time.</p><br/><p>Even though the toy contains nothing but curses, Marcus believes that it makes him kinder. At least he does not take out his anger on other people while he is busy making it.</p>"
     }
   }
 }
