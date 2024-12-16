@@ -33,10 +33,10 @@
     "coins": "coins",
     "usdt": "usdt",
     "keys": "keys",
-    "room": "Room",
-    "secret": "Secret",
-    "magic_ball":"Magic Ball",
-    "tasks": "Fortune",
+    "room": "Haven",
+    "secret": "Frontiers",
+    "magic_ball":"Fortunes",
+    "tasks": "Destiny",
     "friends": "Fair"
   },
   "game": {
@@ -81,7 +81,7 @@
   },
  
   "friends": {
-    "title": "Friends",
+    "title": "City fair",
     "invite": "City fair",
     "description": "You can find many friends and admirers at the city fair, but you will have to fork out some money.",
     "telegram": "Telegram",
@@ -148,16 +148,16 @@
     "check": "check"
   },
   "secret": {
-    "title": "Secret place",
+    "title": "Frontiers",
     "description": "A secret place usually gives new impressions, opens up new abilities, brings many gifts, but at what cost?"
   },
   "room": {
-    "title": "Native lair",
+    "title": "Native haven",
     "description": "A place where you can hide from the cold nights and gain vitality, but it requires care and order."
   },
   "prisma": {
-    "title": "Magic ball",
-    "description": "Magic items will answer any question for gems. Do you have them with you?",
+    "title": "Fortunes",
+    "description": "Magic fortunes will answer any question for gems. Do you have them with you?",
     "fortunes_list_title": "Your magic fortunes"
   },
   "fortunes": {

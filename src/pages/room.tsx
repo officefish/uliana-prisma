@@ -54,8 +54,8 @@ const Room: FC = () => {
       {notificationsEnabled && shouldShowNotification(ROOM_PAGE) && (
         <div> 
           <div className="flex flex-col gap-3 w-full gray-glass mx-2 px-4 py-8">
-          <div className="text-3xl text-bold w-full text-center">{t(`secret.title`)}</div>
-          <div className="text-md w-full text-center">{t(`secret.description`)}</div>         
+          <div className="text-3xl text-bold w-full text-center">{t(`room.title`)}</div>
+          <div className="text-md w-full text-center">{t(`room.description`)}</div>         
           <div className="btn btn-secondary m-2" onClick={() => handleConfirm()}>{t('additional.confirm').toUpperCase()}</div>
         </div>
       </div>
