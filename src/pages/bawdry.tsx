@@ -5,6 +5,8 @@ import {FC, useEffect, useState} from "react";
 import {useSiteStore} from "@/providers/store";
 import {useTranslation} from "react-i18next";
 import { Page } from "@/types";
+import { apiFetch } from "@/services/api";
+import { useOneRoundBawdry } from "@/hooks/api/fortunes/useOneRoundBawdry";
 
 const Bawdry: FC = () => {
 
@@ -20,17 +22,29 @@ const Bawdry: FC = () => {
     //setIsEmptyPage,
   } = useSiteStore()
 
-//   useEffect(() => {
-//     //setIsEmptyPage(true);
-//     //setIsFooterTransparent(true);
-//   }, [setIsFooterTransparent]);
-
-  //const [getBauntyLoading, setGetBauntyLoading] = useState(false)
-  //const handleGetBauntyLoading = (loading: boolean) => setGetBauntyLoading(loading)
 
 //   const navigate = useNavigate()
 
-//   const handleClaimClick = () => {}
+  const onSuccessBawdryRound = (bawdry: string) => {
+    setBlocked(false);
+    console.log('Bawdry round claimed:', bawdry);
+  }
+
+  const onErrorBawdryRound = () => { 
+    setBlocked(false)
+  }
+
+  const { oneRoundBawdry } = useOneRoundBawdry(apiFetch, onSuccessBawdryRound, onErrorBawdryRound);
+
+
+  const [blocked, setBlocked] = useState(false);
+
+  const handleClaimClick = () => {
+    console.log('handleClaimClick')
+    if (blocked) return;
+    setBlocked(true);
+    oneRoundBawdry();
+  }
 
   const {t} = useTranslation();
 
@@ -53,7 +67,9 @@ const Bawdry: FC = () => {
                  <img className="w-full" src="/fortunes/bawdry.webp" alt="bawdry"></img>
              </div>
              
-             <div className="btn btn-secondary btn-xl btn-md m-4">{t('additional.play').toUpperCase()}
+             <div className="btn btn-secondary btn-xl btn-md m-4"
+             onClick={handleClaimClick}
+             >{t('additional.play').toUpperCase()}
                  <img className='w-8 h-8 ml-2' src="/stats/gems.png" alt="gem"/> x 1
              </div>
          </div>

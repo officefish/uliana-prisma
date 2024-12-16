@@ -13,7 +13,7 @@ import { useUnsafeRegister } from "@/hooks/api/useUnsafeRegister.tsx";
 import { useRegister } from "@/hooks/api/useRegister"
 
 import { useUpdateBalance } from "@/hooks/api/useUpdateBalance"
-import { useUpdateFortunes } from "@/hooks/api/useUpdateFortunes"
+import { useUpdateFortunes } from "@/hooks/api/fortunes/useUpdateFortunes"
 
 import Friends from "@/pages/friends"
 import Tasks from "@/pages/tasks"
