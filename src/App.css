@@ -8,6 +8,16 @@
   src: url("fonts/sf-pro-display/SFPRODISPLAYMEDIUM.OTF")
 }
 
+ /* The @font-face rule is used to define a custom font that you want to use on your webpage. Here 'TheFont' is a name we give to reference the font later in CSS. The 'src' property specifies the path to the font file, and 'format' specifies the font format. */
+ @font-face {
+  font-family: 'TheFont';
+  
+  /* Variable fonts like the one linked below allow for fine-tuned control over various font properties dynamically via CSS, such as weight ('wght'), width ('wdth'), etc. This link is where your web browser will download the font from. */
+  /* Insert the link to your custom variable font */
+  src: url("https://garet.typeforward.com/assets/fonts/shared/TFMixVF.woff2")
+    format('woff2'); 
+  }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,9 +55,18 @@ body {
   background-image: var(--bg-image);
   background-repeat: round;
 
-  
+  --polygon-border-width: 12px; /* Размер границы */
+  --polygon-border-color: #f71fde; /* Цвет границы */
+  --polygon-size: 25vw; /* Размер многоугольника */
+  --polygon-points: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* По умолчанию квадрат */
+}
 
-  /*overscroll-behavior: none;*/
+.polygon {
+  position: absolute;
+  width: var(--polygon-size);
+  aspect-ratio: 1;
+  clip-path: polygon(50% 0%, 93% 15%, 85% 50%, 93% 85%, 50% 100%, 7% 85%, 15% 50%); /* Координаты для семиугольника */
+  border: var(--polygon-border-width) solid var(--polygon-border-color);
 }
 
 
@@ -2606,6 +2625,42 @@ box-shadow:  5px 5px 5px #2a1b25,
   z-index: 10;
   opacity: 1;
   top: 10%;
-  box-shadow: 0 0 6px 0 #ed2e68;
+  box-shadow: 0 0 6px 0 #ed2eba;
   right: 25%;
+}
+
+
+.breathe-animation span {
+  font-family: 'TheFont';
+
+  /* The 'clamp()' function sets a flexible font size that will never go below a minimum value and never above a maximum value. The middle value is preferred, but it will shrink or grow based on the viewport dimensions. */
+  /* Adjusts font size based on content width and viewport height */
+  font-size: clamp(8vw, 16vw, 40vh);
+
+  /* Change this to set the text color */
+  color: rgb(249 168 212 / var(--tw-text-opacity, 1)) /* #f9a8d4 */;
+
+  /* Center text horizontally */
+  text-align: center; 
+
+  /* The 'animation' property applies the 'letter-breathe' keyframes to the element, making it animate over 3 seconds.'ease-in-out' makes the movement start and end slowly, and 'infinite' makes it repeat forever. */
+  /* Controls the animation (3s is the duration) */
+  animation: letter-breathe 3s ease-in-out infinite;
+}
+
+/* Keyframes define the sequence of styles that an element will go through during an animation. */
+@keyframes letter-breathe {
+ 
+  /* The 'from' and 'to' keyframes establish the initial and final states of the animation, respectively, using 'font-variation-settings'. This CSS property is used with variable fonts to adjust their weight ('wght'), width ('wdth'), etc., during the animation. */
+  from,
+  to {
+    /* Starting weight; adjust the numbers according to your specific font */
+    font-variation-settings: 'wght' 100;
+  }
+
+  /* At the midpoint (50%) of the animation, the font weight changes to 900. */
+  50% {
+    /* Ending weight; adjust the numbers according to your specific font */
+    font-variation-settings: 'wght' 900;
+  }
 }

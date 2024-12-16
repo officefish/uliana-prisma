@@ -28,7 +28,9 @@
     "do_it": "Do it!",
     "confirm":"Confirm",
     "play": "Play",
-    "legend": "Show legend"    
+    "legend": "Show legend",
+    "send": "Send",
+    "forget": "Forget"   
   },
   "navigation": {
     "title": "Navigation",
@@ -166,7 +168,23 @@
     "bawdry": {
       "title": "Bawdry",
       "short": "A wooden polyhedron with rude curses.",
-      "legend":"<p>You found this toy under the bed of your small room, which you rent in the attic from the grumpy carpenter Marcus.</p><br/><p>The local children in the yard say that they have such toys too. Marcus makes such a toy every time he wants to take out his anger on his unworthy customers when they forget to pay him for his work on time.</p><br/><p>Even though the toy contains nothing but curses, Marcus believes that it makes him kinder. At least he does not take out his anger on other people while he is busy making it.</p>"
+      "legend":"<p>You found this toy under the bed of your small room, which you rent in the attic from the grumpy carpenter Marcus.</p><br/><p>The local children in the yard say that they have such toys too. Marcus makes such a toy every time he wants to take out his anger on his unworthy customers when they forget to pay him for his work on time.</p><br/><p>Even though the toy contains nothing but curses, Marcus believes that it makes him kinder. At least he does not take out his anger on other people while he is busy making it.</p>",
+      "mosquito": "Pestering Mosquito",
+      "ermine": "Unceremonious Ermine",
+      "magpie": "Chatty Magpie",
+      "parrot": "Intrusive Parrot",
+      "goat": "Rude Goat",
+      "hamster": "Greedy Hamster",
+      "koala": "Slow Koala",
+      "peacock": "Narcissistic Peacock",
+      "fox": "Lying Fox",
+      "hyena":"Malevolent Hyena",
+      "pig": "Dirty Pig",
+      "monkey": "Tactless Monkey",
+      "panda": "Lazy Panda",
+      "rooster": "Loud Rooster",
+      "boar": "Indiscriminate Boar",
+      "crocodile": "Cold-Blooded Crocodile"
     }
   }
 }

@@ -1,5 +1,6 @@
 import { useCallback } from 'react'
 import { useSnackbar } from 'notistack' // Assuming you're using notistack for notifications
+import { useBalanceStore } from '@/providers/balance';
 //import { useFortuneStore } from '@/providers/fortunes';
 //import { useUserStore } from '@/providers/user'
 
@@ -7,6 +8,9 @@ export const useOneRoundBawdry = (apiFetch: any, onSuccess?: (mgs: string) => vo
   const { enqueueSnackbar } = useSnackbar();
   //const { updatePlayerBalance, updatePlayerEnergy } = useFortuneSto();
   //const { setFortunes } = useFortuneStore()
+
+  const { setCoins, setEnergy, setGems, setCrystals } = useBalanceStore();
+  
   
   const oneRoundBawdry = useCallback(
     async () => {
@@ -14,23 +18,36 @@ export const useOneRoundBawdry = (apiFetch: any, onSuccess?: (mgs: string) => vo
         const res = await apiFetch('/fortune/bawdry', 'GET', null, enqueueSnackbar);
 
         console.log(res);
-        //if (res?.fortunes) {
-
-        //}
-
+        
         if (res) {
-          //setFortunes(res); // Update fortunes in the fortune store
 
-          // Update player balance and energy
-          //updatePlayerBalance(res.balance);
-          //updatePlayerEnergy(res.energy);
+          if (res?.balance?.coins) {
+            setCoins(res.balance.coins);
+          } else {
+            setCoins(0);
+          }
 
-          // ... other updates as needed
+          if (res?.balance?.energyLatest) {
+            setEnergy(res.balance.energyLatest);
+          } else {
+            setEnergy(0);
+          }
 
-          // If successful, call the onSuccess callback if provided
+          if (res?.balance?.gems) {
+            setGems(res.balance.gems);
+          } else {
+            setGems(0);
+          }
+
+          if (res?.balance?.crystals) {
+            setCrystals(res.balance.crystals);
+          } else {
+            setCrystals(0);
+          }
+          if (res?.bawdry) {
+            onSuccess?.(res.bawdry); 
+          }
         }
-
-        onSuccess?.('some bawdry'); // Call the onSuccess callback if provided
 
       } catch (error: any) {
         enqueueSnackbar(`Error during one round bawdry: ${error}`, { variant: 'error' });

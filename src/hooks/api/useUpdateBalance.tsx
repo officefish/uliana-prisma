@@ -20,19 +20,28 @@ import { useCallback } from 'react';
 
           if (res?.balance?.coins) {
             setCoins(res.balance.coins);
+          } else {
+            setCoins(0);
           }
 
           if (res?.balance?.energyLatest) {
             setEnergy(res.balance.energyLatest);
+          } else {
+            setEnergy(0);
           }
 
           if (res?.balance?.gems) {
             setGems(res.balance.gems);
+          } else {
+            setGems(0);
           }
 
           if (res?.balance?.crystals) {
             setCrystals(res.balance.crystals);
+          } else {
+            setCrystals(0);
           }
+
   
           onSuccess && onSuccess()
           //if (res.energyLatest && res.energyMax) {
