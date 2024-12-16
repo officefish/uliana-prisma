@@ -365,7 +365,7 @@ const StarShopItem: FC<IStarShopItem> = (props) => {
     " onClick={() =>onSelect(coast)}>
       <div className="shop-dialog-item-icon">
         <div className="shop-dialog-item-chip">{value}</div>
-        <img className="w-full p-1 rounded-md" src="/nav/gems.png" alt="gems" />
+        <img className="w-full p-1 rounded-md" src="/stats/gems.png" alt="gems" />
       </div>
       <div className="flex flex-col justify-between h-full py-2">
         <div className="flex flex-row items-center gap-2 text-[#92b808] font-bold">
