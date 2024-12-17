@@ -6,7 +6,7 @@ import {
   export interface IStoreState {
     page: Page
     isLoading: number
-    keyShopOpen: boolean
+    gemShopOpen: boolean
     withdrawOpen: boolean
     menuOpen: boolean
     menuTutorialOpen: boolean
@@ -20,7 +20,7 @@ import {
     addLoading: () => void
     removeLoading: () => void
     hideLoading: () => void
-    setKeyShopOpen: (isOpen: boolean) => void
+    setGemShopOpen: (isOpen: boolean) => void
     setWithdrawOpen: (isOpen: boolean) => void
     setMenuOpen: (isOpen: boolean) => void
     setMenuTutorialOpen: (isOpen: boolean) => void

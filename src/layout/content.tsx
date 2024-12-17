@@ -22,8 +22,8 @@ import usePageNotifications from "@/hooks/usePageNotifications";
 const Content: FC <PropsWithChildren> = ({ children }) => {
   
     const { 
-      keyShopOpen, 
-      setKeyShopOpen,
+      gemShopOpen, 
+      setGemShopOpen,
       withdrawOpen,
       setWithdrawOpen,
       menuOpen,
@@ -33,7 +33,7 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
     } = useSiteStore()
     
     const onSimpleBuyGemsSuccess = () => {
-      setKeyShopOpen(false)
+      setGemShopOpen(false)
     }
     const { simpleBuyGems } = useSimpleBuyGems(apiFetch, onSimpleBuyGemsSuccess)
 
@@ -49,7 +49,7 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
     const { buyGems } = useBuyGems(apiFetch, onBuyGemsSuccess) 
 
     const handleBuyKeys = () => {
-      setKeyShopOpen(true)
+      setGemShopOpen(true)
     }
 
     const handleWithdraw = () => {
@@ -99,10 +99,10 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
       <main className='pt-8'>
         {children}
         {/* Shop component */}
-        {keyShopOpen && (
+        {gemShopOpen && (
          <ForStarsShop 
          onShopItemSelect={onShopItemSelect} 
-         setKeyShopOpen={setKeyShopOpen} />
+         setKeyShopOpen={setGemShopOpen} />
         )}
         {withdrawOpen && (
           <Withdraw setWithdrawOpen={setWithdrawOpen} />
@@ -111,7 +111,7 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
           <Menu 
           setMenuOpen={setMenuOpen} 
           setMenuTutorialOpen={setMenuTutorialOpen} 
-          setKeyShopOpen={setKeyShopOpen} />
+          setKeyShopOpen={setGemShopOpen} />
         )}
         {menuTutorialOpen && (
           <ModalTutorial 

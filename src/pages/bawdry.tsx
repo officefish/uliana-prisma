@@ -18,12 +18,16 @@ const Bawdry: FC = () => {
     setPage(Page.BAWDRY);
   }, [setPage]);  
 
+  const { setGemShopOpen } = useSiteStore()
+
   const {
     //setIsFooterTransparent,
     //setIsEmptyPage,
   } = useSiteStore()
 
    const [bawdry, setBawdry] = useState<string | null>(null); 
+   //const [bawdry, setBawdry] = useState<string | null>('pig'); 
+
 //   const navigate = useNavigate()
 
   const onSuccessBawdryRound = (newBawdry: string) => {
@@ -82,11 +86,17 @@ const Bawdry: FC = () => {
 
   return (
     <div className='w-full'>
-      <div className="absolute h-screen w-screen bawdry-bg top-0"></div>
+      <div className="absolute h-screen w-screen bawdry-bg top-0 vignette"></div>
       { checked ? (
-        <div className="w-full absolute top-56 bg-opacity-70 bg-slate-300 text-black p-2 font-semibold italic text-md px-4"
-        dangerouslySetInnerHTML={{__html: t('fortunes.bawdry.legend')}} 
-        >
+        <div className="
+        w-full absolute top-32 bg-[#ecbde7] bg-opacity-80 
+        text-black 
+        font-semibold italic text-md px-4
+        ">
+          <hr id="hr-fancy"></hr>
+          <div dangerouslySetInnerHTML={{__html: t('fortunes.bawdry.legend')}} ></div>
+          <hr id="hr-fancy"></hr>
+
         </div>
       ) : (
          <div className="w-full h-screen bg-glass-xl p-4">
@@ -100,7 +110,11 @@ const Bawdry: FC = () => {
               onSendClick={handleSendBawdryClick}
               />
             ) : (
-              <BawdryPlayer onClaimClick={handleClaimClick} gems={gems}  />
+              <BawdryPlayer 
+              onClaimClick={handleClaimClick} 
+              onMarketCLick={() => setGemShopOpen(true)}
+              isLoading={blocked}
+              gems={gems}  />
             )}
 
          </div>
@@ -126,10 +140,12 @@ export default Bawdry
 interface IBawdryPlayerProps {
   gems: number,
   onClaimClick: () => void,
+  onMarketCLick: () => void,
+  isLoading: boolean
 }
 
 const BawdryPlayer: FC<IBawdryPlayerProps> = (props) => {
-  const {gems, onClaimClick } = props;
+  const {gems, onClaimClick, onMarketCLick, isLoading } = props;
   const {t} = useTranslation();
   return (
     <>
@@ -137,16 +153,33 @@ const BawdryPlayer: FC<IBawdryPlayerProps> = (props) => {
         <img className="w-[50%] border-4 border-[#f71fde]" src="/fortunes/bawdry.webp" alt="bawdry"></img>
       </div>
       { gems > 0 && (
-               <div className="btn btn-secondary btn-xl btn-md m-4 mt-60"
-               onClick={onClaimClick}
-               >{t('additional.play').toUpperCase()}
-                   <img className='w-8 h-8 ml-2' src="/stats/gems.png" alt="gem"/> x 1
-               </div>  
-            )}  
+        <div className="m-4 mt-52 flex flex-col items-center justify-center">
+        <div className="text-[#bd8cb7] w-full text-center text-sm">
+          {t('fortunes.bawdry.description')}
+        </div>
+        <div className="btn btn-secondary btn-xl btn-md mt-5"
+          onClick={onClaimClick}
+          >{t('additional.play').toUpperCase()}
+            <img className='w-8 h-8 ml-2' src="/stats/gems.png" alt="gem"/> x 1
+        </div>
+        {isLoading && (
+        <div className="w-full flex items-center justify-center mt-8">
+          <div className="moon-loader w-6 h-6"></div>
+        </div>
+        )}  
+        </div>
+        
+      )}  
 
-            {!gems && (
-                <div className="text-center mt-4">{t('additional.no_gems')}</div>
-        )}
+      {!gems && (
+        <div className="m-4 mt-56 text-center">
+          <div className="text-[#f71fde] text-sm">{t('additional.no_gems')}</div>
+          <div className="btn btn-secondary btn-xl btn-md mt-2" onClick={onMarketCLick}>
+            {t('additional.market').toUpperCase()}
+            <img className='w-8 h-8 ml-2' src="/stats/gems.png" alt="gem"/>
+          </div>
+        </div>
+      )}
     </>
     
   )
@@ -169,12 +202,17 @@ const BawdryResult: FC<IBawdryResultProps> = (props) => {
        {/* <div className="polygon right-10 -z-10"></div> */}
        <div className="h-32 flex items-center justify-center breathe-animation w-full mt-12"><span>{bawdry}</span></div>
        <div className="w-full shop-dialog-title">{t(`fortunes.bawdry.${bawdry}`).toUpperCase()}</div>
-       <div className="flex flex-row items-center justify-center gap-4 px-2 mt-8">
-         <div className="btn btn-secondary btn-xl btn-md" onClick={props.onSendClick}>
+       <div className="text-[#bd8cb7] w-full text-center text-sm mt-2">
+          {t('fortunes.bawdry.sudjestion')}
+        </div>
+       <div className="flex flex-row items-center justify-center gap-4 px-2 mt-4">
+         <div className="btn btn-secondary btn-xl btn-md flex flex-row gap-2" onClick={props.onSendClick}>
            {t('additional.send').toUpperCase()}
+           <img className="w-6 h-6" src="/additional/telegram-white.svg" alt="telegram" />
           </div>
-          <div className="btn btn-info btn-xl btn-md" onClick={props.onCancelClick}>
+          <div className="btn btn-info btn-xl btn-md flex flex-row gap-2" onClick={props.onCancelClick}>
            {t('additional.forget').toUpperCase()}
+           <img className="w-4 h-4" src="/additional/garbage.svg" alt="telegram" />
          </div>
        </div>
     </div>
