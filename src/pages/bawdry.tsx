@@ -152,7 +152,7 @@ const BawdryPlayer: FC<IBawdryPlayerProps> = (props) => {
         <img className="w-[50%] border-4 border-[#f71fde]" src="/fortunes/bawdry.webp" alt="bawdry"></img>
       </div>
       { gems > 0 && (
-        <div className="m-4 mt-52 flex flex-col items-center justify-center">
+        <div className="m-4 mt-60 flex flex-col items-center justify-center">
         <div className="text-[#bd8cb7] w-full text-center text-sm">
           {t('fortunes.bawdry.description')}
         </div>
@@ -171,7 +171,7 @@ const BawdryPlayer: FC<IBawdryPlayerProps> = (props) => {
       )}  
 
       {!gems && (
-        <div className="m-4 mt-56 text-center">
+        <div className="m-4 mt-60 text-center">
           <div className="text-[#f71fde] text-sm">{t('additional.no_gems')}</div>
           <div className="btn btn-secondary btn-xl btn-md mt-2" onClick={onMarketCLick}>
             {t('additional.market').toUpperCase()}
@@ -196,11 +196,11 @@ const BawdryResult: FC<IBawdryResultProps> = (props) => {
   return (
     <div className="w-full mt-12">
        <div className="absolute -z-10 top-36 left-0 w-full flex items-center justify-center">
-        <img className="w-[50%] border-4 border-[#f71fde]" src="/fortunes/bawdry.webp" alt="bawdry"></img>
-      </div>
+          <img className="w-[50%] border-4 border-[#f71fde]" src="/fortunes/bawdry.webp" alt="bawdry"></img>
+        </div>
        {/* <div className="polygon right-10 -z-10"></div> */}
        <div className="h-32 flex items-center justify-center breathe-animation w-full mt-12"><span>{bawdry}</span></div>
-       <div className="w-full shop-dialog-title">{t(`fortunes.bawdry.${bawdry}`).toUpperCase()}</div>
+       <div className="w-full shop-dialog-title mt-4">{t(`fortunes.bawdry.${bawdry}`).toUpperCase()}</div>
        <div className="text-[#bd8cb7] w-full text-center text-sm mt-2">
           {t('fortunes.bawdry.sudjestion')}
         </div>
