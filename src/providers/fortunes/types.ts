@@ -1,3 +1,4 @@
+import { IAction } from "@/types/action"
 
 [{"key":"bawdry","price":{"value":1,"type":"GEMS"}}]
 
@@ -12,9 +13,11 @@ export interface IFortune {
 } 
 
 export interface IFortuneState {
-    fortunes: IFortune[]      
+    fortunes: IFortune[]  
+    fortuneAction?: IAction | null 
 }
    
 export interface IFortuneActions {
     setFortunes: (fortunes: IFortune[]) => void
+    setFortuneAction: (action: IAction | null) => void
 }

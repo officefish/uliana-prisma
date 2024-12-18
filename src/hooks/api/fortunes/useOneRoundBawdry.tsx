@@ -1,6 +1,7 @@
 import { useCallback } from 'react'
 import { useSnackbar } from 'notistack' // Assuming you're using notistack for notifications
 import { useBalanceStore } from '@/providers/balance';
+import { useFortuneStore } from '@/providers/fortunes';
 //import { useFortuneStore } from '@/providers/fortunes';
 //import { useUserStore } from '@/providers/user'
 
@@ -10,7 +11,7 @@ export const useOneRoundBawdry = (apiFetch: any, onSuccess?: (mgs: string) => vo
   //const { setFortunes } = useFortuneStore()
 
   const { setCoins, setEnergy, setGems, setCrystals } = useBalanceStore();
-  
+  const { setFortuneAction } = useFortuneStore();
   
   const oneRoundBawdry = useCallback(
     async () => {
@@ -46,6 +47,12 @@ export const useOneRoundBawdry = (apiFetch: any, onSuccess?: (mgs: string) => vo
           }
           if (res?.bawdry) {
             onSuccess?.(res.bawdry); 
+          }
+
+          if (res.actionInstance) {
+            setFortuneAction(res.actionInstance)
+          } else {
+            setFortuneAction(null) // Reset fortune action if none was provided in response
           }
         }
 

@@ -8,6 +8,7 @@ import { Page } from "@/types";
 import { apiFetch } from "@/services/api";
 import { useOneRoundBawdry } from "@/hooks/api/fortunes/useOneRoundBawdry";
 import { useBalanceStore } from "@/providers/balance";
+import { useFortuneStore } from "@/providers/fortunes";
 
 const Bawdry: FC = () => {
 
@@ -25,7 +26,9 @@ const Bawdry: FC = () => {
     //setIsEmptyPage,
   } = useSiteStore()
 
-   const [bawdry, setBawdry] = useState<string | null>(null); 
+  const { fortuneAction } = useFortuneStore();
+
+  const [bawdry, setBawdry] = useState<string | null>(null); 
    //const [bawdry, setBawdry] = useState<string | null>('pig'); 
 
 //   const navigate = useNavigate()
@@ -59,17 +62,13 @@ const Bawdry: FC = () => {
   const [telegramUrl, setTelegramUrl] = useState("")
 
   useEffect(() => {
-    //if (referralsCode) {
-      //console.log('code:', referralsCode)
-      const msgBawdry = t(`fortunes.bawdry.${bawdry}`)
-      const message = `Обзывашка Маркуса сказала мне что ты: ${msgBawdry}`
-      const url = `https://t.me/uliana_prisma_bot/uliana_prisma?startapp=offenderId=${1}`
-      const tUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`;
-      setTelegramUrl(tUrl)
-    //}
-
-
-  }, [bawdry,
+    const uuid = fortuneAction?.uuid || 0
+    const msgBawdry = t(`fortunes.bawdry.${bawdry}`)
+    const message = `Обзывашка Маркуса сказала мне что ты: ${msgBawdry}`
+    const url = `https://t.me/uliana_prisma_bot/uliana_prisma?startapp=action=${uuid}`
+    const tUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`;
+    setTelegramUrl(tUrl)
+  }, [bawdry, fortuneAction
   ])
 
   const handleSendBawdryClick = () => {
