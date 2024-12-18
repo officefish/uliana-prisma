@@ -189,6 +189,10 @@
       "rooster": "Loud Rooster",
       "boar": "Indiscriminate Boar",
       "crocodile": "Cold-Blooded Crocodile"
+    },
+    "lantern": {
+      "title": "Lantern",
+      "short": "Large lantern with multi-colored glass and a candle inside"
     }
   }
 }

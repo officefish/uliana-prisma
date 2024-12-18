@@ -20,6 +20,7 @@ export enum Page {
     TASKS = "tasks",
 
     BAWDRY = "bawdry",
+    LANTERN = "lantern",
 }
 
 export interface ITelegramUser {

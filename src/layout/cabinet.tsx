@@ -21,6 +21,7 @@ import MagicBall from "@/pages/magicBall"
 import Secret from "@/pages/secret"
 import Room from "@/pages/room"
 import Bawdry from "@/pages/bawdry"
+import Lantern from "@/pages/lantern"
 //import Mobile from "@/pages/mobile.tsx";
 
 
@@ -130,6 +131,7 @@ return (
             <Route path='/friends' element={<Friends/>}/>
             <Route path='/tasks' element={<Tasks/>}/>
             <Route path='/fortunes/bawdry' element={<Bawdry/>}/>
+            <Route path='/fortunes/lantern' element={<Lantern/>}/>
             {/* <Route path='/airdrop' element={<Airdrop/>}/>
             <Route path='/baunty' element={<Baunty/>}/>
             <Route path='/chest-items' element={<ChestItems/>}/>
