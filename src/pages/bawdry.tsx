@@ -9,6 +9,7 @@ import { apiFetch } from "@/services/api";
 import { useOneRoundBawdry } from "@/hooks/api/fortunes/useOneRoundBawdry";
 import { useBalanceStore } from "@/providers/balance";
 import { useFortuneStore } from "@/providers/fortunes";
+import { useDeleteAction } from "@/hooks/api/actions/useDeleteAction";
 
 const Bawdry: FC = () => {
 
@@ -26,7 +27,7 @@ const Bawdry: FC = () => {
     //setIsEmptyPage,
   } = useSiteStore()
 
-  const { fortuneAction } = useFortuneStore();
+  const { fortuneAction, setFortuneAction } = useFortuneStore();
 
   const [bawdry, setBawdry] = useState<string | null>(null); 
    //const [bawdry, setBawdry] = useState<string | null>('pig'); 
@@ -54,8 +55,16 @@ const Bawdry: FC = () => {
     oneRoundBawdry();
   }
 
+  const onSuccessDelete = () => {
+    setFortuneAction(null)
+  }
+
+  const { deleteAction } = useDeleteAction(apiFetch, onSuccessDelete)
+
   const handleCancelBawdryClick = () => {
-    console.log('handleCancelBawdryClick')
+    if (fortuneAction?.id) {
+      deleteAction(fortuneAction?.id)
+    }
     setBawdry(null);
   }
 

@@ -12,7 +12,7 @@ import { apiFetch } from "@/services/api"
 import { useUnsafeRegister } from "@/hooks/api/useUnsafeRegister.tsx";
 import { useRegister } from "@/hooks/api/useRegister"
 
-import { useUpdateBalance } from "@/hooks/api/useUpdateBalance"
+import { useUpdateBalance } from "@/hooks/api/stats/useUpdateBalance"
 import { useUpdateFortunes } from "@/hooks/api/fortunes/useUpdateFortunes"
 
 import Friends from "@/pages/friends"

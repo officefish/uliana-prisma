@@ -17,6 +17,7 @@ import {DefaultTx} from "@/const/test.transaction.tsx";
 import { useTranslation } from "react-i18next";
 import LocaleSwitcher from "@/i18n/LocaleSwitcher";
 import usePageNotifications from "@/hooks/usePageNotifications";
+import { useUpdateActions } from "@/hooks/api/actions/useUpdateActions";
 
 
 const Content: FC <PropsWithChildren> = ({ children }) => {
@@ -48,8 +49,13 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
 
     const { buyGems } = useBuyGems(apiFetch, onBuyGemsSuccess) 
 
-    const handleBuyKeys = () => {
+    const handleBuyGems = () => {
       setGemShopOpen(true)
+    }
+
+    const { updateActions } = useUpdateActions(apiFetch)
+    const handleEnergy = () => {
+      updateActions()
     }
 
     const handleWithdraw = () => {
@@ -93,7 +99,8 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
     
     return  (<>
       <GameStats 
-      onBuyKeys={handleBuyKeys} 
+      onBuyGems={handleBuyGems}
+      onEnergy={handleEnergy} 
       onWithdraw={handleWithdraw} 
       onMenu={handleMenu}/>
       <main className='pt-8'>

@@ -15,6 +15,20 @@ const createBalanceStore = () =>
     setGems: (gems: number) => set(() => ({ gems })),
     crystals: 999,
     setCrystals: (crystals: number) => set(() => ({ crystals })),
+
+    energyLatest: 0,
+    energyMax: 0,
+    recoveryRate: 0,
+    lastEnergyUpdate: null,
+    lastGemReady: null,
+    lastCrystalReady: null,    
+
+    setEnergyLatest: (energyLatest: number) => set(() => ({ energyLatest })),
+    setEnergyMax: (energyMax: number) => set(() => ({ energyMax })),
+    setRecoveryRate: (recoveryRate: number) => set(() => ({ recoveryRate })),
+    setLastEnergyUpdate: (lastEnergyUpdate: string | null) => set(() => ({ lastEnergyUpdate })),
+    setLastGemReady: (lastGemReady: string | null) => set(() => ({ lastGemReady })),
+    setLastCrystalReady: (lastCrystalReady: string | null) => set(() => ({ lastCrystalReady })),
   }))
 
   type BalanceStore = ReturnType<typeof createBalanceStore>
@@ -31,6 +45,19 @@ const createBalanceStore = () =>
       setGems: useStore(api, (state) => state.setGems),
       crystals: useStore(api, (state) => state.crystals),
       setCrystals: useStore(api, (state) => state.setCrystals),
+
+      energyLatest: useStore(api, (state) => state.energyLatest),
+      setEnergyLatest: useStore(api, (state) => state.setEnergyLatest),
+      energyMax: useStore(api, (state) => state.energyMax),
+      setEnergyMax: useStore(api, (state) => state.setEnergyMax),
+      recoveryRate: useStore(api, (state) => state.recoveryRate),
+      setRecoveryRate: useStore(api, (state) => state.setRecoveryRate),
+      lastEnergyUpdate: useStore(api, (state) => state.lastEnergyUpdate),
+      setLastEnergyUpdate: useStore(api, (state) => state.setLastEnergyUpdate),
+      lastGemReady: useStore(api, (state) => state.lastGemReady),
+      setLastGemReady: useStore(api, (state) => state.setLastGemReady),
+      lastCrystalReady: useStore(api, (state) => state.lastCrystalReady),
+      setLastCrystalReady: useStore(api, (state) => state.setLastCrystalReady),
     }
   }
 
