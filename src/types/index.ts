@@ -21,6 +21,9 @@ export enum Page {
 
     BAWDRY = "bawdry",
     LANTERN = "lantern",
+
+    MARKUS_ROOM = "markus_room",
+    AGATA_ROOM = "agata_room",
 }
 
 export interface ITelegramUser {

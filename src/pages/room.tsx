@@ -1,9 +1,13 @@
+import { useSelectLocation } from "@/hooks/api/locations/useSelectLocation";
 import usePageNotifications from "@/hooks/usePageNotifications";
+import { useLocationStore } from "@/providers/location";
 //import { useLocationStore } from "@/providers/location";
 import { useSiteStore } from "@/providers/store";
+import { apiFetch } from "@/services/api";
 import { Page } from "@/types";
 import { FC, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 const ROOM_PAGE = "room";
 
@@ -25,7 +29,6 @@ const Room: FC = () => {
     } = usePageNotifications();
   
     useEffect(() => {
-      // Set the current page dynamically
       if (ROOM_PAGE) {
         setCurrentPage(ROOM_PAGE);
       }
@@ -37,9 +40,41 @@ const Room: FC = () => {
 
     const [ checked, setChecked ] = useState(false);    
     const [ selected, setSelected ] = useState<null | string>(null)
+    const [blocked, setBlocked ] = useState(false)
+
+    const onSuccessSelect = () => {
+      setBlocked(false);
+    }
+
+    const onErrorSelect = () => {
+      setBlocked(false);
+    }
+
+    const { selectLocation } = useSelectLocation(apiFetch, onSuccessSelect, onErrorSelect);
+
+    const handleSelection = () => {
+      if (blocked) return;
+      
+      if (selected) {
+        selectLocation(selected);
+        setBlocked(true)
+      }
+    }
+
+    const { location } = useLocationStore()
+
+    const navigate = useNavigate();
+
+    useEffect (() => {
+      //console.log('Location changed:', location);
+      if (location?.template?.type === "MARKUS_ROOM" ) {
+        navigate(`/locations/${location.template.type}`.toLowerCase());
+      } else if (location?.template?.type === "AGATA_ROOM" ) {
+        navigate(`/locations/${location.template.type}`.toLowerCase());
+      }
+    }, [location]);
 
     return (
-
 
       <div className=" w-screen h-screen 
        text-[#240919]
@@ -59,6 +94,8 @@ const Room: FC = () => {
       )}
 
       {!notificationsEnabled || !shouldShowNotification(ROOM_PAGE) && (
+
+
 
         <>{checked ? (
           <div className="grid grid-cols-2 w-full absolute top-16 h-screen overflow-y-hidden">
@@ -96,7 +133,7 @@ const Room: FC = () => {
               {selected == 'markus' ? (
                 <div className="flex flex-col items-center justify-center">
                    <img className="w-36 h-36" 
-                src="https://kubiki.io/public/locations/marcus-house.webp" 
+                src="https://kubiki.io/public/locations/markus-house.webp" 
                 alt="" />
                 <div className="shop-dialog-description mt-4">{t('room.markus.tag')}</div>
                 </div>
@@ -112,7 +149,9 @@ const Room: FC = () => {
              
               )}</div>
               <div className="flex flex-row justify-center gap-4 items-center mt-8">
-                <div className="btn btn-secondary btn-md">
+                <div className="btn btn-secondary btn-md"
+                onClick={() => handleSelection()}
+                >
                   {t('additional.choose')}
                   <img className="w-6 h-6" src="/additional/select-white.svg" alt="confirm" />
                 </div>
@@ -139,7 +178,7 @@ const Room: FC = () => {
             <div className="grid grid-cols-2 w-full cursor-pointer text-white">
               <div className="w-full text-center flex flex-col">
                <div className="
-                  marcus-house-bg 
+                  markus-house-bg 
                   scale-75 hover:scale-110 
                   hover:-brightness-[110%]
                 text-gray-400 hover:text-[#f5d7f2]

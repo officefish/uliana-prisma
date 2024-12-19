@@ -23,6 +23,8 @@ import Room from "@/pages/room"
 import Bawdry from "@/pages/bawdry"
 import Lantern from "@/pages/lantern"
 import { useUpdateLocation } from "@/hooks/api/locations/useUpdateLocation"
+import AgataRoom from "@/pages/locations/agata_room"
+import MarkusRoom from "@/pages/locations/markus_room"
 //import Mobile from "@/pages/mobile.tsx";
 
 
@@ -135,6 +137,8 @@ return (
             <Route path='/tasks' element={<Tasks/>}/>
             <Route path='/fortunes/bawdry' element={<Bawdry/>}/>
             <Route path='/fortunes/lantern' element={<Lantern/>}/>
+            <Route path='/locations/markus_room' element={<MarkusRoom/>}/>
+            <Route path='/locations/agata_room' element={<AgataRoom/>}/>
             {/* <Route path='/airdrop' element={<Airdrop/>}/>
             <Route path='/baunty' element={<Baunty/>}/>
             <Route path='/chest-items' element={<ChestItems/>}/>
