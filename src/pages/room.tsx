@@ -95,8 +95,6 @@ const Room: FC = () => {
 
       {!notificationsEnabled || !shouldShowNotification(ROOM_PAGE) && (
 
-
-
         <>{checked ? (
           <div className="grid grid-cols-2 w-full absolute top-16 h-screen overflow-y-hidden">
              <div className="
@@ -175,7 +173,7 @@ const Room: FC = () => {
                 </div>
               </div>
 
-            <div className="grid grid-cols-2 w-full cursor-pointer text-white">
+            <div className="grid grid-cols-2 w-full cursor-pointer text-white -mt-8">
               <div className="w-full text-center flex flex-col">
                <div className="
                   markus-house-bg 
