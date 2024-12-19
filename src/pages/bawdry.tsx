@@ -214,11 +214,11 @@ const BawdryResult: FC<IBawdryResultProps> = (props) => {
           {t('fortunes.bawdry.sudjestion')}
         </div>
        <div className="flex flex-row items-center justify-center gap-4 px-2 mt-4">
-         <div className="btn btn-secondary btn-xl btn-md flex flex-row gap-2" onClick={props.onSendClick}>
+         <div className="btn btn-secondary btn-md flex flex-row gap-2" onClick={props.onSendClick}>
            {t('additional.send').toUpperCase()}
            <img className="w-6 h-6" src="/additional/telegram-white.svg" alt="telegram" />
           </div>
-          <div className="btn btn-info btn-xl btn-md flex flex-row gap-2" onClick={props.onCancelClick}>
+          <div className="btn btn-info btn-md flex flex-row gap-2" onClick={props.onCancelClick}>
            {t('additional.forget').toUpperCase()}
            <img className="w-4 h-4" src="/additional/garbage.svg" alt="telegram" />
          </div>

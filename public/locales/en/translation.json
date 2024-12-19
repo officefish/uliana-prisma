@@ -33,7 +33,9 @@
     "forget": "Forget",
     "no_gems": "No more gems",
     "market": "Jewelry store",
-    "choose": "What do you choose?"
+    "choose_question": "What do you choose?",
+    "choose": "Choose",
+    "cancel": "Cancel"
   },
   "navigation": {
     "title": "Navigation",
