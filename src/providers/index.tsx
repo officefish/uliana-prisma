@@ -9,6 +9,7 @@ import { OKXProvider } from "./okx"
 import { BalanceProvider } from "./balance"
 import {Snackbar} from "@/providers/snackbar.tsx";
 import { FortunesProvider } from "./fortunes"
+import { LocationProvider } from "./location"
 
 const Providers: FC <PropsWithChildren> = ({ children }) => {
     return (
@@ -22,7 +23,9 @@ const Providers: FC <PropsWithChildren> = ({ children }) => {
             <OKXProvider>
             <BalanceProvider>
             <FortunesProvider>
+            <LocationProvider>
                 {children}
+            </LocationProvider>
             </FortunesProvider>
             </BalanceProvider>
             </OKXProvider>

@@ -70,7 +70,7 @@ const MagicBall: FC = () => {
 
     {!notificationsEnabled || !shouldShowNotification(MAGIC_BALL_PAGE) && (
         <div className="m-4 bg-glass absolute top-16 pb-8">
-          <div className="text-center text-pink-200 text-lg">{t('prisma.fortunes_list_title').toUpperCase()}</div>
+          <div className="text-center shop-dialog-description mt-2">{t('prisma.fortunes_list_title').toUpperCase()}</div>
            <div className="w-full px-4 grid grid-cols-2 gap-2 mt-2">
             {fortunes.length > 0 && fortunes.map( (fortune, index) => (
               <FortuneItem key={index} itemKey={fortune.key} price={fortune.price} onClick={handleSelectFortune}  />

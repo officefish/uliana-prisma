@@ -32,7 +32,8 @@
     "send": "Send",
     "forget": "Forget",
     "no_gems": "No more gems",
-    "market": "Jewelry store"   
+    "market": "Jewelry store",
+    "choose": "What do you choose?"
   },
   "navigation": {
     "title": "Navigation",
@@ -159,7 +160,17 @@
   },
   "room": {
     "title": "Native haven",
-    "description": "A place where you can hide from the cold nights and gain vitality, but it requires care and order."
+    "description": "A place where you can hide from the cold nights and gain vitality, but it requires care and order.",
+    "markus": { 
+      "tag": "The attic room in Marcus's workshop.",
+      "short":"While Marcus works very noisily during the day, he can rustle a little at night and there are fewer household chores with him.",
+      "legend": "<p>Marcus looks rude and grumpy, but that's probably because he works hard. When Marcus is working on something he enjoys, he's much calmer and friendlier and can even make a funny joke sometimes.</p><br/><p>Maybe you should get to know Marcus better? What if this carpenter isn't as simple as he seems at first glance? Maybe Marcus himself once practiced magic and is only such a down-to-earth materialist and unyielding businessman with strangers?!</p><br/><p>There are many different cabinets in his workshop, and there are probably hiding places where he hides his secret magical crafts.</p><br/><p>One thing is for sure, Marcus is a master of his craft. There is a lot to learn from him.</p>"
+    },
+    "agata": {
+      "tag":"The hallway by the stove in Agatha's house.",
+      "short":"It's cozy at Agatha's, but you have to watch the stove and be quiet in the evenings. It can get too hot near the stove.",
+      "legend":"<p>This cute and gray-haired herbalist is known throughout the area. Her scented candles and bathing balls are in great demand at the local market.</p><br/><p>Agatha once upon a time sent her adult children off to their own devices and now spends most of her time among flowers and herbs, collecting oil and pollen from them.</p><br/><p>It seems that Agatha knows many magic spells, but over the years she gradually begins to forget them as unnecessary.</p><br/><p>If Agatha remains alone, she will take many secrets to another world, but if, suddenly, she finds a student, she will teach him many magic spells It is worth considering that, like any elderly person, Agatha needs peace, but at least she always smells nice!</p>"
+    }
   },
   "prisma": {
     "title": "Fortunes",

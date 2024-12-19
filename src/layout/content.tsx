@@ -438,7 +438,7 @@ const Menu: FC<IMenuProps> = (props) => {
         <div className="modal-menu-title pt-10">{t("settings.title")}</div>
         <div className="modal-menu-list flex flex-col gap-4 w-full">
 
-          <div className="modal-menu-item fill-unset py-2">
+          <div className="modal-menu-item fill-unset py-2 text-[#f71fde] select-none">
             <div className="flex flex-row gap-2 items-center justify-between">
               {t("settings.language")}
               <LocaleSwitcher />

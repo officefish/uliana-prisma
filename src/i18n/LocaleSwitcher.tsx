@@ -16,7 +16,7 @@ export default function LocaleSwitcher() {
     <div className="flex items-center">
       <div className="locale-switcher">
 
-        <div className="lang-menu flex items-center">
+        <div className="lang-menu flex items-center text-[#f71fde]">
           <p className="lang-selected uppercase" onClick={() => setIsMenuOpen(!isMenuOpen)}>{i18n.resolvedLanguage}</p>
           <p className={`lang-menu-overlay ${isMenuOpen ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}></p>
 

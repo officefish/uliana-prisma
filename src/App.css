@@ -129,6 +129,33 @@ footer {
   /*background-repeat: round;*/
 }
 
+/* locations */
+.marcus-house-bg {
+  background-image: url('locations/marcus-house.webp'); /* Путь к картинке */
+  background-size:cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
+  background-repeat: no-repeat; /* Отключает повторение изображения */
+  background-position: center center; /* Выравнивает изображение по центру */
+}
+
+.agata-house-bg {
+  background-image: url('locations/agata-house.webp'); /* Путь к картинке */
+  background-size:cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
+  background-repeat: no-repeat; /* Отключает повторение изображения */
+  background-position: center center; /* Выравнивает изображение по центру */
+}
+
+
+.intro {
+  transition: all .5s;
+}
+
+.zoomer:hover .intro,
+.zoomer:focus .intro
+{
+  transform: scale(1.2);
+}
+
+
 /* fortunes */
 .bawdry-bg {
   background-image: url('/fortunes/bawdry-bg.webp'); /* Путь к картинке */

@@ -22,6 +22,7 @@ import Secret from "@/pages/secret"
 import Room from "@/pages/room"
 import Bawdry from "@/pages/bawdry"
 import Lantern from "@/pages/lantern"
+import { useUpdateLocation } from "@/hooks/api/locations/useUpdateLocation"
 //import Mobile from "@/pages/mobile.tsx";
 
 
@@ -35,6 +36,7 @@ const Cabinet:FC = () => {
 
   const { updateBalance } = useUpdateBalance(apiFetch)
   const { updateFortunes } = useUpdateFortunes(apiFetch)
+  const { updateLocation } = useUpdateLocation(apiFetch)
 
   const loadResources = async () => {
     // console.log("Loading resources")
@@ -42,6 +44,7 @@ const Cabinet:FC = () => {
     const apiRequests = [
       updateBalance(),
       updateFortunes(),
+      updateLocation(),
       //updateWalletStatus(),
       //updateReferrals(),
       //updateTasks(),
