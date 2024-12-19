@@ -111,11 +111,16 @@ const Room: FC = () => {
                 </div>
              
               )}</div>
-              <div className="flex flex-row justify-evenly items-center mt-8">
-                <div className="btn btn-secondary btn-md">{t('additional.choose')}</div>
-                <div className="btn btn-primary btn-md"
+              <div className="flex flex-row justify-center gap-4 items-center mt-8">
+                <div className="btn btn-secondary btn-md">
+                  {t('additional.choose')}
+                  <img className="w-6 h-6" src="/additional/select-white.svg" alt="confirm" />
+                </div>
+                <div className="btn btn-info btn-md"
                 onClick={() => setSelected(null)}
-                >{t('additional.cancel')}</div>
+                >{t('additional.cancel')}
+                <img className="w-6 h-6" src="/additional/cancel.svg" alt="telegram" />                
+                </div>
               </div>
             </div>
           ) : (
