@@ -131,14 +131,14 @@ footer {
 
 /* locations */
 .marcus-house-bg {
-  background-image: url('/locations/marcus-house.webp'); /* Путь к картинке */
+  background-image: url('https://kubiki.io/public/locations/marcus-house.webp'); /* Путь к картинке */
   background-size:cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
   background-repeat: no-repeat; /* Отключает повторение изображения */
   background-position: center center; /* Выравнивает изображение по центру */
 }
 
 .agata-house-bg {
-  background-image: url('/locations/agata-house.webp'); /* Путь к картинке */
+  background-image: url('https://kubiki.io/public/locations/agata-house.webp'); /* Путь к картинке */
   background-size:cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
   background-repeat: no-repeat; /* Отключает повторение изображения */
   background-position: center center; /* Выравнивает изображение по центру */
