@@ -35,7 +35,9 @@
     "market": "Jewelry store",
     "choose_question": "What do you choose?",
     "choose": "Choose",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "a_u_sure":"Are you sure?",
+    "make_choice": "Make the right choice! This choice will affect your destiny!"
   },
   "navigation": {
     "title": "Navigation",

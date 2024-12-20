@@ -6,6 +6,7 @@ import {useSiteStore} from "@/providers/store";
 import {useTranslation} from "react-i18next";
 import { Page } from "@/types";
 import { useBalanceStore } from "@/providers/balance";
+import DetailsSelect from "@/components/additional/details.select";
 // import { apiFetch } from "@/services/api";
 // import { useOneRoundBawdry } from "@/hooks/api/fortunes/useOneRoundBawdry";
 // import { useBalanceStore } from "@/providers/balance";
@@ -91,14 +92,14 @@ const Lantern: FC = () => {
 
   const [
     checked, 
-    //setChecked
+    setChecked
     ] = useState(false);
 
   const { gems } = useBalanceStore(); 
 
   return (
     <div className='w-full'>
-      <div className="absolute h-screen w-screen lantern-bg top-0 vignette"></div>
+      <div className="absolute w-full h-screen lantern-bg top-0 vignette overflow-hidden"></div>
       { checked ? (
         <div></div>
         // <div className="
@@ -112,9 +113,9 @@ const Lantern: FC = () => {
 
         // </div>
       ) : (
-         <div className="w-full h-screen bg-glass-xl p-4">
-         <div className='shop-dialog-title mt-12 uppercase px-2'>{t('fortunes.lantern.title')}</div>
-         <div className='shop-dialog-description mt-2 uppercase px-2'>{t('fortunes.lantern.short')}</div>
+         <div className="w-full h-[90%] bg-glass-xl p-4">
+          <div className='shop-dialog-title mt-12 uppercase px-2'>{t('fortunes.lantern.title')}</div>
+          <div className='shop-dialog-description mt-2 uppercase px-2'>{t('fortunes.lantern.short')}</div>
          <div className="flex flex-col justify-center items-center">
 
             {/* { bawdry ? (
@@ -141,17 +142,7 @@ const Lantern: FC = () => {
        </div>
       )}  
      
-        {/* <div className="absolute bottom-28 w-full flex flex-col items-center justify-center">
-            <div className="form-control w-36 text-center">
-                <label className="label cursor-pointer">
-                    <span className="shop-dialog-legend">{t('additional.legend')}</span>
-                    <input type="checkbox" className="toggle toggle-secondary toggle-sm opacity-60"
-                    defaultChecked={checked}
-                    onChange={() => setChecked(!checked)}
-                    />
-                </label>
-            </div>
-        </div> */}
+     <DetailsSelect checked={checked} setChecked={setChecked} />
     </div>
   )
 }

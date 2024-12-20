@@ -45,6 +45,10 @@ body {
   height: 100vh;
 }
 
+:root:has(.no-doc-scroll) {
+  overflow:hidden;
+}
+
 #root {
   max-height: 100vh;
   overflow-x: hidden;
@@ -170,10 +174,16 @@ footer {
   transform: scale(1.2);
 }
 
-
 /* fortunes */
 .bawdry-bg {
   background-image: url('/fortunes/bawdry-bg.webp'); /* Путь к картинке */
+  background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
+  background-repeat: no-repeat; /* Отключает повторение изображения */
+  background-position: center center; /* Выравнивает изображение по центру */
+}
+
+.lantern-bg {
+  background-image: url('/fortunes/lantern-bg.webp'); /* Путь к картинке */
   background-size: cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
   background-repeat: no-repeat; /* Отключает повторение изображения */
   background-position: center center; /* Выравнивает изображение по центру */
@@ -2741,3 +2751,13 @@ box-shadow:  5px 5px 5px #2a1b25,
     no-repeat center center;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

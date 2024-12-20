@@ -10,10 +10,12 @@ export const useUpdateLocation = (apiFetch: any, onSuccess?: any) => {
     async () => {
       try {
         const res = await apiFetch('/location/current', 'GET', null, enqueueSnackbar);
+
+        console.log(res)
     
         if (res?.location) {
          setLocation(res.location)
-          onSuccess?.(); // Call the onSuccess callback if provided
+          //onSuccess?.(); // Call the onSuccess callback if provided
         }
 
         onSuccess?.(); // Call the onSuccess callback if provided

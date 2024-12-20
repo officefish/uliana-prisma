@@ -42,8 +42,16 @@ const Room: FC = () => {
     const [ selected, setSelected ] = useState<null | string>(null)
     const [blocked, setBlocked ] = useState(false)
 
+    const { location } = useLocationStore()
+    const navigate = useNavigate();
+
     const onSuccessSelect = () => {
       setBlocked(false);
+      if (location?.template?.type === "MARKUS_ROOM" ) {
+        navigate(`/locations/${location.template.type}`.toLowerCase());
+      } else if (location?.template?.type === "AGATA_ROOM" ) {
+        navigate(`/locations/${location.template.type}`.toLowerCase());
+      }
     }
 
     const onErrorSelect = () => {
@@ -60,19 +68,6 @@ const Room: FC = () => {
         setBlocked(true)
       }
     }
-
-    const { location } = useLocationStore()
-
-    const navigate = useNavigate();
-
-    useEffect (() => {
-      //console.log('Location changed:', location);
-      if (location?.template?.type === "MARKUS_ROOM" ) {
-        navigate(`/locations/${location.template.type}`.toLowerCase());
-      } else if (location?.template?.type === "AGATA_ROOM" ) {
-        navigate(`/locations/${location.template.type}`.toLowerCase());
-      }
-    }, [location]);
 
     return (
 
@@ -124,8 +119,8 @@ const Room: FC = () => {
 
           {selected? (
             <div>
-              <div className="italic w-full text-center shop-dialog-title mt-20">Вы уверены?</div>
-              <div className="shop-dialog-description mt-4 px-8">Сделайте правильный выбор! Этот выбор повлияет на вашу судьбу!</div>
+              <div className="italic w-full text-center shop-dialog-title mt-20">{t(`additional.a_u_sure`)}</div>
+              <div className="shop-dialog-description mt-4 px-8">{t('additional.right_choice')}</div>
               
               <div className="mt-12">
               {selected == 'markus' ? (
