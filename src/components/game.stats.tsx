@@ -27,7 +27,6 @@ const GameStats:FC<GameStatsProps> = (props) => {
   const { updateBalance } = useUpdateBalance(apiFetch)
 
   useEffect(() => {
-    console.log('lastGeMReady:' + lastGemReady)
     if (lastGemReady) {
       const nextGemTime = new Date(lastGemReady).getTime() + GEM_GENERATION_INTERVAL;
       const timeUntilNextGem = nextGemTime - Date.now();
@@ -58,13 +57,6 @@ const GameStats:FC<GameStatsProps> = (props) => {
       }
     }, [remainingTime]);
   
-    // useEffect(() => {
-    //   const timer = setInterval(() => {
-    //     updateBalance();
-    //   }, 10_000);
-  
-    //   return () => clearInterval(timer);
-    // }, []);
   
   // Преобразуем оставшееся время в часы, минуты и секунды
     const formatTime = (time: number) => {

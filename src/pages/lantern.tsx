@@ -22,7 +22,7 @@ const Lantern: FC = () => {
     setPage(Page.LANTERN);
   }, [setPage]);  
 
-  //const { setGemShopOpen } = useSiteStore()
+  const { setGemShopOpen } = useSiteStore()
 
   const {
     //setIsFooterTransparent,
@@ -49,13 +49,13 @@ const Lantern: FC = () => {
 //   const { oneRoundBawdry } = useOneRoundBawdry(apiFetch, onSuccessBawdryRound, onErrorBawdryRound);
 
 
-//   const [blocked, setBlocked] = useState(false);
+  const [blocked, setBlocked] = useState(false);
 
-//   const handleClaimClick = () => {
-//     if (blocked) return;
-//     setBlocked(true);
-//     oneRoundBawdry();
-//   }
+  const handleClaimClick = () => {
+    if (blocked) return;
+    setBlocked(true);
+    //oneRoundBawdry();
+  }
 
 //   const onSuccessDelete = () => {
 //     setFortuneAction(null)
@@ -113,7 +113,7 @@ const Lantern: FC = () => {
 
         // </div>
       ) : (
-         <div className="w-full h-[90%] bg-glass-xl p-4">
+         <div className="w-full h-screen bg-glass-xl p-4">
           <div className='shop-dialog-title mt-12 uppercase px-2'>{t('fortunes.lantern.title')}</div>
           <div className='shop-dialog-description mt-2 uppercase px-2'>{t('fortunes.lantern.short')}</div>
          <div className="flex flex-col justify-center items-center">
@@ -132,9 +132,9 @@ const Lantern: FC = () => {
             )} */}
 
             <LanternPlayer 
-              //onClaimClick={handleClaimClick} 
-              //onMarketCLick={() => setGemShopOpen(true)}
-              //isLoading={blocked}
+              onClaimClick={handleClaimClick} 
+              onMarketCLick={() => setGemShopOpen(true)}
+              isLoading={blocked}
               gems={gems}  
             />
 
@@ -150,38 +150,34 @@ export default Lantern
 
 interface ILanternPlayerProps {
   gems: number,
-  //onClaimClick: () => void,
-  //onMarketCLick: () => void,
-  //isLoading: boolean
+  onClaimClick: () => void,
+  onMarketCLick: () => void,
+  isLoading: boolean
 }
 
 const LanternPlayer: FC<ILanternPlayerProps> = (props) => {
-  const {gems } = props;
-  console.log('LanternPlayer', gems)
-  //const {t} = useTranslation();
+  const {gems, onClaimClick, isLoading, onMarketCLick } = props;
+  //console.log('LanternPlayer', gems)
+  const {t} = useTranslation();
   return (
     <>
       <div className="absolute -z-10 top-36 left-0 w-full flex items-center justify-center">
-        <img className="w-[50%] border-4 border-[#f71fde]" src="/fortunes/lantern.webp" alt="lantern"></img>
-      </div>
-      
-      <div className="m-4 mt-60 text-center shop-dialog-description">
-        Вы заинтригованы?! 
-      </div>  
+        <img className="w-[50%] border-4 border-[#1ff7ba]" src="/fortunes/lantern.webp" alt="lantern"></img>
+      </div> 
 
-      {/* { gems > 0 && (
+      { gems > 0 && (
         <div className="m-4 mt-60 flex flex-col items-center justify-center">
-        <div className="text-[#bd8cb7] w-full text-center text-sm">
-          {t('fortunes.bawdry.description')}
+        <div className="text-[#8cbda8] w-full text-center text-sm">
+          {t('fortunes.lantern.description')}
         </div>
-        <div className="btn btn-secondary btn-xl btn-md mt-5"
+        <div className="btn btn-accent bg-[#1ff7ba] btn-xl btn-md mt-5"
           onClick={onClaimClick}
           >{t('additional.play').toUpperCase()}
             <img className='w-8 h-8 ml-2' src="/stats/gems.png" alt="gem"/> x 1
         </div>
         {isLoading && (
         <div className="w-full flex items-center justify-center mt-8">
-          <div className="moon-loader w-6 h-6"></div>
+          <div className="green-moon-loader w-6 h-6"></div>
         </div>
         )}  
         </div>
@@ -190,13 +186,13 @@ const LanternPlayer: FC<ILanternPlayerProps> = (props) => {
 
       {!gems && (
         <div className="m-4 mt-60 text-center">
-          <div className="text-[#f71fde] text-sm">{t('additional.no_gems')}</div>
+          <div className="text-[#1ff7ba] text-sm">{t('additional.no_gems')}</div>
           <div className="btn btn-secondary btn-xl btn-md mt-2" onClick={onMarketCLick}>
             {t('additional.market').toUpperCase()}
             <img className='w-8 h-8 ml-2' src="/stats/gems.png" alt="gem"/>
           </div>
         </div>
-      )} */}
+      )} 
     </>
     
   )

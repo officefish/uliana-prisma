@@ -17,8 +17,6 @@ export const useRegister = (apiFetch: any, onSuccess?: () => void, onError?: () 
 
     let res;
 
-    console.log("register")
-
         try {
             let initData = window?.Telegram?.WebApp?.initData;
 

@@ -37,8 +37,6 @@ export const ItemFragment: FC<IItemFragmentProps> = (props) => {
 export const FortuneItem: FC<IItemProps> = (props) => {
     const { itemKey, onClick } = props
 
-    console.log('FortuneItem props:', props)
-
     const {t} = useTranslation()
 
     return (

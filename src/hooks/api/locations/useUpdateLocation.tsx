@@ -3,7 +3,7 @@ import { useSnackbar } from 'notistack' // Assuming you're using notistack for n
 import { useLocationStore } from '@/providers/location';
 
 export const useUpdateLocation = (apiFetch: any, onSuccess?: any) => {
-  const { enqueueSnackbar } = useSnackbar();
+    const { enqueueSnackbar } = useSnackbar();
     const { setLocation } = useLocationStore(); // Assuming you're using a custom hook to manage user state
   
   const updateLocation = useCallback(
@@ -11,7 +11,7 @@ export const useUpdateLocation = (apiFetch: any, onSuccess?: any) => {
       try {
         const res = await apiFetch('/location/current', 'GET', null, enqueueSnackbar);
 
-        console.log(res)
+        //console.log(res)
     
         if (res?.location) {
          setLocation(res.location)

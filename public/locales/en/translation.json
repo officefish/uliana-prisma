@@ -207,7 +207,8 @@
     },
     "lantern": {
       "title": "Lantern",
-      "short": "Hand lantern with multi-colored glass and a candle inside."
+      "short": "Hand lantern with multi-colored glass and a candle inside.",
+      "description": "You can use it to light your house or to make a wish for someone you know."
     }
   }
 }

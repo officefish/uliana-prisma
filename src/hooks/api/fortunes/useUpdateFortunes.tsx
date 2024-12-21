@@ -13,22 +13,11 @@ export const useUpdateFortunes = (apiFetch: any, onSuccess?: any) => {
       try {
         const res = await apiFetch('/fortune/all', 'GET', null, enqueueSnackbar);
 
-        console.log(res);
-        //if (res?.fortunes) {
-
-        //}
+        //console.log(res);
 
         if (res) {
           setFortunes(res); // Update fortunes in the fortune store
-
-          // Update player balance and energy
-          //updatePlayerBalance(res.balance);
-          //updatePlayerEnergy(res.energy);
-
-          // ... other updates as needed
-
           // If successful, call the onSuccess callback if provided
-          onSuccess?.(); // Call the onSuccess callback if provided
         }
 
         onSuccess?.(); // Call the onSuccess callback if provided

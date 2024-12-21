@@ -28,7 +28,7 @@ import { useCallback } from 'react';
      
         try {
           const res = await apiFetch('/balance', 'GET', null, enqueueSnackbar);
-          console.log(res);        
+          //console.log(res);        
 
           if (res?.balance?.coins) {
             setCoins(res.balance.coins);

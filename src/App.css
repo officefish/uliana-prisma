@@ -103,12 +103,6 @@ input.input-error {
 }
 
 
-@supports (border-image-source: linear-gradient(45deg, #d5d7db, #6f7581)) {
-  input {
-    /*border-image-source: linear-gradient(45deg, #d5d7db, #6f7581) !important;*/
-  }
-}
-
 button {
   outline: none !important;
 }
@@ -357,15 +351,31 @@ box-shadow:  5px 5px 5px #2a1b25,
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
-  animation: animloader 1s linear infinite;
+  animation: redmoonloader 1s linear infinite;
 }
 
-@keyframes animloader {
+@keyframes redmoonloader {
   0% {
     box-shadow: -72px 0 #f71fde inset;
   }
   100% {
     box-shadow: 48px 0 #f71fde inset;
+  }
+}
+
+.green-moon-loader {
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: greenmoonloader 1s linear infinite;
+}
+
+@keyframes greenmoonloader {
+  0% {
+    box-shadow: -72px 0 #1ff7ba inset;
+  }
+  100% {
+    box-shadow: 48px 0 #1ff7ba inset;
   }
 }
     

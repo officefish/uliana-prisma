@@ -189,11 +189,11 @@ const Room: FC = () => {
                 scale-75 hover:scale-110 
                 hover:-brightness-[110%]
               text-gray-400 hover:text-[#f5d7f2]
-              border-gray-400 border-4 hover:border-[#f71fde]
+              border-gray-400 border-4 hover:border-[#1ff7ba]
                 transition-transform duration-500">
                   <div className="mt-72 text-md text-center p-2 italic select-none">{t('room.agata.tag')}</div>
               </div>
-              <div className="btn btn-secondary btn-xs -mt-8 mx-8"
+              <div className="btn btn-accent bg-[#1ff7ba] btn-xs -mt-8 mx-8"
               onClick={() => setSelected("agata")}
               >{t('additional.choose')}</div>
             </div>

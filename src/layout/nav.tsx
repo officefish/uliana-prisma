@@ -21,7 +21,6 @@ const Navigation: FC = () => {
     text-purple-950
     z-40`}>
       <NavButton notification={getIsNotification(Page.SECRET)} selected={page === Page.SECRET} to={'/secret'} title={t('navigation.secret')} index={0}/>
-      {/* <NavButton notification={getIsNotification(Page.ROOM)} selected={page === Page.ROOM} to={'/room'} title={t('navigation.room')} index={1}/> */}
       <RoomNavButton page={page} getIsNotification={getIsNotification} />
       <NavButton notification={getIsNotification(Page.MAGIC_BALL)} selected={page === Page.MAGIC_BALL} to={'/'} title={t('navigation.magic_ball')} index={2}/>
       <NavButton notification={getIsNotification(Page.TASKS)} selected={page === Page.TASKS} to={'/tasks'} title={t('navigation.tasks')} index={3}/>
@@ -69,6 +68,11 @@ const RoomNavButton: FC<IRoomNavButton> = (props) => {
   const { location } = useLocationStore();
 
   useEffect(() => {
+
+    // dev mode onlly
+    //setTo('/locations/agata_room')
+    //return
+
     if (location?.template?.type === "MARKUS_ROOM" ) {
       setTo('/locations/markus_room')
       return
