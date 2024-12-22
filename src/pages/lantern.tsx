@@ -1,9 +1,6 @@
-//import {apiFetch} from "@/services/api";
-//import { apiFetch } from "@/services/api";
 import "@/assets/css/solar.css"
 
 import {FC, useEffect, useState} from "react";
-//import {useNavigate} from "react-router-dom";
 import {useSiteStore} from "@/providers/store";
 import {useTranslation} from "react-i18next";
 import { Page } from "@/types";
@@ -13,13 +10,7 @@ import { useOneRoundMidnightWish } from "@/hooks/api/fortunes/useOneRoundWish";
 import { apiFetch } from "@/services/api";
 import { useFortuneStore } from "@/providers/fortunes";
 import { useDeleteAction } from "@/hooks/api/actions/useDeleteAction";
-// import { apiFetch } from "@/services/api";
-// import { useOneRoundBawdry } from "@/hooks/api/fortunes/useOneRoundBawdry";
-// import { useBalanceStore } from "@/providers/balance";
-// import { useFortuneStore } from "@/providers/fortunes";
-// import { useDeleteAction } from "@/hooks/api/actions/useDeleteAction";
-
-
+import { useNavigate } from "react-router-dom";
 
 const Lantern: FC = () => {
 
@@ -42,8 +33,6 @@ const Lantern: FC = () => {
   const [wish, setWish] = useState<string | null>(null); 
 
   const [tags, setTags] = useState<any>([])
-
-//   const navigate = useNavigate()
 
   const onSuccessRound = (newWish: string) => {
     setBlocked(false);
@@ -100,6 +89,11 @@ const Lantern: FC = () => {
     setWish(null); 
   }
 
+  const navigate = useNavigate()
+  const handleClose = () => {
+    navigate('/')
+  }
+
   const {t} = useTranslation();
 
   const [
@@ -114,7 +108,9 @@ const Lantern: FC = () => {
       <div className="absolute w-full h-screen lantern-bg top-0 vignette overflow-hidden"></div>
 
       {/* Close button */}
-      <div className="absolute top-20 right-10 z-10 btn-no-body opacity-40 hover:opacity-90">
+      <div className="absolute top-20 right-10 z-10 btn-no-body opacity-40 hover:opacity-90"
+      onClick={handleClose}
+      >
         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
           <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM8.29289 8.29289C8.68342 7.90237 9.31658 7.90237 9.70711 8.29289L12 10.5858L14.2929 8.29289C14.6834 7.90237 15.3166 7.90237 15.7071 8.29289C16.0976 8.68342 16.0976 9.31658 15.7071 9.70711L13.4142 12L15.7071 14.2929C16.0976 14.6834 16.0976 15.3166 15.7071 15.7071C15.3166 16.0976 14.6834 16.0976 14.2929 15.7071L12 13.4142L9.70711 15.7071C9.31658 16.0976 8.68342 16.0976 8.29289 15.7071C7.90237 15.3166 7.90237 14.6834 8.29289 14.2929L10.5858 12L8.29289 9.70711C7.90237 9.31658 7.90237 8.68342 8.29289 8.29289Z" 
           fill="#1ff7ba"/>
@@ -122,17 +118,16 @@ const Lantern: FC = () => {
       </div>
 
       { checked ? (
-        <div></div>
-        // <div className="
-        // w-full absolute top-32 bg-[#ecbde7] bg-opacity-80 
-        // text-black 
-        // font-semibold italic text-md px-4
-        // ">
-        //   <hr id="hr-fancy"></hr>
-        //   <div dangerouslySetInnerHTML={{__html: t('fortunes.bawdry.legend')}} ></div>
-        //   <hr id="hr-fancy"></hr>
+        <div className="
+        w-full absolute top-32 bg-[#a1e9d4] bg-opacity-80 
+        text-black 
+        font-semibold italic text-md px-4
+        ">
+          <hr id="hr-fancy"></hr>
+          <div dangerouslySetInnerHTML={{__html: t('fortunes.lantern.legend')}} ></div>
+          <hr id="hr-fancy"></hr>
 
-        // </div>
+        </div>
       ) : (
          <div className="w-full h-screen bg-glass-xl p-4">
           <div className='shop-dialog-title mt-12 uppercase px-2 select-none'>{t('fortunes.lantern.title')}</div>
@@ -237,7 +232,7 @@ const WishResult: FC<IWishResultProps> = (props) => {
         <div className="h-32 flex items-center justify-center green-breathe-animation w-full mt-12 select-none">
           <span>{wish}</span>
         </div>
-        <div className="flex with-full flex-row items-center justify-center gap-1 text-white select-none">
+        <div className="flex with-full flex-row items-center justify-center gap-1 text-white select-none relative -top-8">
           {tags?.map((tag, index) => (
             <div key={index}>
               {/* change bag color */}
@@ -251,7 +246,7 @@ const WishResult: FC<IWishResultProps> = (props) => {
         </div>
        {/* <div className="h-32 flex items-center justify-center midnight w-full mt-12">{wish}</div> */}
        <div className="
-       w-full shop-dialog-description mt-4 italic">{t(`fortunes.lantern.wishes.${wish}`).toUpperCase()}</div>
+       w-full shop-dialog-description italic">{t(`fortunes.lantern.wishes.${wish}`).toUpperCase()}</div>
        <div className="text-[#8cbda6] w-full text-center text-sm mt-2">
           {t('fortunes.lantern.sudjestion')}
         </div>
