@@ -108,7 +108,7 @@ ul.solarsystem li.sun {
     border: none;
     /* -webkit-box-shadow: 0 0 50px #c90; */
     /* -moz-box-shadow: 0 0 50px #1ff7ba; */
-    /* box-shadow: 0 0 50px #1ff7ba; */
+    box-shadow: 0 0 50px #1ff7ba;
     z-index: 100;
     -webkit-transition: all 0.2s ease-in;
     -moz-transition: all 0.2s ease-in;

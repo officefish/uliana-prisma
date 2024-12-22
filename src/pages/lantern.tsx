@@ -19,6 +19,8 @@ import { useDeleteAction } from "@/hooks/api/actions/useDeleteAction";
 // import { useFortuneStore } from "@/providers/fortunes";
 // import { useDeleteAction } from "@/hooks/api/actions/useDeleteAction";
 
+
+
 const Lantern: FC = () => {
 
   // Роутинг страниц
@@ -39,12 +41,18 @@ const Lantern: FC = () => {
 
   const [wish, setWish] = useState<string | null>(null); 
 
+  const [tags, setTags] = useState<any>([])
+
 //   const navigate = useNavigate()
 
   const onSuccessRound = (newWish: string) => {
     setBlocked(false);
     console.log('Wish round claimed:', newWish);
     setWish(newWish);
+
+    let newTags = getTagsByPlanet(newWish)
+    setTags(newTags)
+    //console.log(tags);
   }
 
   const onErrorRound = () => { 
@@ -135,6 +143,7 @@ const Lantern: FC = () => {
               <WishResult wish={wish} 
               onCancelClick={handleCancel} 
               onSendClick={handleSend}
+              tags={tags}
               />
             ) : (
               <WishPlayer 
@@ -209,12 +218,13 @@ const WishPlayer: FC<IWishPlayerProps> = (props) => {
 
 interface IWishResultProps {
   wish: string
+  tags: any[]
   onCancelClick: () => void,
   onSendClick: () => void,
 }
 
 const WishResult: FC<IWishResultProps> = (props) => {
-  const {wish} = props;
+  const {wish, tags} = props;
   const {t} = useTranslation();
   return (
     <div className="w-full mt-12">
@@ -224,8 +234,20 @@ const WishResult: FC<IWishResultProps> = (props) => {
           <img className="w-[50%] border-4 border-[#1ff7ba]" src="/fortunes/lantern.webp" alt="bawdry"></img>
         </div>
         <SolarSystem />
-        <div className="h-32 flex items-center justify-center green-breathe-animation w-full mt-12">
+        <div className="h-32 flex items-center justify-center green-breathe-animation w-full mt-12 select-none">
           <span>{wish}</span>
+        </div>
+        <div className="flex with-full flex-row items-center justify-center gap-1 text-white select-none">
+          {tags?.map((tag, index) => (
+            <div key={index}>
+              {/* change bag color */}
+              <div className={`
+                badge 
+                badge-xs 
+                bg-accent
+                ]`} >{tag.title}</div>
+            </div>
+          ))}
         </div>
        {/* <div className="h-32 flex items-center justify-center midnight w-full mt-12">{wish}</div> */}
        <div className="
@@ -254,7 +276,7 @@ return (
   <section className="universe">
 
     <ul className="solarsystem">
-      {/* <li className="sun"><span></span></li> */}
+      <li className="sun"><span></span></li>
       <li className="mercury"><span>Mercury</span></li>
       <li className="venus"><span>Venus</span></li>
       <li className="earth"><span>Earth<span className="moon"> &amp; Moon</span></span></li>
@@ -268,4 +290,139 @@ return (
     </ul>
 
   </section>)
+}
+
+const getTagsByPlanet = (planet: string) => {
+
+  switch (planet) {
+    case "mercury": { 
+      return [{
+        title: "communication",
+        color: "#1ff7ba",
+        },
+        {
+      title: "intelligence",
+      color: "#1ff7ba",
+      },
+      {
+      title: "adaptability",
+      color: "#1ff7ba",
+      },
+    ] }
+    case "venus": { 
+    return [{
+      title: "love",
+      color: "#1ff7ba",
+      },
+      {
+      title: "beauty",
+      color: "#1ff7ba",
+      },
+      {
+      title: "harmony",
+      color: "#1ff7ba",
+      },
+    ]}
+    case "earth": {
+    return [{
+      title: "stability",
+      color: "#1ff7ba",
+      },
+      {
+      title: "nurturing",
+      color: "#1ff7ba",
+      },
+      {
+      title: "growth",
+      color: "#1ff7ba",
+      },
+    ]}
+  case 'mars': {
+    return [{
+    title: "action",
+    color: "#1ff7ba",
+    },
+    {
+    title: "energy",
+    color: "#1ff7ba",
+    },
+    {
+    title: "courage",
+    color: "#1ff7ba",
+    },
+  ]}
+  case 'jupiter': {
+    return [{
+    title: "luck",
+    color: "#1ff7ba",
+    },
+    {
+    title: "expansion",
+    color: "#1ff7ba",
+    },
+    {
+    title: "wisdom",
+    color: "#1ff7ba",
+    },
+  ]}
+  case "saturn": {
+    return [{
+    title: "discipline",
+    color: "#1ff7ba",
+    },
+    {
+    title: "structure",
+    color: "#1ff7ba",
+    },
+    {
+    title: "pations",
+    color: "#1ff7ba",
+    },
+  ]}
+  case "uranus": {
+  return  [{
+    title: "innovation",
+    color: "#1ff7ba",
+    },
+    {
+    title: "rebellion",
+    color: "#1ff7ba",
+    },
+    {
+    title: "originality",
+    color: "#1ff7ba",
+    },
+  ]}
+  case "neptune": {
+    return [{
+    title: "dreams",
+    color: "#1ff7ba",
+    },
+    {
+    title: "intuition",
+    color: "#1ff7ba",
+    },
+    {
+    title: "spritality",
+    color: "#1ff7ba",
+    },
+  ]}   
+  case "pluto": {
+  return [{
+    title: "transformation",
+    color: "#1ff7ba",
+    },
+    {
+    title: "power",
+    color: "#1ff7ba",
+    },
+    {
+    title: "rebirth",
+    color: "#1ff7ba",
+    },
+  ]}
+  default: {
+    return [];
+    }
+  }
 }
