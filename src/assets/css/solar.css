@@ -7,17 +7,6 @@
     --solar-scale: 0.5;
 }
 
-@use postcss-preset-env {
-    stage: 0;
-  }
-  
-  :root {
-    --midnight-color-background: #000119;
-    --midnight-stroke-width: calc(1em / 16);
-    --midnight-font-size: 30vmin;
-    --midnight-font-weight: 700;
-    --midnight-letter-spacing: calc(1em / 8);
-  }
 /*   
   * {
     box-sizing: border-box;
@@ -33,17 +22,7 @@
     padding: 5vmin;
   } */
   
-  .midnight {
-    background-clip: text;
-    background-image: linear-gradient(to right, #09f1b8, #00a2ff, #ff00d2, #fed90f);
-    color: var(--midnight-color-background);
-    font-size: var(--midnight-font-size);
-    font-weight: var(--midnight-font-weight);
-    letter-spacing: var(--midnight-letter-spacing);
-    padding: calc(--stroke-width / 2);
-    -webkit-text-stroke-color: transparent;
-    -webkit-text-stroke-width: var(--midnight-stroke-width);
-  }
+
 
 .universe {
     font: 14px/1.5 "PT Sans Narrow", sans-serif;
@@ -86,7 +65,7 @@ ul.solarsystem li {
     text-indent: -9999px;
     display: block;
     position: absolute;
-    border: 1px dotted #1ff7ba;
+    border: 0.5px dotted #256f5b;
     ;
 }
 
