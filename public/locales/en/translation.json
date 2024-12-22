@@ -208,7 +208,18 @@
     "lantern": {
       "title": "Lantern",
       "short": "Hand lantern with multi-colored glass and a candle inside.",
-      "description": "You can use it to light your house or to make a wish for someone you know."
+      "description": "You can use it to light your house or to make a wish for someone you know.",
+      "wishes": {
+        "mercury": "May your thoughts calm down like a gentle breeze in the silence of the night!",
+        "venus": "May the night fill your heart with warmth and harmony!",
+        "earth": "May the softness of the earth give you the most peaceful dreams!",
+        "mars": "May the energy of the day subside, and sleep bring you strength!",
+        "jupiter": "May good luck and good dreams visit you tonight!",
+        "saturn": "May the stars weave wisdom and peace into your dreams!",
+        "uranus": "May your sleep be fresh, like the morning breeze of change!",
+        "neptune": "May your dreams bring you depth and magic!",
+        "pluto": "May the night take away all that is unnecessary, leaving room for the new!"
+      }
     }
   }
 }

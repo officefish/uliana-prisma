@@ -2726,6 +2726,25 @@ box-shadow:  5px 5px 5px #2a1b25,
   animation: letter-breathe 3s ease-in-out infinite;
 }
 
+
+.green-breathe-animation span {
+  font-family: 'TheFont';
+
+  /* The 'clamp()' function sets a flexible font size that will never go below a minimum value and never above a maximum value. The middle value is preferred, but it will shrink or grow based on the viewport dimensions. */
+  /* Adjusts font size based on content width and viewport height */
+  font-size: clamp(8vw, 16vw, 40vh);
+
+  /* Change this to set the text color */
+  color: #1ff7ba; /* #f9a8d4 */;
+
+  /* Center text horizontally */
+  text-align: center; 
+
+  /* The 'animation' property applies the 'letter-breathe' keyframes to the element, making it animate over 3 seconds.'ease-in-out' makes the movement start and end slowly, and 'infinite' makes it repeat forever. */
+  /* Controls the animation (3s is the duration) */
+  animation: letter-breathe 3s ease-in-out infinite;
+}
+
 /* Keyframes define the sequence of styles that an element will go through during an animation. */
 @keyframes letter-breathe {
  
@@ -2771,3 +2790,4 @@ box-shadow:  5px 5px 5px #2a1b25,
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+

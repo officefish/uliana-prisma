@@ -25,16 +25,20 @@ import Lantern from "@/pages/lantern"
 import { useUpdateLocation } from "@/hooks/api/locations/useUpdateLocation"
 import AgataRoom from "@/pages/locations/agata_room"
 import MarkusRoom from "@/pages/locations/markus_room"
+import { useSiteStore } from "@/providers/store"
 //import Mobile from "@/pages/mobile.tsx";
-
 
 const Cabinet:FC = () => {
   
-  // const { setMenuTutorialOpen } = useSiteStore()
+   const { setIsEmptyPage } = useSiteStore()
 
   const [isLoading, 
     setIsLoading
   ] = useState(true);
+
+  useEffect(() => {
+    setIsEmptyPage(isLoading)
+  }, [isLoading])
 
   const { updateBalance } = useUpdateBalance(apiFetch)
   const { updateFortunes } = useUpdateFortunes(apiFetch)
