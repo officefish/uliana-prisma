@@ -196,7 +196,7 @@ const WishPlayer: FC<IWishPlayerProps> = (props) => {
       {!gems && (
         <div className="m-4 mt-60 text-center">
           <div className="text-[#1ff7ba] text-sm">{t('additional.no_gems')}</div>
-          <div className="btn btn-secondary btn-xl btn-md mt-2" onClick={onMarketCLick}>
+          <div className="btn btn-accent bg-[#1ff7ba] btn-xl btn-md mt-2" onClick={onMarketCLick}>
             {t('additional.market').toUpperCase()}
             <img className='w-8 h-8 ml-2' src="/stats/gems.png" alt="gem"/>
           </div>
@@ -230,11 +230,11 @@ const WishResult: FC<IWishResultProps> = (props) => {
        {/* <div className="h-32 flex items-center justify-center midnight w-full mt-12">{wish}</div> */}
        <div className="
        w-full shop-dialog-description mt-4 italic">{t(`fortunes.lantern.wishes.${wish}`).toUpperCase()}</div>
-       <div className="text-[#bd8cb7] w-full text-center text-sm mt-2">
-          {t('fortunes.bawdry.sudjestion')}
+       <div className="text-[#8cbda6] w-full text-center text-sm mt-2">
+          {t('fortunes.lantern.sudjestion')}
         </div>
        <div className="flex flex-row items-center justify-center gap-4 px-2 mt-4">
-         <div className="btn btn-secondary btn-xl btn-md flex flex-row gap-2" onClick={props.onSendClick}>
+         <div className="btn btn-accent bg-[#1ff7ba] btn-xl btn-md flex flex-row gap-2" onClick={props.onSendClick}>
            {t('additional.send').toUpperCase()}
            <img className="w-6 h-6" src="/additional/telegram-white.svg" alt="telegram" />
           </div>
