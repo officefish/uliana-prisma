@@ -103,7 +103,7 @@ const Tasks: FC = () => {
       )}
 
       {!notificationsEnabled || !shouldShowNotification(TASK_PAGE) && (
-        <div className="italic w-full text-center text-pink-100 px-4">
+        <div className="italic w-full text-center text-pink-900 px-4">
           Как всякий человек, я хочу быть счастлив, но, как всякий человек, быть им могу только на свой лад (Джейн Остин).
       </div>)}
    </div>

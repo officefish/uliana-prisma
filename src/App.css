@@ -2791,3 +2791,6 @@ box-shadow:  5px 5px 5px #2a1b25,
   scrollbar-width: none;  /* Firefox */
 }
 
+.tabs-bg {
+  background: linear-gradient(145deg, #9b6386, #63214b);
+}

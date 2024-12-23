@@ -6,6 +6,7 @@ import { useUpdateBalance } from "@/hooks/api/stats/useUpdateBalance";
 import { apiFetch } from "@/services/api";
 
 interface GameStatsProps {
+  onCoins: () => void
   onEnergy: () => void
   onBuyGems: () => void
   onWithdraw: () => void
@@ -16,7 +17,7 @@ const GEM_GENERATION_INTERVAL = 4 * 60 * 60 * 1000; // 4 часа в милли�
 
 const GameStats:FC<GameStatsProps> = (props) => {
 
-  const { onBuyGems, onEnergy, onMenu } = props
+  const { onBuyGems, onEnergy, onMenu, onCoins } = props
 
   const { isEmptyPage } = useSiteStore()
 
@@ -74,7 +75,7 @@ const GameStats:FC<GameStatsProps> = (props) => {
     <div className={`header fixed w-screen px-4 pt-3 pb-2 flex flex-row z-10 ${isEmptyPage ? 'hidden' : ''}`}>
       <div className="grid grid-cols-5 text-white text-xs gap-4 w-full pl-2">
         <div className="flex flex-col gap-1 w-full items-center justify-center text-gray-200 select-none	">
-          <div className="flex flex-row gap-1 items-center justify-center btn-no-body">
+          <div className="flex flex-row gap-1 items-center justify-center btn-no-body" onClick={onCoins}>
             <img className="w-8 h-8" src="/stats/coins.png" alt="silver" />
             <span>X</span>
             <div className="text-md font-bold">{coins}</div>

@@ -17,7 +17,7 @@ import {DefaultTx} from "@/const/test.transaction.tsx";
 import { useTranslation } from "react-i18next";
 import LocaleSwitcher from "@/i18n/LocaleSwitcher";
 import usePageNotifications from "@/hooks/usePageNotifications";
-import { useUpdateActions } from "@/hooks/api/actions/useUpdateActions";
+//import { useUpdateActions } from "@/hooks/api/actions/useUpdateActions";
 
 
 const Content: FC <PropsWithChildren> = ({ children }) => {
@@ -53,9 +53,8 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
       setGemShopOpen(true)
     }
 
-    const { updateActions } = useUpdateActions(apiFetch)
     const handleEnergy = () => {
-      updateActions()
+      //updateActions()
     }
 
     const handleWithdraw = () => {
@@ -96,9 +95,28 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
     return () => clearInterval(timer);
   }, []);
 
+  const handleCoins = () => {
+    // const payload = {
+    //   chat_id: chatId,
+    //   text: `✨ [Открыть приложение](${url}) или [Поделиться ссылкой](${tUrl})!`,
+    //   parse_mode: 'MarkdownV2'
+    // };
+
+    //const msgWish = t(`fortunes.lantern.wishes.${wish}`)
+    //const message = `Фонарь Агаты пожелал тебе: ${msgWish}`
+    //const url = `https://t.me/uliana_prisma_bot/uliana_prisma?startapp=action=${uuid}`
+    //const tUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`;
+    const url = `https://t.me/share/url?url=&text=%E2%9C%A8%20%D0%9E%D1%82%D0%BA%D1%80%D0%BE%D0%B9%D1%82%D0%B5%20%D0%BD%D0%B0%D1%88%D0%B5%20%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%2C%20%D1%87%D1%82%D0%BE%D0%B1%D1%8B%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%B5%3A%20%5B%D0%9F%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%5D(https%3A%2F%2Ft.me%2Fuliana_prisma_bot%2Fuliana_prisma%3Fstartapp%3Daction%3D12345)%20%F0%9F%9A%80%0A%0A%D0%98%D0%BB%D0%B8%20%D0%BF%D0%BE%D0%B4%D0%B5%D0%BB%D0%B8%D1%82%D0%B5%D1%81%D1%8C%20%D1%8D%D1%82%D0%BE%D0%B9%20%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%BE%D0%B9%20%D1%81%20%D0%B4%D1%80%D1%83%D0%B7%D1%8C%D1%8F%D0%BC%D0%B8!`
+
+    window.open(url, '_blank');
+
+    //axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, payload);
+  }
+
     
     return  (<>
       <GameStats 
+      onCoins={handleCoins}
       onBuyGems={handleBuyGems}
       onEnergy={handleEnergy} 
       onWithdraw={handleWithdraw} 

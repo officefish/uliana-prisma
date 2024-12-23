@@ -1,5 +1,6 @@
 //import { useCallback } from 'react';
 //import { useBalanceStore } from '@/providers/balance';
+import { useActionsStore } from '@/providers/actions';
 import { useSnackbar } from 'notistack'; // Assuming you're using notistack for notifications
 
 import { useCallback } from 'react';
@@ -8,6 +9,8 @@ import { useCallback } from 'react';
 
   export const useUpdateActions = (apiFetch: any, onSuccess?: () => void) => {
     const { enqueueSnackbar } = useSnackbar();
+
+    const { setActions, setReceived } = useActionsStore()
     
     const updateActions = useCallback(
       async () => {
@@ -15,6 +18,17 @@ import { useCallback } from 'react';
         try {
           const res = await apiFetch('/player/actions/by/tgId', 'GET', null, enqueueSnackbar);
           console.log(res);        
+
+          if (res.actions) {
+            setActions(res.actions)
+          }
+
+          // TODO: server sh
+
+          if (res.received) {
+            console.log('save recieved')
+            setReceived(res.received)
+          }
   
           onSuccess && onSuccess()
           //if (res.energyLatest && res.energyMax) {

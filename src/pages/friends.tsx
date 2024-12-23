@@ -1,11 +1,16 @@
 //import usePageNotifications from "@/hooks/usePageNotifications";
+import { useUpdateActions } from "@/hooks/api/actions/useUpdateActions";
 import usePageNotifications from "@/hooks/usePageNotifications";
+import { useActionsStore } from "@/providers/actions";
 import { useSiteStore } from "@/providers/store";
+import { apiFetch } from "@/services/api";
 
 import { Page } from "@/types";
+import { IAction } from "@/types/action";
 import {
   FC,
   useEffect,
+  useState,
  
 } from "react";
 import { useTranslation } from "react-i18next";
@@ -130,16 +135,42 @@ const Friends: FC = () => {
     closeNotification(FRIEND_PAGE)
   }
 
+  const { updateActions } = useUpdateActions(apiFetch)
+  useEffect(() => {
+    updateActions()
+  }, [])
+
   const { t } = useTranslation();
 
+  const { 
+    actions, 
+    received } = useActionsStore()
+
+  const [fullActions, setFullActions] = useState<IAction[]>([])  
+
+  useEffect(() => {
+    const filteredActions = actions.filter(action => action.targetId !== undefined);
+    setFullActions(filteredActions);  
+  }, [actions])
+  
+  // useEffect(() => {
+  //   console.log("actions:" + actions)
+  //   console.log("recieved:" + received)
+
+  // }, [actions, received ])
+
+  const [isRecieved, setIsReceived] = useState<boolean>(false)
+  
   return (
-    <div className=" w-screen h-screen 
-           text-[#240919]
-    flex  
-    items-center justify-center
-    friends-bg">
+      <div
+      className="absolute top-0 w-screen h-screen 
+      text-[#240919]
+        friends-bg
+        "
+      >
+
       {notificationsEnabled && shouldShowNotification(FRIEND_PAGE) && (
-        <div> 
+        <div className="flex items-center justify-center"> 
           <div className="flex flex-col gap-3 w-full gray-glass mx-2 px-4 py-8">
           <div className="text-3xl text-bold w-full text-center">{t(`friends.title`)}</div>
           <div className="text-md w-full text-center">{t(`friends.description`)}</div>         
@@ -150,9 +181,75 @@ const Friends: FC = () => {
       )}
 
       {!notificationsEnabled || !shouldShowNotification(FRIEND_PAGE) && (
-        <div className="italic w-full text-center text-pink-100 px-4">
-          Самый верный и едва ли не единственный способ стать счастливым — это вообразить себя таким (Василий Ключевский).
-      </div>)}
+      //   <div className="italic w-full text-center text-pink-900 px-4">
+      //     Самый верный и едва ли не единственный способ стать счастливым — это вообразить себя таким (Василий Ключевский).
+      // </div>
+      
+      <div>
+
+          <div className="tabs-bg w-full px-4">
+              <div role="tablist" className="tabs tabs-lifted tabs-lg mt-16 ">    
+              <div
+                role="tab"
+                className={`tab text-sm text-white ${ !isRecieved ? `
+                  tab-active
+                  text-[#63214b]
+                  [--tab-bg:#DDD] 
+                  [--tab-border-color:#AAA] 
+                  ` : ''}`}
+                onClick={() => setIsReceived(!isRecieved) }
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 3H21V9M21 3L10 14M3 10V21H14" />
+                </svg>
+                <span className="ml-2">Ваши действия</span>
+              </div>
+              <div
+                role="tab"
+                className={`tab text-sm text-white ${ isRecieved ? `
+                  text-[#63214b]
+                  tab-active 
+                  [--tab-bg:#DDD] 
+                  [--tab-border-color:#AAA]  
+                  ` : ''}`}
+                onClick={() => setIsReceived(!isRecieved) }
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 21H3V15M3 21L14 10M21 14V3H10" />
+                </svg>
+                <span className="ml-2">Действия к вам</span>
+
+              </div>
+            </div>
+          </div>  
+          
+          
+
+          <section className="pt-2 w-full bg-[#DDD] text-center overflow-y-scroll">
+         
+            {isRecieved ? (
+                <div>{received?.map((action: IAction, index) => (
+                  <div key={index}><h3 className="text-lg ">{action?.template?.type}</h3></div>
+                ))}
+              </div> 
+              ) : (
+                <div>
+                  {fullActions?.map((action, index) => (
+                    <div key={index}><h3 className="text-lg">{action?.template?.type}</h3></div>
+                  ))}
+                </div>
+              )
+            }
+        </section>
+
+      </div>
+        
+
+    
+
+      
+
+    )}
     </div>
   )}
 

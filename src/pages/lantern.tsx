@@ -76,7 +76,7 @@ const Lantern: FC = () => {
   useEffect(() => {
     const uuid = fortuneAction?.uuid || 0
     const msgWish = t(`fortunes.lantern.wishes.${wish}`)
-    const message = `Фонарь Агаты пожелал  тебе: ${msgWish}`
+    const message = `Фонарь Агаты пожелал тебе: ${msgWish}`
     const url = `https://t.me/uliana_prisma_bot/uliana_prisma?startapp=action=${uuid}`
     const tUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`;
     setTelegramUrl(tUrl)

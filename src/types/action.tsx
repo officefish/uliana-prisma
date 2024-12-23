@@ -11,7 +11,7 @@ export interface IAction {
     playerId: string;
     targetId: string | null;
     templateId: string;
-    createdAt: Date;
+    createdAt: string;
     uuid: string;
-    template: IActionTemplate;
+    template?: IActionTemplate;
 }
