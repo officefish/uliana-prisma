@@ -2,7 +2,6 @@ import { FC, useEffect, useState } from "react"
 import Content from "./content"
 import Footer from "./footer"
 import Navigation from "./nav"
-import Screen from "./screen"
 
 import { Route, Routes } from "react-router-dom"
 
@@ -127,7 +126,6 @@ const Cabinet:FC = () => {
 
 return (
   <WithLoader isLoading={isLoading}>
-    <Screen>
       <Content>
       <Routes>
         {/* { isPC ? (
@@ -154,7 +152,6 @@ return (
       <Footer>
         <Navigation />
       </Footer>
-    </Screen>
   </WithLoader>)
 }
 

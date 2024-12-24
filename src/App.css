@@ -32,19 +32,6 @@ html {
   overflow: hidden;
 }
 
-body {
-  font-family: Roboto;
-  /*overflow-x: hidden;*/
-  /*min-height: 100vh;*/
-  /*overscroll-behavior: none;*/
-
-  min-height: 100vh;
-  height: 100vh;
-
-  overflow: hidden;
-  height: 100vh;
-}
-
 :root:has(.no-doc-scroll) {
   overflow:hidden;
 }
@@ -55,14 +42,19 @@ body {
   overflow-y: auto;
 
   --bg-image: url("https://kubiki.io/public/bg/loading-2.jpg");
-  
-  background-image: var(--bg-image);
-  background-repeat: round;
 
   --polygon-border-width: 12px; /* Размер границы */
   --polygon-border-color: #f71fde; /* Цвет границы */
   --polygon-size: 25vw; /* Размер многоугольника */
   --polygon-points: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* По умолчанию квадрат */
+}
+
+body {
+  width: 100vw;
+  background-image: var(--bg-image);
+  background-size:cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
+  background-repeat: no-repeat; /* Отключает повторение изображения */
+  background-position: center center; /* Выравнивает изображение по центру */
 }
 
 .polygon {

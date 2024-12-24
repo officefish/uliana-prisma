@@ -152,6 +152,12 @@ const Friends: FC = () => {
     const filteredActions = actions.filter(action => action.targetId !== undefined);
     setFullActions(filteredActions);  
   }, [actions])
+
+  useEffect(() => {
+    const bgImageUrl = "https://kubiki.io/public/bg/friends-2.webp";
+    // Изменяем переменную в :root
+    document.documentElement.style.setProperty("--bg-image", `url(${bgImageUrl})`);
+  }, []);
   
   // useEffect(() => {
   //   console.log("actions:" + actions)
@@ -159,15 +165,10 @@ const Friends: FC = () => {
 
   // }, [actions, received ])
 
-  const [isRecieved, setIsReceived] = useState<boolean>(false)
   
   return (
-      <div
-      className="absolute top-0 w-screen h-screen 
-      text-[#240919]
-        friends-bg
-        "
-      >
+
+      <>
 
       {notificationsEnabled && shouldShowNotification(FRIEND_PAGE) && (
         <div className="flex items-center justify-center"> 
@@ -181,76 +182,84 @@ const Friends: FC = () => {
       )}
 
       {!notificationsEnabled || !shouldShowNotification(FRIEND_PAGE) && (
-      //   <div className="italic w-full text-center text-pink-900 px-4">
-      //     Самый верный и едва ли не единственный способ стать счастливым — это вообразить себя таким (Василий Ключевский).
-      // </div>
-      
-      <div>
-
-          <div className="tabs-bg w-full px-4">
-              <div role="tablist" className="tabs tabs-lifted tabs-lg mt-16 ">    
-              <div
-                role="tab"
-                className={`tab text-sm text-white ${ !isRecieved ? `
-                  tab-active
-                  text-[#63214b]
-                  [--tab-bg:#DDD] 
-                  [--tab-border-color:#AAA] 
-                  ` : ''}`}
-                onClick={() => setIsReceived(!isRecieved) }
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 3H21V9M21 3L10 14M3 10V21H14" />
-                </svg>
-                <span className="ml-2">Ваши действия</span>
-              </div>
-              <div
-                role="tab"
-                className={`tab text-sm text-white ${ isRecieved ? `
-                  text-[#63214b]
-                  tab-active 
-                  [--tab-bg:#DDD] 
-                  [--tab-border-color:#AAA]  
-                  ` : ''}`}
-                onClick={() => setIsReceived(!isRecieved) }
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 21H3V15M3 21L14 10M21 14V3H10" />
-                </svg>
-                <span className="ml-2">Действия к вам</span>
-
-              </div>
-            </div>
-          </div>  
-          
-          
-
-          <section className="pt-2 w-full bg-[#DDD] text-center overflow-y-scroll">
-         
-            {isRecieved ? (
-                <div>{received?.map((action: IAction, index) => (
-                  <div key={index}><h3 className="text-lg ">{action?.template?.type}</h3></div>
-                ))}
-              </div> 
-              ) : (
-                <div>
-                  {fullActions?.map((action, index) => (
-                    <div key={index}><h3 className="text-lg">{action?.template?.type}</h3></div>
-                  ))}
-                </div>
-              )
-            }
-        </section>
-
-      </div>
-        
-
-    
-
-      
-
-    )}
-    </div>
+        <ActionsList outgoing={fullActions} incoming={received} />
+      )}
+    </>
   )}
 
 export default Friends
+
+interface IActionList {
+  outgoing: IAction[]
+  incoming: IAction[]
+}
+
+const ActionsList: FC<IActionList> = (props) => {
+  
+  const { outgoing, incoming } = props
+  const [isRecieved, setIsReceived] = useState<boolean>(false)
+
+  return (
+        // </div>
+      
+        <>
+          <div className="tabs-bg w-screen absolute top-16">
+            <div role="tablist" className="tabs tabs-lifted tabs-lg">    
+            <div
+              role="tab"
+              className={`tab text-sm text-white ${ !isRecieved ? `
+                tab-active
+                text-[#63214b]
+                [--tab-bg:#DDD] 
+                [--tab-border-color:#AAA] 
+                text-nowrap
+                min-w-32
+                ` : ''}`}
+              onClick={() => setIsReceived(!isRecieved) }
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 3H21V9M21 3L10 14M3 10V21H14" />
+              </svg>
+              <span className="ml-2">Ваши действия</span>
+            </div>
+            <div
+              role="tab"
+              className={`tab text-sm text-white ${ isRecieved ? `
+                text-[#63214b]
+                tab-active 
+                [--tab-bg:#DDD] 
+                [--tab-border-color:#AAA] 
+                text-nowrap 
+                min-w-32
+                ` : ''}`}
+              onClick={() => setIsReceived(!isRecieved) }
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 21H3V15M3 21L14 10M21 14V3H10" />
+              </svg>
+              <span className="ml-2">Действия к вам</span>
+            </div>
+          </div>
+        </div>  
+        
+        <section className="pt-2 mt-32 w-full text-center overflow-y-scroll">
+       
+          {isRecieved ? (
+              <div>{incoming?.map((action: IAction, index) => (
+                <div key={index}><h3 className="text-lg ">{action?.template?.type}</h3></div>
+              ))}
+            </div> 
+            ) : (
+              <div>
+                {outgoing?.map((action, index) => (
+                  <div key={index}><h3 className="text-lg">{action?.template?.type}</h3></div>
+                ))}
+              </div>
+            )
+          }
+      </section>
+
+    </>
+  )
+}
+

@@ -17,6 +17,7 @@ import {DefaultTx} from "@/const/test.transaction.tsx";
 import { useTranslation } from "react-i18next";
 import LocaleSwitcher from "@/i18n/LocaleSwitcher";
 import usePageNotifications from "@/hooks/usePageNotifications";
+import Header from "./header";
 //import { useUpdateActions } from "@/hooks/api/actions/useUpdateActions";
 
 
@@ -114,14 +115,17 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
   }
 
     
-    return  (<>
+    return  (
+    <>
+    <Header>
       <GameStats 
       onCoins={handleCoins}
       onBuyGems={handleBuyGems}
       onEnergy={handleEnergy} 
       onWithdraw={handleWithdraw} 
       onMenu={handleMenu}/>
-      <main className='pt-8'>
+      </Header>
+      <main className='w-screen'>
         {children}
         {/* Shop component */}
         {gemShopOpen && (

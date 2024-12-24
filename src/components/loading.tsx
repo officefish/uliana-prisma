@@ -38,7 +38,8 @@ export const WithLoader: FC<PropsWithChildren<ILoadingProps>> = (props) => {
   }, [isLoading])
 
   return (
-    <div className="w-screen h-screen screen">
+    <>
+     {isLoading ? (
       <div className={`loader-wrapper ${isLoadingView ? 'active' : ''}`}>
        
         <div className="absolute bottom-12 w-full flex justify-center items-center">
@@ -47,9 +48,8 @@ export const WithLoader: FC<PropsWithChildren<ILoadingProps>> = (props) => {
           <p className="loader-progress-title">{t("intro.loading")}</p>
         </div>
       </div>
-
-      {children}
-    </div>
+    ) : children}
+    </>
   )
 }
 
