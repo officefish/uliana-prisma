@@ -98,12 +98,17 @@ const Bawdry: FC = () => {
     navigate('/');
   }
 
+  useEffect(() => {
+    const bgImageUrl = "/fortunes/bawdry-bg.webp";
+    // Изменяем переменную в :root
+    document.documentElement.style.setProperty("--bg-image", `url(${bgImageUrl})`);
+  }, []);
+
   return (
     <div className='w-full'>
-      <div className="absolute h-screen w-screen bawdry-bg top-0 vignette"></div>
 
 
-      <div className="absolute top-20 right-8 z-10 btn-no-body opacity-40 hover:opacity-90"
+      <div className="absolute top-5 right-8 z-10 btn-no-body opacity-40 hover:opacity-90"
       onClick={handleClose}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
@@ -125,7 +130,7 @@ const Bawdry: FC = () => {
         </div>
       ) : (
          <div className="w-full h-screen bg-glass-xl p-4">
-         <div className='shop-dialog-title mt-12 uppercase px-2'>{t('fortunes.bawdry.title')}</div>
+         <div className='shop-dialog-title mt-8 uppercase px-2'>{t('fortunes.bawdry.title')}</div>
          <div className='shop-dialog-description mt-2 uppercase px-2'>{t('fortunes.bawdry.short')}</div>
          <div className="flex flex-col justify-center items-center">
 

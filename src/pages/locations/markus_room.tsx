@@ -23,12 +23,8 @@ const MarkusRoom: FC = () => {
 
   return (
     <div className='w-full'>
-      <div className="">
          <div className='shop-dialog-title mt-24 uppercase px-20 w-full'>Комната Маркуса</div>
          <div className='shop-dialog-description mt-12 uppercase px-2 text-[#bd8cb7]'>{`Располагайтесь пока поудобнее, а дальше будет видно к чему это все приведет.`}</div>
-      </div>
-
-    
     </div>
   )
 }

@@ -51,6 +51,7 @@ html {
 
 body {
   width: 100vw;
+  height: 100vh;
   background-image: var(--bg-image);
   background-size:cover; /* Масштабирует изображение, чтобы оно полностью покрывало фон */
   background-repeat: no-repeat; /* Отключает повторение изображения */
