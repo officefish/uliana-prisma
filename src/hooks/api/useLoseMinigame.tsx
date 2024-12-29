@@ -1,11 +1,11 @@
 import { useCallback } from 'react'
 import { useSnackbar } from 'notistack' // Assuming you're using notistack for notifications
-import { useUserStore } from '@/providers/user';
+//import { useUserStore } from '@/providers/user';
 
 export const useLoseMinigame = (apiFetch: any, onSuccess?: () => void) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const { setMinigame } = useUserStore();
+  //const { setMinigame } = useUserStore();
 
   const loseMinigame = useCallback(
     async () => {
@@ -14,7 +14,7 @@ export const useLoseMinigame = (apiFetch: any, onSuccess?: () => void) => {
         const res = await apiFetch('/quest/minigame', 'POST', {win:false}, enqueueSnackbar);
         
         if (res) {
-            setMinigame(res);
+            //setMinigame(res);
         }
 
         onSuccess && onSuccess()

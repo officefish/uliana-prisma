@@ -1,11 +1,11 @@
 import { useCallback } from 'react'
 import { useSnackbar } from 'notistack' // Assuming you're using notistack for notifications
-import { useUserStore } from '@/providers/user';
+//import { useUserStore } from '@/providers/user';
 //import { useNavigate } from 'react-router-dom';
 
 export const useUpdateDailyQuest = (apiFetch: any, onSuccess?: () => void) => {
   const { enqueueSnackbar } = useSnackbar();
-  const { setDailyQuest } = useUserStore();
+  //const { setDailyQuest } = useUserStore();
 
   const updateDailyQuest = useCallback(
     async () => {
@@ -16,7 +16,7 @@ export const useUpdateDailyQuest = (apiFetch: any, onSuccess?: () => void) => {
         console.log(res)
 
         if (res.dailyReward) {
-            setDailyQuest(res.dailyReward);
+            //setDailyQuest(res.dailyReward);
         }
         
         onSuccess && onSuccess()

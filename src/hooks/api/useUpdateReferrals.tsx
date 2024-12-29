@@ -1,19 +1,19 @@
 import { useCallback } from 'react';
 import { useSnackbar } from 'notistack'; // Assuming you're using notistack for notifications
-import { useUserStore } from '@/providers/user';
+//import { useUserStore } from '@/providers/user';
 import {useSiteStore} from "@/providers/store";
 import {IReferral, Page} from "@/types";
 
 const useUpdateReferrals = (apiFetch: any, page: number, take: number) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const {
-    setReferralsCode,
-    setReferralsPage,
-    setReferralsTotal,
-    setRefferals,
-    setClaimedAll,
-  } = useUserStore();
+  // const {
+  //   setReferralsCode,
+  //   setReferralsPage,
+  //   setReferralsTotal,
+  //   setRefferals,
+  //   setClaimedAll,
+  // } = useUserStore();
 
   const { pageNotifications, setPageNotifications } = useSiteStore()
 
@@ -28,23 +28,23 @@ const useUpdateReferrals = (apiFetch: any, page: number, take: number) => {
         );
         console.log(res);
         if (res.referralCode.length > 0) {
-          setReferralsCode(res.referralCode);
+          //setReferralsCode(res.referralCode);
         }
 
         if (res.referrals.length > 0) {
-          setReferralsPage(page);
-          setRefferals(page, res.referrals);
+          //setReferralsPage(page);
+          //setRefferals(page, res.referrals);
 
           const isClaimRef = !!res.referrals.find((ref: IReferral) => !ref.referrerRewarded)
           if (isClaimRef) setPageNotifications([...pageNotifications, Page.FRIENDS])
         }
 
         if (res.count > 0) {
-          setReferralsTotal(res.count);
+          //setReferralsTotal(res.count);
         }
 
         if (res.claimedAll) {
-          setClaimedAll(res.claimedAll);
+          //setClaimedAll(res.claimedAll);
         }
 
 

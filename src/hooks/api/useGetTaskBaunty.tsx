@@ -1,12 +1,14 @@
 import { useCallback } from 'react';
 import { useSnackbar } from 'notistack'; // Assuming you're using notistack for notifications
-import {ITask, setBool} from '@/types';
-import { useUserStore } from '@/providers/user';
+import {
+  //ITask, 
+  setBool} from '@/types';
+//import { useUserStore } from '@/providers/user';
 
 const useGetTaskBaunty = (apiFetch: any, setLoading: setBool, onSuccess?: () => void) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const { setDailyTasks, setSeasonTasks, updatePlayerInvoice, player  } = useUserStore();
+  //const { setDailyTasks, setSeasonTasks, updatePlayerInvoice, player  } = useUserStore();
 
   const getTaskBaunty = useCallback(
     async (taskId: string) => {
@@ -20,16 +22,16 @@ const useGetTaskBaunty = (apiFetch: any, setLoading: setBool, onSuccess?: () => 
         console.log(res);
 
         if (res.tasks) {
-          const dailyTasks = res.tasks.filter((task: ITask) => task.templateTask.isDaily);
-          const seasonTasks = res.tasks.filter((task: ITask) => !task.templateTask.isDaily);
+          //const dailyTasks = res.tasks.filter((task: ITask) => task.templateTask.isDaily);
+          //const seasonTasks = res.tasks.filter((task: ITask) => !task.templateTask.isDaily);
 
-          setDailyTasks(dailyTasks);
-          setSeasonTasks(seasonTasks);
+          //setDailyTasks(dailyTasks);
+          //setSeasonTasks(seasonTasks);
         }
 
         const stats = res.playerStats
         if (stats) {
-          updatePlayerInvoice(stats.balance, stats.usdt, stats.numKeys, player?.lastKeyReady || "");
+          //updatePlayerInvoice(stats.balance, stats.usdt, stats.numKeys, player?.lastKeyReady || "");
         }
 
         onSuccess && onSuccess();
@@ -43,7 +45,10 @@ const useGetTaskBaunty = (apiFetch: any, setLoading: setBool, onSuccess?: () => 
         setLoading(false)
       }
     },
-    [apiFetch, enqueueSnackbar, setDailyTasks, setSeasonTasks] // Dependencies
+    [apiFetch, enqueueSnackbar, 
+      //setDailyTasks, 
+      //setSeasonTasks
+    ] // Dependencies
   );
 
   return { getTaskBaunty };

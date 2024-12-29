@@ -203,7 +203,10 @@
       "panda": "Lazy Panda",
       "rooster": "Loud Rooster",
       "boar": "Indiscriminate Boar",
-      "crocodile": "Cold-Blooded Crocodile"
+      "crocodile": "Cold-Blooded Crocodile",
+      "action": {
+        "title": "Swear words"
+      }
     },
     "lantern": {
       "title": "Lantern",
@@ -219,7 +222,15 @@
         "saturn": "May the stars weave wisdom and peace into your dreams!",
         "uranus": "May your sleep be fresh, like the morning breeze of change!",
         "neptune": "May your dreams bring you depth and magic!",
-        "pluto": "May the night take away all that is unnecessary, leaving room for the new!"
+        "pluto": "May the night take away all that is unnecessary, leaving room for the new!",
+        "action": {
+          "title": "Best wishes"
+        }
+      }
+    },
+    "kindness": {
+      "action": {
+        "title": "Best wishes"
       }
     }
   }

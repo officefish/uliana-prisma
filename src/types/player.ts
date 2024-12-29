@@ -7,31 +7,31 @@ export enum RankType {
 }
 
 /* User type */
-export interface IPlayer {
-    balance: number
-    usdt?: number
-    numKeys?: number
-    createdAt?: string | Date
-    firstName?: string
-    energyLatest?: number
-    energyMax?: number
-    id?: string
-    invitedById?: string
-    isPremium?: boolean
-    lastLogin?: string | Date
-    lastLogout?: string | Date
-    lastName?: string
-    levelId?: number
-    rank?: RankType
-    referralProfit?: number
-    tgId?: number
+export interface ITgAccount {
+    id: string
     username?: string
+    tgId: string
+    createdAt: string
+    isPremium: false
     imageUrl?: string
-    active?: boolean
-    incomePerHour?: number
-    lastKeyReady?: string
-    referrerRewarded: boolean
-    unsafe: boolean
+    firstName?: string
+    lastName?: string
+}
+
+
+export interface IPlayer {
+    id: string
+    createdAt: string
+    active: boolean
+    lastLogin: string
+    invitedById: string
+    referralCode: string
+    referrerRewarded: false
+    taskDatetime: string
+    unsafe: false
+    tgAccountId: string
+    balanceId: string
+    tgAccount?: ITgAccount         
 }
 
 export interface IReferral extends Omit<IPlayer,

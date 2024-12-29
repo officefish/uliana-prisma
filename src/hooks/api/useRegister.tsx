@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 import Auth from '@/services/api/auth';
-import { useUserStore } from '@/providers/user';
-import { IPlayer } from '@/types';
+//import { useUserStore } from '@/providers/user';
+//import { IPlayer } from '@/types';
 import { useSnackbarDevOnly } from '../useSnackbarDevOnly';
 
 import { enqueueSnackbar } from 'notistack';
@@ -10,7 +10,7 @@ import {Config} from "@/config.ts";
 export const useRegister = (apiFetch: any, onSuccess?: () => void, onError?: () => void, loadResources?: () => void  ) => {
 
   const { snackbarDevOnly } = useSnackbarDevOnly()
-  const { setPlayer, setIsAuth } = useUserStore();
+  //const { setPlayer, setIsAuth } = useUserStore();
 
   const register = useCallback(
     async () => {
@@ -43,13 +43,13 @@ export const useRegister = (apiFetch: any, onSuccess?: () => void, onError?: () 
               Auth.refreshToken = res.refreshToken;
             }
             if (res.player) {
-              const player = res.player as IPlayer;
-              setPlayer(player);
+             // const player = res.player as IPlayer;
+              //setPlayer(player);
             }
 
             loadResources && await loadResources();
             onSuccess && onSuccess();
-            setIsAuth(true)
+            //setIsAuth(true)
 
           } catch (error: any) {
             onError && onError();

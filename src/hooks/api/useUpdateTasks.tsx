@@ -1,32 +1,33 @@
 import {useCallback} from 'react';
 import {useSnackbar} from 'notistack'; // Assuming you're using notistack for notifications
-import {ITask, Page} from '@/types';
-import {useUserStore} from '@/providers/user';
-import {useSiteStore} from "@/providers/store";
+//import {ITask, Page} from '@/types';
+//import {useUserStore} from '@/providers/user';
+//import {useSiteStore} from "@/providers/store";
 
 const useUpdateTasks = (apiFetch: any) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const { setDailyTasks, setSeasonTasks } = useUserStore();
-  const { pageNotifications, setPageNotifications } = useSiteStore()
+  //const { setDailyTasks, setSeasonTasks } = useUserStore();
+  //const { pageNotifications, setPageNotifications } = useSiteStore()
 
   const updateTasks = useCallback(
     async () => {
       try {
         const res = await apiFetch('/tasks', 'POST', {}, enqueueSnackbar);
 
+        console.log(res);
         // Filter tasks into dailyTasks and seasonTasks
-        const dailyTasks = res.filter((task: ITask) => task.templateTask.isDaily);
-        const seasonTasks = res.filter((task: ITask) => !task.templateTask.isDaily);
+        // const dailyTasks = res.filter((task: ITask) => task.templateTask.isDaily);
+        // const seasonTasks = res.filter((task: ITask) => !task.templateTask.isDaily);
 
-        const isClaimTask = !![...dailyTasks, ...seasonTasks].find((task) => task?.status === "READY")
-        if (isClaimTask) setPageNotifications([...pageNotifications, Page.TASKS])
+        // const isClaimTask = !![...dailyTasks, ...seasonTasks].find((task) => task?.status === "READY")
+        // if (isClaimTask) setPageNotifications([...pageNotifications, Page.TASKS])
 
-        // console.log('Daily Tasks:', dailyTasks);
-        // console.log('Season Tasks:', seasonTasks);
+        // // console.log('Daily Tasks:', dailyTasks);
+        // // console.log('Season Tasks:', seasonTasks);
 
-        setDailyTasks(dailyTasks);
-        setSeasonTasks(seasonTasks);
+        // setDailyTasks(dailyTasks);
+        // setSeasonTasks(seasonTasks);
 
         //console.log(res);
       } catch (error) {
@@ -34,7 +35,10 @@ const useUpdateTasks = (apiFetch: any) => {
         enqueueSnackbar('Error updating tasks', { variant: 'error' });
       }
     },
-    [apiFetch, enqueueSnackbar, setDailyTasks, setSeasonTasks] // Dependencies
+    [apiFetch, enqueueSnackbar, 
+      //setDailyTasks, 
+     // setSeasonTasks
+    ] // Dependencies
   );
 
   return { updateTasks };

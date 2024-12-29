@@ -1,3 +1,5 @@
+import { IPlayer } from "./player";
+
 export interface IActionTemplate {
     id: string;
     priceId: string;
@@ -14,4 +16,5 @@ export interface IAction {
     createdAt: string;
     uuid: string;
     template?: IActionTemplate;
+    player?: IPlayer;
 }

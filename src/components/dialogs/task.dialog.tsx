@@ -6,8 +6,7 @@ import {useTranslation} from 'react-i18next';
 import {TaskImageMap} from "@/const/task.tsx";
 import useRegisterOKXAccount from "@/hooks/api/useRegisterOKXAccount.tsx";
 import {apiFetch} from "@/services/api";
-import useGetOKXStatus from "@/hooks/api/useGetOKXStatus.tsx";
-import useGetOKXRegisterStatus from "@/hooks/api/useGetOKXRegisterStatus.tsx";
+
 import {Okx} from "@/types/okx.tsx";
 import {useOKXStore} from "@/providers/okx";
 
@@ -262,9 +261,7 @@ export const OkxTaskDialog: FC<OkxTaskDialogProps> = (props) => {
 
 
   const { registerOKXAccount } = useRegisterOKXAccount(apiFetch, () => onSuccess(Okx.kyc), onError)
-  const { getOKXRegisterStatus } = useGetOKXRegisterStatus(apiFetch, () => onSuccess(Okx.deposit), onError)
-  const { getOKXStatus } = useGetOKXStatus(apiFetch, () => setOkxCheckSuccess(true), onError)
-
+ 
   const handleCheckButton = async () => {
     if (okxLoading) return;
 
@@ -278,16 +275,6 @@ export const OkxTaskDialog: FC<OkxTaskDialogProps> = (props) => {
           setOkxCheckError(true)
           setOkxLoading(false)
         }
-        break
-
-      case Okx.kyc:
-        setOkxLoading(true)
-        await getOKXRegisterStatus()
-        break
-
-      case Okx.deposit:
-        setOkxLoading(true)
-        await getOKXStatus()
         break
     }
   }

@@ -1,18 +1,23 @@
 import GameStats from "@/components/game.stats";
 import { useBuyGems } from "@/hooks/api/useBuyGems";
-import { useNewWithdrawProposal } from "@/hooks/api/useNewWithdrawProposal";
+//import { useNewWithdrawProposal } from "@/hooks/api/useNewWithdrawProposal";
 import { useSimpleBuyGems } from "@/hooks/api/useSimpleBuyGems";
 import { useSiteStore } from "@/providers/store";
-import { useUserStore } from "@/providers/user";
+//import { useUserStore } from "@/providers/user";
 import { apiFetch } from "@/services/api";
-import {FC, PropsWithChildren, useCallback, useEffect, useState} from "react";
+import {
+  FC, PropsWithChildren, 
+  //useCallback, 
+  useEffect, 
+  //useState
+} from "react";
 import {Link} from "react-router-dom";
 import ModalTutorial from "@/components/modal.tutorail.tsx";
-import {useWalletStore} from "@/providers/wallet";
-import {SendTransactionResponse, useTonConnectUI, useTonWallet, Wallet} from "@tonconnect/ui-react";
-import {Cell} from "@ton/core";
-import {useRegisterTestTransaction} from "@/hooks/api/useRegisterTestTransaction.tsx";
-import {DefaultTx} from "@/const/test.transaction.tsx";
+// import {useWalletStore} from "@/providers/wallet";
+// import {SendTransactionResponse, useTonConnectUI, useTonWallet, Wallet} from "@tonconnect/ui-react";
+// import {Cell} from "@ton/core";
+// import {useRegisterTestTransaction} from "@/hooks/api/useRegisterTestTransaction.tsx";
+// import {DefaultTx} from "@/const/test.transaction.tsx";
 
 import { useTranslation } from "react-i18next";
 import LocaleSwitcher from "@/i18n/LocaleSwitcher";
@@ -75,27 +80,6 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
     else document.body.style.overflow = ''
   }, [withdrawOpen]);
 
-  /* */
-  useEffect(() => {
-    const timer = setInterval(async () => {
-     
-      // const options: RequestInit = {
-      //   method: "GET",
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //     ...(Auth.accessToken ? { 'Authorization': `Bearer ${Auth.accessToken}` } : {})
-      //   },
-      //   //keepalive: false // Убедитесь, что вам это действительно нужно
-      // };
-
-      // const response = await fetch(`${Config.url}/balance`, options);
-      // console.log(response);
-  
-
-    }, 10_000);
-    return () => clearInterval(timer);
-  }, []);
-
   const handleCoins = () => {
     // const payload = {
     //   chat_id: chatId,
@@ -133,9 +117,9 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
          onShopItemSelect={onShopItemSelect} 
          setKeyShopOpen={setGemShopOpen} />
         )}
-        {withdrawOpen && (
+        {/* {withdrawOpen && (
           <Withdraw setWithdrawOpen={setWithdrawOpen} />
-        )}
+        )} */}
         {menuOpen && (
           <Menu 
           setMenuOpen={setMenuOpen} 
@@ -154,6 +138,8 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
 }
 export default Content
 
+
+/*
 interface IWithdrawProps {
   setWithdrawOpen: (isOpen: boolean) => void
 }
@@ -315,6 +301,7 @@ const Withdraw:FC<IWithdrawProps> = (props) => {
     </div>
   )
 }
+*/
 
 interface IForStarsShopProps {
   onShopItemSelect: (value: number) => void

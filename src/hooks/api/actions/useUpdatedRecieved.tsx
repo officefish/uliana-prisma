@@ -7,23 +7,24 @@ import { useCallback } from 'react';
 //import { useBalanceStore } from '@/providers/balance';
 
 
-  export const useUpdateActions = (apiFetch: any, onSuccess?: () => void, onError?: (error: any) => void) => {
+  export const useUpdateRecieved = (apiFetch: any, onSuccess?: () => void, onError?: (error: any) => void) => {
     
     const { enqueueSnackbar } = useSnackbar();
 
-    const { setActions } = useActionsStore()
+    const { setReceived } = useActionsStore()
     
-    const updateActions = useCallback(
+    const updateRecieved = useCallback(
       async (skip: number, take: number) => {
      
         try {
-          const res = await apiFetch('/player/actions/by/tgId', 'POST', { skip, take}, enqueueSnackbar);
+          const res = await apiFetch('/player/received/by/tgId', 'POST', { skip, take}, enqueueSnackbar);
           console.log(res);        
 
-          if (res.actions) {
-            setActions(res.actions)
+          if (res.received) {
+            console.log('save received')
+            setReceived(res.received)
           }
-
+  
           onSuccess && onSuccess()
           //if (res.energyLatest && res.energyMax) {
           //  updatePlayerEnergy(res.energyLatest, res.energyMax)
@@ -41,5 +42,5 @@ import { useCallback } from 'react';
       [apiFetch, enqueueSnackbar] // Dependencies
     )
   
-    return { updateActions } 
+    return { updateRecieved } 
   }

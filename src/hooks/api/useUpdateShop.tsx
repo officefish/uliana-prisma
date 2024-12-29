@@ -1,12 +1,12 @@
 import { useCallback } from 'react'
 import { useSnackbar } from 'notistack' // Assuming you're using notistack for notifications
-import { useUserStore } from '@/providers/user';
+//import { useUserStore } from '@/providers/user';
 //import { useAxiosPostTrigger } from '@/services/axios.service'
 
 export const useUpdateShop = (apiFetch: any) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const { setShop } = useUserStore();
+  //const { setShop } = useUserStore();
 
   const updateShop = useCallback(
     async () => {
@@ -14,7 +14,7 @@ export const useUpdateShop = (apiFetch: any) => {
       try {
         const res = await apiFetch('/shop/items', 'POST', {}, enqueueSnackbar);
         console.log(res)
-        setShop(res)
+        //setShop(res)
         
       } catch (error: any) {
         enqueueSnackbar(`Error during update shop: ${error}`, { variant: 'error' });

@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from "react"
 import { SiteProvider } from "./store"
-import { UserProvider } from "./user"
+//import { UserProvider } from "./user"
 import { TapsProvider } from "./tap"
 import { TonClientProvider } from "./ton"
 import { WalletProvider } from "./wallet"
@@ -16,7 +16,7 @@ const Providers: FC <PropsWithChildren> = ({ children }) => {
     return (
         <Snackbar>
             <SiteProvider>
-            <UserProvider>
+            {/* <UserProvider> */}
             <TapsProvider>
             <WalletProvider>
             <ChestsProvider>
@@ -36,7 +36,7 @@ const Providers: FC <PropsWithChildren> = ({ children }) => {
             </ChestsProvider>
             </WalletProvider>
             </TapsProvider>
-            </UserProvider>
+            {/* </UserProvider> */}
             </SiteProvider>
         </Snackbar>
     )

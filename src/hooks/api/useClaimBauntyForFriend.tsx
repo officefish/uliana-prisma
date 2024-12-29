@@ -1,16 +1,16 @@
 import { useCallback } from 'react'
 import { useSnackbar } from 'notistack' // Assuming you're using notistack for notifications
-import { useUserStore } from '@/providers/user';
+//import { useUserStore } from '@/providers/user';
 import {setBool} from "@/types";
 
 export const useClaimBauntyForFriend = (apiFetch: any, setLoading: setBool, onSuccess?: () => void) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const {
-    setReferralStatus,
-    updatePlayerInvoice,
-    player
-  } = useUserStore();
+  // const {
+  //   setReferralStatus,
+  //   updatePlayerInvoice,
+  //   player
+  // } = useUserStore();
 
   const claimBaunty = useCallback(
     async (referralId: string) => {
@@ -20,12 +20,12 @@ export const useClaimBauntyForFriend = (apiFetch: any, setLoading: setBool, onSu
         console.log(res);
 
         if (res && res.referrerRewarded) {
-          setReferralStatus(referralId, res.referrerRewarded);
+          //setReferralStatus(referralId, res.referrerRewarded);
         }
 
         const stats = res.stats
         if (stats) {
-          updatePlayerInvoice(stats.balance, stats.usdt, stats.numKeys, player?.lastKeyReady || "");
+          //updatePlayerInvoice(stats.balance, stats.usdt, stats.numKeys, player?.lastKeyReady || "");
         }
 
         onSuccess && onSuccess();

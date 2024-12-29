@@ -1,16 +1,16 @@
 import { useCallback } from 'react'
 import { useSnackbar } from 'notistack' // Assuming you're using notistack for notifications
-import { useUserStore } from '@/providers/user';
+// import { useUserStore } from '@/providers/user';
 import {setBool} from "@/types";
 
 export const useClaimBauntyForAllFriends = (apiFetch: any, setLoading: setBool, onSuccess?: () => void) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const {
-    updatePlayerInvoice,
-    setClaimedAll,
-    player
-  } = useUserStore();
+  // const {
+  //   updatePlayerInvoice,
+  //   setClaimedAll,
+  //   player
+  // } = useUserStore();
 
   const claimBauntyForAll = useCallback(
     async (page: number, take: number) => {
@@ -22,11 +22,11 @@ export const useClaimBauntyForAllFriends = (apiFetch: any, setLoading: setBool, 
 
         const stats = res.stats
         if (stats) {
-          updatePlayerInvoice(stats.balance, stats.usdt, stats.numKeys, player?.lastKeyReady || "");
+          //updatePlayerInvoice(stats.balance, stats.usdt, stats.numKeys, player?.lastKeyReady || "");
         }
 
         if (res.claimedAll) {
-            setClaimedAll(res.claimedAll);
+          //setClaimedAll(res.claimedAll);
         }
 
         onSuccess && onSuccess()
