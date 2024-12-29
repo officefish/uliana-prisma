@@ -11,7 +11,10 @@ import { apiFetch } from "@/services/api";
 //import { apiFetch } from "@/services/api";
 
 import { Page } from "@/types";
-import { IAction } from "@/types/action";
+import { 
+  IAction, 
+  //IActionTemplate 
+} from "@/types/action";
 import {
   FC,
   useEffect,
@@ -163,13 +166,13 @@ const ActionsList: FC<IActionList> = (props) => {
           {isRecieved ? (
               <div className="pb-36 px-4"
               >{incoming?.map((action: IAction, index) => (
-                <Action key={index} action={action}/>
+                <ActionPlayer key={index} action={action}/>
               ))}
             </div> 
             ) : (
               <ul className="pb-36 px-4">
                 {outgoing?.map((action, index) => (
-                  <Action key={index} action={action}/>
+                  <ActionTarget key={index} action={action}/>
                 ))}
               </ul>
             )
@@ -184,19 +187,46 @@ interface IActionProps {
   action: IAction
 }
 
-const getSmileSrc = (type: string) => {
-  console.log(type)
-  switch (type) {
-    case 'BAWDRY':
-      return '/faces/angry.svg';
-    case 'KINDNESS':
-      return '/faces/smile.svg';
-    default:
-      return '/faces/smile.svg';
-  }
-} 
+const ActionTarget:FC<IActionProps> = (props) => {
 
-const Action:FC<IActionProps> = (props) => {
+  const { action } = props;
+
+  const { t } = useTranslation()
+  const tag = action?.template?.type.toLocaleLowerCase();
+
+  //console.log(action["tgAccount"])
+
+  const firstName = action.target?.tgAccount?.firstName || ""
+  const lastName = action.target?.tgAccount?.lastName || ""
+  const fullName = `${firstName} ${lastName}}`
+  const username = action.target?.tgAccount?.username || ""
+
+  return (
+    <li className="bg-glass-xl shadow-xl rounded-box h-16 my-2
+    grid grid-cols-4 btn-no-body select-none
+    ">
+      <div className="flex flex-col h-full items-start justify-start mt-1 col-span-3">
+        <h2 className="pl-8 text-secondary text-2xl">
+          {t(`fortunes.${tag}.action.title`)}
+        </h2>
+        <div className="pl-8 text-secondary text-xs italic w-[80%] whitespace-nowrap overflow-x-hidden">кому {`${fullName} aka @${username}` }</div>
+        {/* <p>Кликните если хотите ответить.</p>
+        <div className="card-actions items-end justify-center">
+          <button className="btn btn-primary">Ответить</button>
+        </div> */}
+      </div>
+      <figure className="w-full flex items-center justify-end pr-2">
+        {/* <img
+          className="w-12 h-12 rounded-full"
+          src={getSmileSrc(action?.template?.type || "")}
+          alt="Album" /> */}
+        <span className="text-4xl">{getEmodji(action?.template?.type || '')}</span>  
+      </figure>
+    </li>
+  )
+}
+
+const ActionPlayer:FC<IActionProps> = (props) => {
 
   const { action } = props;
 
@@ -224,13 +254,24 @@ const Action:FC<IActionProps> = (props) => {
           <button className="btn btn-primary">Ответить</button>
         </div> */}
       </div>
-      <figure className="w-16 h-16 items-center justify-center flex">
-        <img
+      <figure className="w-full flex items-center justify-end pr-2">
+        {/* <img
           className="w-12 h-12 rounded-full"
           src={getSmileSrc(action?.template?.type || "")}
-          alt="Album" />
-        <span>{}</span>  
+          alt="Album" /> */}
+        <span className="text-4xl">{getEmodji(action?.template?.type || '')}</span>  
       </figure>
     </li>
   )
+}
+
+function getEmodji(type: string) {
+  switch (type) {
+    case 'BAWDRY':
+      return '🤺';
+    case 'KINDNESS':
+      return '🧸';
+    default:
+      return '';
+  }
 }

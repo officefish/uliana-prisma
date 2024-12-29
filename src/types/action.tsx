@@ -4,7 +4,7 @@ export interface IActionTemplate {
     id: string;
     priceId: string;
     effectid: string;
-    type: string;
+    type: 'BAWDRY' | 'KINDNESS';
     timestamp: Date;
 }
 
@@ -17,4 +17,5 @@ export interface IAction {
     uuid: string;
     template?: IActionTemplate;
     player?: IPlayer;
+    target?: IPlayer;
 }
