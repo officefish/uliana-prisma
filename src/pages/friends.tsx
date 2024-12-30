@@ -78,17 +78,8 @@ const Friends: FC = () => {
     document.documentElement.style.setProperty("--bg-image", `url(${bgImageUrl})`);
   }, []);
   
-  // useEffect(() => {
-  //   console.log("actions:" + actions)
-  //   console.log("recieved:" + received)
-
-  // }, [actions, received ])
-
-  
   return (
-
       <>
-
       {notificationsEnabled && shouldShowNotification(FRIEND_PAGE) && (
         <div className="flex items-center justify-center"> 
           <div className="flex flex-col gap-3 w-full gray-glass mx-2 px-4 py-8">
@@ -119,10 +110,8 @@ const ActionsList: FC<IActionList> = (props) => {
   const [isRecieved, setIsReceived] = useState<boolean>(false)
 
   return (
-        // </div>
-      
         <>
-          <div className="tabs-bg w-screen absolute top-16">
+          <div className="tabs-bg w-screen absolute top-16 z-10">
             <div role="tablist" className="tabs tabs-lifted tabs-lg">    
             <div
               role="tab"
@@ -161,7 +150,7 @@ const ActionsList: FC<IActionList> = (props) => {
           </div>
         </div>  
         
-        <section className="pt-2 mt-32 w-full text-center overflow-y-scroll">
+        <section className="pt-2 mt-32 w-full text-center overflow-y-scroll z-0">
        
           {isRecieved ? (
               <div className="pb-36 px-4"
@@ -194,8 +183,6 @@ const ActionTarget:FC<IActionProps> = (props) => {
   const { t } = useTranslation()
   const tag = action?.template?.type.toLocaleLowerCase();
 
-  //console.log(action["tgAccount"])
-
   const firstName = action.target?.tgAccount?.firstName || ""
   const lastName = action.target?.tgAccount?.lastName || ""
   const fullName = `${firstName} ${lastName}}`
@@ -210,16 +197,8 @@ const ActionTarget:FC<IActionProps> = (props) => {
           {t(`fortunes.${tag}.action.title`)}
         </h2>
         <div className="pl-8 text-secondary text-xs italic w-[80%] whitespace-nowrap overflow-x-hidden">кому {`${fullName} aka @${username}` }</div>
-        {/* <p>Кликните если хотите ответить.</p>
-        <div className="card-actions items-end justify-center">
-          <button className="btn btn-primary">Ответить</button>
-        </div> */}
       </div>
       <figure className="w-full flex items-center justify-end pr-2">
-        {/* <img
-          className="w-12 h-12 rounded-full"
-          src={getSmileSrc(action?.template?.type || "")}
-          alt="Album" /> */}
         <span className="text-4xl">{getEmodji(action?.template?.type || '')}</span>  
       </figure>
     </li>
