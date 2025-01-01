@@ -1,18 +1,13 @@
-export interface IAction {
-    createdAt: string
-    id: string    
-    playerId: string
-    targetId: string
-    templateId: string
-    uuid: string
-}
+import { IAction } from "@/types/action"
 
 export interface IActionsState {
     actions: IAction[]
     received: IAction[]
+    entryAction: IAction | null
 }
    
 export interface IActionsActions {
     setActions: (actions: IAction[]) => void
     setReceived: (received: IAction[]) => void
+    setEntryAction: (action: IAction) => void
 }

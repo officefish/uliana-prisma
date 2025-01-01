@@ -7,6 +7,7 @@ import { useSnackbarDevOnly } from '../useSnackbarDevOnly';
 import { enqueueSnackbar } from 'notistack';
 import {Config} from "@/config.ts";
 import { usePlayerStore } from '@/providers/player';
+import { useActionsStore } from '@/providers/actions';
 
 export const useRegister = (
   apiFetch: any, 
@@ -16,6 +17,7 @@ export const useRegister = (
 
   const { snackbarDevOnly } = useSnackbarDevOnly()
   const { setPlayer } = usePlayerStore();
+  const { setEntryAction } = useActionsStore()
 
   const register = useCallback(
     async () => {
@@ -52,9 +54,7 @@ export const useRegister = (
             }
 
             if (res.action) {
-              // TODO: add entry action to store
-              console.log('res.action', res.action)
-              return
+              setEntryAction(res.action);
             }
 
             loadResources && await loadResources();

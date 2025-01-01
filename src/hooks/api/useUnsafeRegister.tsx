@@ -5,6 +5,8 @@ import Auth from '@/services/api/auth';
 import { useSnackbarDevOnly } from '../useSnackbarDevOnly';
 
 import { enqueueSnackbar } from 'notistack';
+import { usePlayerStore } from '@/providers/player';
+import { useActionsStore } from '@/providers/actions';
 
 export const useUnsafeRegister = (
   apiFetch: any, 
@@ -13,6 +15,9 @@ export const useUnsafeRegister = (
   loadResources?: () => void  ) => {
 
   const { snackbarDevOnly } = useSnackbarDevOnly()
+
+  const { setPlayer } = usePlayerStore()
+  const { setEntryAction } = useActionsStore()
   //const { setPlayer, setIsAuth } = useUserStore();
 
   const unsafeRegister = useCallback(
@@ -47,20 +52,15 @@ export const useUnsafeRegister = (
               Auth.refreshToken = res.refreshToken;
             }
             if (res.player) {
-              //const player = res.player as IPlayer;
-              //setPlayer(player);
+              setPlayer(res.player);
             }
 
             if (res.action) {
-
+              setEntryAction(res.action);
             }
-
-            console.log(res.player);
 
             loadResources && await loadResources();
             onSuccess && onSuccess();
-            //setIsAuth(true)
-            return;
 
           } catch (error: any) {
             const msg = `Error during login: ${error}`

@@ -1,13 +1,16 @@
 import { FC, PropsWithChildren, useRef, useContext } from 'react'
 import { createStore, StoreApi, useStore } from 'zustand'
 import { createContext } from 'react' // from 'zustand/context'
-import { IActionsState, IAction, IActionsActions } from './types'
+import { IActionsState, IActionsActions } from './types'
+import { IAction } from '@/types/action'
 //import {  } from '@/types/action'
 
 type IActionsStore = IActionsState & IActionsActions
 
 const createActionsStore = () =>
   createStore<IActionsStore>()((set) => ({
+    entryAction: null,
+    setEntryAction: (entryAction: IAction) => set(() => ({ entryAction })),
     actions: [],
     received: [],
     setActions: (actions: IAction[]) => set(() => ({ actions })),
@@ -20,6 +23,8 @@ const createActionsStore = () =>
   export const useActionsStore = () => {
     const api = useContext(ActionsContext) as StoreApi<IActionsStore>
     return {
+      entryAction: useStore(api, (state) => state.entryAction),
+      setEntryAction: useStore(api, (state) => state.setEntryAction),
       actions: useStore(api, (state) => state.actions),
       setActions: useStore(api, (state) => state.setActions),
       received: useStore(api, (state) => state.received),
