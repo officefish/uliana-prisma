@@ -193,7 +193,7 @@ const ActionTarget:FC<IActionProps> = (props) => {
     grid grid-cols-4 btn-no-body select-none
     ">
       <div className="flex flex-col h-full items-start justify-start mt-1 col-span-3">
-        <h2 className="pl-8 text-secondary text-2xl">
+        <h2 className="pl-8 text-secondary text-2xl whitespace-nowrap">
           {t(`fortunes.${tag}.action.title`)}
         </h2>
         <div className="pl-8 text-secondary text-xs italic w-[80%] whitespace-nowrap overflow-x-hidden">кому {`${fullName} aka @${username}` }</div>
@@ -224,7 +224,7 @@ const ActionPlayer:FC<IActionProps> = (props) => {
     grid grid-cols-4 btn-no-body select-none
     ">
       <div className="flex flex-col h-full items-start justify-start mt-1 col-span-3">
-        <h2 className="pl-8 text-secondary text-2xl">
+        <h2 className="pl-8 text-secondary text-2xl whitespace-nowrap">
           {t(`fortunes.${tag}.action.title`)}
         </h2>
         <div className="pl-8 text-secondary text-xs italic w-[80%] whitespace-nowrap overflow-x-hidden">от {`${fullName} aka @${username}` }</div>

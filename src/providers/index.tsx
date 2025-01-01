@@ -4,24 +4,21 @@ import { SiteProvider } from "./store"
 import { TapsProvider } from "./tap"
 import { TonClientProvider } from "./ton"
 import { WalletProvider } from "./wallet"
-import { ChestsProvider } from "./chests"
-import { OKXProvider } from "./okx"
 import { BalanceProvider } from "./balance"
 import {Snackbar} from "@/providers/snackbar.tsx";
 import { FortunesProvider } from "./fortunes"
 import { LocationProvider } from "./location"
 import { ActionsProvider } from "./actions"
+import { PlayerProvider } from "./player"
 
 const Providers: FC <PropsWithChildren> = ({ children }) => {
     return (
         <Snackbar>
             <SiteProvider>
-            {/* <UserProvider> */}
+            <PlayerProvider>
             <TapsProvider>
             <WalletProvider>
-            <ChestsProvider>
             <TonClientProvider>
-            <OKXProvider>
             <BalanceProvider>
             <FortunesProvider>
             <LocationProvider>
@@ -31,12 +28,10 @@ const Providers: FC <PropsWithChildren> = ({ children }) => {
             </LocationProvider>
             </FortunesProvider>
             </BalanceProvider>
-            </OKXProvider>
             </TonClientProvider>
-            </ChestsProvider>
             </WalletProvider>
             </TapsProvider>
-            {/* </UserProvider> */}
+            </PlayerProvider>
             </SiteProvider>
         </Snackbar>
     )

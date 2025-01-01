@@ -6,11 +6,16 @@ import { useSnackbarDevOnly } from '../useSnackbarDevOnly';
 
 import { enqueueSnackbar } from 'notistack';
 import {Config} from "@/config.ts";
+import { usePlayerStore } from '@/providers/player';
 
-export const useRegister = (apiFetch: any, onSuccess?: () => void, onError?: () => void, loadResources?: () => void  ) => {
+export const useRegister = (
+  apiFetch: any, 
+  onSuccess?: () => void, 
+  onError?: () => void, 
+  loadResources?: () => void  ) => {
 
   const { snackbarDevOnly } = useSnackbarDevOnly()
-  //const { setPlayer, setIsAuth } = useUserStore();
+  const { setPlayer } = usePlayerStore();
 
   const register = useCallback(
     async () => {
@@ -43,8 +48,13 @@ export const useRegister = (apiFetch: any, onSuccess?: () => void, onError?: () 
               Auth.refreshToken = res.refreshToken;
             }
             if (res.player) {
-             // const player = res.player as IPlayer;
-              //setPlayer(player);
+              setPlayer(res.player);
+            }
+
+            if (res.action) {
+              // TODO: add entry action to store
+              console.log('res.action', res.action)
+              return
             }
 
             loadResources && await loadResources();

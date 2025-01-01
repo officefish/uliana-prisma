@@ -113,7 +113,7 @@ const Lantern: FC = () => {
     <div className='w-full'>
 
       {/* Close button */}
-      <div className="absolute top-5 right-8 z-10 btn-no-body opacity-40 hover:opacity-90"
+      <div className="absolute top-20 right-5 z-10 btn-no-body opacity-40 hover:opacity-90"
       onClick={handleClose}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
@@ -135,7 +135,7 @@ const Lantern: FC = () => {
         </div>
       ) : (
          <div className="w-full h-screen bg-glass-xl p-4">
-          <div className='shop-dialog-title mt-8 uppercase px-2 select-none'>{t('fortunes.lantern.title')}</div>
+          <div className='shop-dialog-title mt-16 uppercase px-2 select-none'>{t('fortunes.lantern.title')}</div>
           <div className='shop-dialog-description mt-2 uppercase px-2 select-none'>{t('fortunes.lantern.short')}</div>
          <div className="flex flex-col justify-center items-center">
 
@@ -153,8 +153,6 @@ const Lantern: FC = () => {
               gems={gems}  
             />
             )}
-
-            
 
          </div>
        </div>
@@ -179,7 +177,7 @@ const WishPlayer: FC<IWishPlayerProps> = (props) => {
   const {t} = useTranslation();
   return (
     <>
-      <div className="absolute -z-10 top-36 left-0 w-full flex items-center justify-center">
+      <div className="absolute -z-10 top-44 left-0 w-full flex items-center justify-center">
         <img className="w-[50%] border-4 border-[#1ff7ba]" src="/fortunes/lantern.webp" alt="lantern"></img>
       </div> 
 
@@ -229,7 +227,7 @@ const WishResult: FC<IWishResultProps> = (props) => {
   return (
     <div className="w-full mt-12">
        <div className="absolute -z-10 
-       top-36 left-0 
+       top-44 left-0 
        w-full flex items-center justify-center">
           <img className="w-[50%] border-4 border-[#1ff7ba]" src="/fortunes/lantern.webp" alt="bawdry"></img>
         </div>

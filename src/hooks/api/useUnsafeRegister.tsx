@@ -6,7 +6,11 @@ import { useSnackbarDevOnly } from '../useSnackbarDevOnly';
 
 import { enqueueSnackbar } from 'notistack';
 
-export const useUnsafeRegister = (apiFetch: any, onSuccess?: () => void, onError?: () => void, loadResources?: () => void  ) => {
+export const useUnsafeRegister = (
+  apiFetch: any, 
+  onSuccess?: () => void, 
+  onError?: () => void, 
+  loadResources?: () => void  ) => {
 
   const { snackbarDevOnly } = useSnackbarDevOnly()
   //const { setPlayer, setIsAuth } = useUserStore();
@@ -45,6 +49,10 @@ export const useUnsafeRegister = (apiFetch: any, onSuccess?: () => void, onError
             if (res.player) {
               //const player = res.player as IPlayer;
               //setPlayer(player);
+            }
+
+            if (res.action) {
+
             }
 
             console.log(res.player);

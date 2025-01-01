@@ -3,15 +3,6 @@ export * from './player'
 export * from './task'
 export * from './quest'
 
-// export enum Page {
-//     FARM = 'farm',
-//     FRIENDS = 'friends',
-//     TASKS = 'tasks',
-//     SHOP = 'shop',
-//     AIRDROP = 'airdrop',
-//     MOBILE = 'mobile',
-// }
-
 export enum Page {
     SECRET = "secret",
     ROOM = "room",
@@ -31,6 +22,5 @@ export interface ITelegramUser {
     token: string
     fullname?: string
 }
-
 
 export type setBool = (is: boolean) => void
