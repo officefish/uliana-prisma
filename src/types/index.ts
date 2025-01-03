@@ -15,6 +15,8 @@ export enum Page {
 
     MARKUS_ROOM = "markus_room",
     AGATA_ROOM = "agata_room",
+
+    ACTION = "action",
 }
 
 export interface ITelegramUser {

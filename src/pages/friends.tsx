@@ -22,18 +22,19 @@ import {
  
 } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 //import { useTranslation } from "react-i18next";
 
 const FRIEND_PAGE = "friend_page"
 
 const Friends: FC = () => {
 
-  const { setPage} = useSiteStore()
+  const { setPage, setIsEmptyPage } = useSiteStore()
 
   useEffect(() => {
-      setPage(Page.FRIENDS)
-
-  }, [setPage])
+    setIsEmptyPage(false)
+    setPage(Page.FRIENDS)
+  }, [])
 
   useEffect(() => {
     if (FRIEND_PAGE) {
@@ -109,6 +110,13 @@ const ActionsList: FC<IActionList> = (props) => {
   const { outgoing, incoming } = props
   const [isRecieved, setIsReceived] = useState<boolean>(false)
 
+  const navigate =  useNavigate()
+
+  const handleAction = (actionId: string) => {
+    console.log(actionId)
+    navigate('/action')
+  }
+
   return (
         <>
           <div className="tabs-bg w-screen absolute top-16 z-10">
@@ -155,13 +163,13 @@ const ActionsList: FC<IActionList> = (props) => {
           {isRecieved ? (
               <div className="pb-36 px-4"
               >{incoming?.map((action: IAction, index) => (
-                <ActionPlayer key={index} action={action}/>
+                <ActionPlayer key={index} action={action} onClick={handleAction}/>
               ))}
             </div> 
             ) : (
               <ul className="pb-36 px-4">
                 {outgoing?.map((action, index) => (
-                  <ActionTarget key={index} action={action}/>
+                  <ActionTarget key={index} action={action} onClick={handleAction}/>
                 ))}
               </ul>
             )
@@ -174,11 +182,12 @@ const ActionsList: FC<IActionList> = (props) => {
 
 interface IActionProps {
   action: IAction
+  onClick: (actionId: string) => void
 }
 
 const ActionTarget:FC<IActionProps> = (props) => {
 
-  const { action } = props;
+  const { action, onClick } = props;
 
   const { t } = useTranslation()
   const tag = action?.template?.type.toLocaleLowerCase();
@@ -191,7 +200,7 @@ const ActionTarget:FC<IActionProps> = (props) => {
   return (
     <li className="bg-glass-xl shadow-xl rounded-box h-16 my-2
     grid grid-cols-4 btn-no-body select-none
-    ">
+    " onClick={() => onClick(action.id)}>
       <div className="flex flex-col h-full items-start justify-start mt-1 col-span-3">
         <h2 className="pl-8 text-secondary text-2xl whitespace-nowrap">
           {t(`fortunes.${tag}.action.title`)}
@@ -207,7 +216,7 @@ const ActionTarget:FC<IActionProps> = (props) => {
 
 const ActionPlayer:FC<IActionProps> = (props) => {
 
-  const { action } = props;
+  const { action, onClick } = props;
 
   const { t } = useTranslation()
   const tag = action?.template?.type.toLocaleLowerCase();
@@ -222,7 +231,7 @@ const ActionPlayer:FC<IActionProps> = (props) => {
   return (
     <li className="bg-glass-xl shadow-xl rounded-box h-16 my-2
     grid grid-cols-4 btn-no-body select-none
-    ">
+    " onClick={() => onClick(action.id)}>
       <div className="flex flex-col h-full items-start justify-start mt-1 col-span-3">
         <h2 className="pl-8 text-secondary text-2xl whitespace-nowrap">
           {t(`fortunes.${tag}.action.title`)}

@@ -8,12 +8,12 @@ const TASK_PAGE = "task_page";
 
 const Tasks: FC = () => {
 
-  const { setPage} = useSiteStore()
+  const { setPage, setIsEmptyPage } = useSiteStore()
   
   useEffect(() => {
-      setPage(Page.TASKS)
-
-  }, [setPage])
+    setIsEmptyPage(false)  
+    setPage(Page.TASKS)
+  }, [])
 
   // useEffect(() => {
   //   setIsFooterTransparent(false);

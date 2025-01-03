@@ -9,9 +9,10 @@ const SECRET_PAGE = "secret_page";
 
 const Secret: FC = () => {
 
-  const { setPage } = useSiteStore();
+  const { setPage, setIsEmptyPage } = useSiteStore();
  
   useEffect(() => {
+    setIsEmptyPage(false)
     setPage(Page.SECRET);
   }, [setPage]);
 

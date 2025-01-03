@@ -25,6 +25,7 @@ import { useUpdateLocation } from "@/hooks/api/locations/useUpdateLocation"
 import AgataRoom from "@/pages/locations/agata_room"
 import MarkusRoom from "@/pages/locations/markus_room"
 import { useSiteStore } from "@/providers/store"
+import Action from "@/pages/actions/action"
 //import Mobile from "@/pages/mobile.tsx";
 
 const Cabinet:FC = () => {
@@ -34,10 +35,6 @@ const Cabinet:FC = () => {
   const [isLoading, 
     setIsLoading
   ] = useState(true);
-
-  useEffect(() => {
-    setIsEmptyPage(isLoading)
-  }, [isLoading])
 
   const { updateBalance } = useUpdateBalance(apiFetch)
   const { updateFortunes } = useUpdateFortunes(apiFetch)
@@ -101,6 +98,7 @@ const Cabinet:FC = () => {
 
   useEffect(() => {
     if (!isPreflight) {
+      setIsEmptyPage(true)
       setIsPreflight(true)
       register()
     }
@@ -141,6 +139,7 @@ return (
             <Route path='/fortunes/lantern' element={<Lantern/>}/>
             <Route path='/locations/markus_room' element={<MarkusRoom/>}/>
             <Route path='/locations/agata_room' element={<AgataRoom/>}/>
+            <Route path='/action' element={<Action />}/>
             {/* <Route path='/airdrop' element={<Airdrop/>}/>
             <Route path='/baunty' element={<Baunty/>}/>
             <Route path='/chest-items' element={<ChestItems/>}/>

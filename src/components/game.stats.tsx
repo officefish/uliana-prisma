@@ -1,6 +1,5 @@
 
 import { FC, useEffect, useState } from "react"
-import {useSiteStore} from "@/providers/store";
 import { useBalanceStore } from "@/providers/balance";
 import { useUpdateBalance } from "@/hooks/api/stats/useUpdateBalance";
 import { apiFetch } from "@/services/api";
@@ -18,8 +17,6 @@ const GEM_GENERATION_INTERVAL = 4 * 60 * 60 * 1000; // 4 часа в милли�
 const GameStats:FC<GameStatsProps> = (props) => {
 
   const { onBuyGems, onEnergy, onMenu, onCoins } = props
-
-  const { isEmptyPage } = useSiteStore()
 
   const {coins, energy, gems, crystals, lastGemReady} = useBalanceStore()
 
@@ -72,7 +69,7 @@ const GameStats:FC<GameStatsProps> = (props) => {
     };
 
   return (
-    <div className={`px-4 pt-3 flex flex-row ${isEmptyPage ? 'hidden' : ''}`}>
+    <div className={`px-4 pt-3 flex flex-row`}>
       <div className="grid grid-cols-5 text-white text-xs gap-4 w-full pl-2">
         <div className="flex flex-col gap-1 w-full items-center justify-center text-gray-200 select-none	">
           <div className="flex flex-row gap-1 items-center justify-center btn-no-body" onClick={onCoins}>

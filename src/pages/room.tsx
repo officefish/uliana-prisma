@@ -13,9 +13,10 @@ const ROOM_PAGE = "room";
 
 const Room: FC = () => {
 
-  const { setPage } = useSiteStore();
+  const { setPage, setIsEmptyPage } = useSiteStore();
  
   useEffect(() => {
+    setIsEmptyPage(false)
     setPage(Page.ROOM);
   }, [setPage]);
 
