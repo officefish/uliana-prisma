@@ -37,7 +37,8 @@
     "choose": "Choose",
     "cancel": "Cancel",
     "a_u_sure":"Are you sure?",
-    "make_choice": "Make the right choice! This choice will affect your destiny!"
+    "make_choice": "Make the right choice! This choice will affect your destiny!",
+    "response": "Response"
   },
   "navigation": {
     "title": "Navigation",

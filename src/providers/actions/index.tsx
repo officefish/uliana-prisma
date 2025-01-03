@@ -17,6 +17,9 @@ const createActionsStore = () =>
     received: [],
     setActions: (actions: IAction[]) => set(() => ({ actions })),
     setReceived: (received: IAction[]) => set(() => ({ received })),
+    mode: null,
+    setMode: (mode: "incoming" | "outgoing" | null) => set(() => ({ mode })),
+    // Add more fortune-related methods here...
     }))
 
   type ActionsStore = ReturnType<typeof createActionsStore>
@@ -33,7 +36,8 @@ const createActionsStore = () =>
       setActions: useStore(api, (state) => state.setActions),
       received: useStore(api, (state) => state.received),
       setReceived: useStore(api, (state) => state.setReceived),
-      // Add more fortune-related methods here...
+      mode: useStore(api, (state) => state.mode),
+      setMode: useStore(api, (state) => state.setMode),
     }
   }
 

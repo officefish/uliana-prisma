@@ -5,6 +5,7 @@ export interface IActionsState {
     received: IAction[]
     entryAction: IAction | null
     fairyAction: IAction | null
+    mode: "incoming" | "outgoing" | null
 }
    
 export interface IActionsActions {
@@ -12,4 +13,5 @@ export interface IActionsActions {
     setReceived: (received: IAction[]) => void
     setEntryAction: (action: IAction | null) => void
     setFairyAction: (action: IAction | null) => void
+    setMode: (mode: "incoming" | "outgoing" | null) => void
 }

@@ -110,13 +110,19 @@ const ActionsList: FC<IActionList> = (props) => {
   const { outgoing, incoming } = props
   const [isRecieved, setIsReceived] = useState<boolean>(false)
 
-  const { setFairyAction } = useActionsStore()
+  const { setFairyAction, setMode } = useActionsStore()
   
   const navigate =  useNavigate()
 
-  const handleAction = (action: IAction) => {
+  const handleIncomingAction = (action: IAction) => {
     setFairyAction(action)
-    //console.log(action)
+    setMode('incoming')
+    navigate('/action')
+  }
+
+  const handleOutgoingAction = (action: IAction) => {
+    setFairyAction(action)
+    setMode('outgoing')
     navigate('/action')
   }
 
@@ -166,13 +172,13 @@ const ActionsList: FC<IActionList> = (props) => {
           {isRecieved ? (
               <div className="pb-36 px-4"
               >{incoming?.map((action: IAction, index) => (
-                <ActionPlayer key={index} action={action} onClick={handleAction}/>
+                <ActionPlayer key={index} action={action} onClick={handleIncomingAction}/>
               ))}
             </div> 
             ) : (
               <ul className="pb-36 px-4">
                 {outgoing?.map((action, index) => (
-                  <ActionTarget key={index} action={action} onClick={handleAction}/>
+                  <ActionTarget key={index} action={action} onClick={handleOutgoingAction}/>
                 ))}
               </ul>
             )
