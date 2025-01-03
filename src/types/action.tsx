@@ -18,4 +18,5 @@ export interface IAction {
     template?: IActionTemplate;
     player?: IPlayer;
     target?: IPlayer;
+    key?: string;
 }

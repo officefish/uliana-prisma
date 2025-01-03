@@ -10,7 +10,9 @@ type IActionsStore = IActionsState & IActionsActions
 const createActionsStore = () =>
   createStore<IActionsStore>()((set) => ({
     entryAction: null,
-    setEntryAction: (entryAction: IAction) => set(() => ({ entryAction })),
+    setEntryAction: (entryAction: IAction | null) => set(() => ({ entryAction })),
+    fairyAction: null,
+    setFairyAction: (fairyAction: IAction | null) => set(() => ({ fairyAction })),
     actions: [],
     received: [],
     setActions: (actions: IAction[]) => set(() => ({ actions })),
@@ -25,6 +27,8 @@ const createActionsStore = () =>
     return {
       entryAction: useStore(api, (state) => state.entryAction),
       setEntryAction: useStore(api, (state) => state.setEntryAction),
+      fairyAction: useStore(api, (state) => state.fairyAction),
+      setFairyAction: useStore(api, (state) => state.setFairyAction),
       actions: useStore(api, (state) => state.actions),
       setActions: useStore(api, (state) => state.setActions),
       received: useStore(api, (state) => state.received),

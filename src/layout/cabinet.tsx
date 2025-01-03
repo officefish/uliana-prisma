@@ -25,7 +25,7 @@ import { useUpdateLocation } from "@/hooks/api/locations/useUpdateLocation"
 import AgataRoom from "@/pages/locations/agata_room"
 import MarkusRoom from "@/pages/locations/markus_room"
 import { useSiteStore } from "@/providers/store"
-import Action from "@/pages/actions/action"
+import Action from "@/pages/actions"
 //import Mobile from "@/pages/mobile.tsx";
 
 const Cabinet:FC = () => {

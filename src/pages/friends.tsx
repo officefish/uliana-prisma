@@ -110,10 +110,13 @@ const ActionsList: FC<IActionList> = (props) => {
   const { outgoing, incoming } = props
   const [isRecieved, setIsReceived] = useState<boolean>(false)
 
+  const { setFairyAction } = useActionsStore()
+  
   const navigate =  useNavigate()
 
-  const handleAction = (actionId: string) => {
-    console.log(actionId)
+  const handleAction = (action: IAction) => {
+    setFairyAction(action)
+    //console.log(action)
     navigate('/action')
   }
 
@@ -182,7 +185,7 @@ const ActionsList: FC<IActionList> = (props) => {
 
 interface IActionProps {
   action: IAction
-  onClick: (actionId: string) => void
+  onClick: (action: IAction) => void
 }
 
 const ActionTarget:FC<IActionProps> = (props) => {
@@ -194,18 +197,18 @@ const ActionTarget:FC<IActionProps> = (props) => {
 
   const firstName = action.target?.tgAccount?.firstName || ""
   const lastName = action.target?.tgAccount?.lastName || ""
-  const fullName = `${firstName} ${lastName}}`
+  const fullName = `${firstName} ${lastName}`
   const username = action.target?.tgAccount?.username || ""
 
   return (
     <li className="bg-glass-xl shadow-xl rounded-box h-16 my-2
     grid grid-cols-4 btn-no-body select-none
-    " onClick={() => onClick(action.id)}>
-      <div className="flex flex-col h-full items-start justify-start mt-1 col-span-3">
-        <h2 className="pl-8 text-secondary text-2xl whitespace-nowrap">
+    " onClick={() => onClick(action)}>
+      <div className="h-full mt-1 col-span-3 text-start pl-4">
+        <h2 className="text-secondary text-2xl whitespace-nowrap">
           {t(`fortunes.${tag}.action.title`)}
         </h2>
-        <div className="pl-8 text-secondary text-xs italic w-[80%] whitespace-nowrap overflow-x-hidden">кому {`${fullName} aka @${username}` }</div>
+        <div className="text-secondary text-xs italic w-full whitespace-nowrap overflow-x-hidden">кому {`${fullName} aka @${username}` }</div>
       </div>
       <figure className="w-full flex items-center justify-end pr-2">
         <span className="text-4xl">{getEmodji(action?.template?.type || '')}</span>  
@@ -221,32 +224,22 @@ const ActionPlayer:FC<IActionProps> = (props) => {
   const { t } = useTranslation()
   const tag = action?.template?.type.toLocaleLowerCase();
 
-  //console.log(action["tgAccount"])
-
   const firstName = action.player?.tgAccount?.firstName || ""
   const lastName = action.player?.tgAccount?.lastName || ""
-  const fullName = `${firstName} ${lastName}}`
+  const fullName = `${firstName} ${lastName}`
   const username = action.player?.tgAccount?.username || ""
 
   return (
     <li className="bg-glass-xl shadow-xl rounded-box h-16 my-2
     grid grid-cols-4 btn-no-body select-none
-    " onClick={() => onClick(action.id)}>
-      <div className="flex flex-col h-full items-start justify-start mt-1 col-span-3">
-        <h2 className="pl-8 text-secondary text-2xl whitespace-nowrap">
+    " onClick={() => onClick(action)}>
+      <div className="h-full mt-1 col-span-3 text-start pl-4">
+        <h2 className="text-secondary text-2xl whitespace-nowrap">
           {t(`fortunes.${tag}.action.title`)}
         </h2>
-        <div className="pl-8 text-secondary text-xs italic w-[80%] whitespace-nowrap overflow-x-hidden">от {`${fullName} aka @${username}` }</div>
-        {/* <p>Кликните если хотите ответить.</p>
-        <div className="card-actions items-end justify-center">
-          <button className="btn btn-primary">Ответить</button>
-        </div> */}
+        <div className="text-secondary text-xs italic w-full whitespace-nowrap overflow-x-hidden">от {`${fullName} aka @${username}` }</div>
       </div>
       <figure className="w-full flex items-center justify-end pr-2">
-        {/* <img
-          className="w-12 h-12 rounded-full"
-          src={getSmileSrc(action?.template?.type || "")}
-          alt="Album" /> */}
         <span className="text-4xl">{getEmodji(action?.template?.type || '')}</span>  
       </figure>
     </li>
