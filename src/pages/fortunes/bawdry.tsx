@@ -11,15 +11,22 @@ import { useBalanceStore } from "@/providers/balance";
 import { useFortuneStore } from "@/providers/fortunes";
 import { useDeleteAction } from "@/hooks/api/actions/useDeleteAction";
 import { useNavigate } from "react-router-dom";
+import DetailsSelect from "@/components/additional/details.select";
 
 const Bawdry: FC = () => {
 
   // Роутинг страниц
-  const { setPage } = useSiteStore();
+  const { setPage, setIsEmptyPage } = useSiteStore();
    
   useEffect(() => {
     setPage(Page.BAWDRY);
+    setIsEmptyPage(true)
+    return () => {
+        setIsEmptyPage(false)
+    }
   }, [setPage]);  
+
+ 
 
   const { setGemShopOpen } = useSiteStore()
 
@@ -107,7 +114,7 @@ const Bawdry: FC = () => {
   return (
     <div className='w-full'>
 
-      <div className="absolute top-20 right-5 z-10 btn-no-body opacity-40 hover:opacity-90"
+      <div className="absolute top-5 right-5 z-10 btn-no-body opacity-40 hover:opacity-90"
       onClick={handleClose}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">
@@ -150,17 +157,7 @@ const Bawdry: FC = () => {
        </div>
       )}  
      
-        <div className="absolute bottom-28 w-full flex flex-col items-center justify-center">
-            <div className="form-control w-36 text-center">
-                <label className="label cursor-pointer">
-                    <span className="shop-dialog-legend">{t('additional.legend')}</span>
-                    <input type="checkbox" className="toggle toggle-secondary toggle-sm opacity-60"
-                    defaultChecked={checked}
-                    onChange={() => setChecked(!checked)}
-                    />
-                </label>
-            </div>
-        </div>
+      <DetailsSelect checked={checked} setChecked={setChecked} />
     </div>
   )
 }

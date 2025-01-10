@@ -7,6 +7,7 @@ import {
     page: Page
     isLoading: number
     gemShopOpen: boolean
+    fairDialogOpen: boolean
     withdrawOpen: boolean
     menuOpen: boolean
     menuTutorialOpen: boolean
@@ -21,6 +22,7 @@ import {
     removeLoading: () => void
     hideLoading: () => void
     setGemShopOpen: (isOpen: boolean) => void
+    setFairDialogOpen: (isOpen: boolean) => void
     setWithdrawOpen: (isOpen: boolean) => void
     setMenuOpen: (isOpen: boolean) => void
     setMenuTutorialOpen: (isOpen: boolean) => void

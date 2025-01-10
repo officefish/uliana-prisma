@@ -36,7 +36,9 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
       menuOpen,
       setMenuOpen,
       menuTutorialOpen,
-      setMenuTutorialOpen
+      setMenuTutorialOpen,
+      fairDialogOpen,
+      setFairDialogOpen,
     } = useSiteStore()
     
     const onSimpleBuyGemsSuccess = () => {
@@ -98,8 +100,15 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
     //axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, payload);
   }
 
+  const handleCloseGemShop = () => {
+    setGemShopOpen(false);
+  }
+
+  const handleCloseFairDialog = () => {
+    setFairDialogOpen(false);
+  }
     
-    return  (
+  return  (
     <>
     <Header>
       <GameStats 
@@ -115,8 +124,15 @@ const Content: FC <PropsWithChildren> = ({ children }) => {
         {gemShopOpen && (
          <ForStarsShop 
          onShopItemSelect={onShopItemSelect} 
-         setKeyShopOpen={setGemShopOpen} />
+         onClose={handleCloseGemShop} />
         )}
+
+        {/* Fair dialog */}
+        {fairDialogOpen && (
+         <FairDialog  
+         onClose={handleCloseFairDialog} />
+        )}
+
         {/* {withdrawOpen && (
           <Withdraw setWithdrawOpen={setWithdrawOpen} />
         )} */}
@@ -305,21 +321,21 @@ const Withdraw:FC<IWithdrawProps> = (props) => {
 
 interface IForStarsShopProps {
   onShopItemSelect: (value: number) => void
-  setKeyShopOpen: (isOpen: boolean) => void
+  onClose: () => void
 }
 
 const ForStarsShop: FC<IForStarsShopProps> = (props) => {
 
   const { t } = useTranslation();
   
-  const {onShopItemSelect, setKeyShopOpen} = props
+  const {onShopItemSelect, onClose} = props
   return (
     <div className="fixed top-0 w-screen h-screen overflow-hidden z-50">
 
       <div className="w-full h-full bg-black opacity-70"></div>
       <div className="absolute bottom-0 w-full task-modal">
 
-        <div className="absolute top-0 right-0 btn-no-body pr-4 pt-4" onClick={() => setKeyShopOpen(false)}>
+        <div className="absolute top-0 right-0 btn-no-body pr-4 pt-4" onClick={onClose}>
           <img src="/stars-shop/close.png" alt=""/>
         </div>
 
@@ -341,6 +357,45 @@ const ForStarsShop: FC<IForStarsShopProps> = (props) => {
     </div>
   )
 }
+
+interface IFairDialogProps {
+  onClose: () => void
+}
+
+const FairDialog: FC<IFairDialogProps> = (props) => {
+
+  const { t } = useTranslation();
+  
+  const { onClose } = props
+  return (
+    <div className="fixed top-0 w-screen h-screen overflow-hidden z-50">
+
+      <div className="w-full h-full bg-black opacity-70"></div>
+      <div className="absolute bottom-0 w-full task-modal">
+
+        <div className="absolute top-0 right-0 btn-no-body pr-4 pt-4" onClick={onClose}>
+          <img src="/stars-shop/close.png" alt=""/>
+        </div>
+
+        <div className='shop-dialog-title mt-16 uppercase px-2'>
+          {t("action.dialog.title")}
+        </div>
+        <div className='shop-dialog-description mt-3 px-2'>
+          {t("action.dialog.description")}
+        </div>
+
+        <div className="w-full grid grid-cols-2 grid-rows-2 px-4 gap-2 text-white">
+          {/* <StarShopItem coast={5} value={getValueByCoast(5)} onSelect={onShopItemSelect}/>
+          <StarShopItem coast={13} value={getValueByCoast(13)} onSelect={onShopItemSelect}/>
+          <StarShopItem coast={20} value={getValueByCoast(20)} onSelect={onShopItemSelect}/>
+          <StarShopItem coast={38} value={getValueByCoast(38)} onSelect={onShopItemSelect}/> */}
+        </div>
+      </div>
+
+    </div>
+  )
+}
+
 
 function getValueByCoast(coast: number) {
   let value: number = 1

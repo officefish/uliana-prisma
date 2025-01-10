@@ -15,7 +15,7 @@ const DetailsSelect: FC<IDetailSelectProps> = (props) => {
     const { t } = useTranslation()
           
     return (
-        <div className="absolute bottom-[104px] w-full flex flex-col items-center justify-center">
+        <div className="absolute bottom-8 w-full flex flex-col items-center justify-center">
             <div className="form-control w-36 text-center">
                 <label className="label cursor-pointer">
                     <span className="shop-dialog-legend">{t('additional.legend')}</span>

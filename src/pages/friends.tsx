@@ -112,7 +112,7 @@ const ActionsList: FC<IActionList> = (props) => {
 
   const { setFairyAction, setMode } = useActionsStore()
   
-  const navigate =  useNavigate()
+  const navigate = useNavigate()
 
   const handleIncomingAction = (action: IAction) => {
     setFairyAction(action)

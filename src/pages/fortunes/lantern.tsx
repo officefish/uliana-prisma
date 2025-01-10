@@ -16,10 +16,14 @@ import SolarSystem from "@/components/fortunes/solar-system";
 const Lantern: FC = () => {
 
   // Роутинг страниц
-  const { setPage } = useSiteStore();
+  const { setPage, setIsEmptyPage } = useSiteStore();
    
   useEffect(() => {
     setPage(Page.LANTERN);
+    setIsEmptyPage(true)
+    return () => {
+        setIsEmptyPage(false)
+    }
   }, [setPage]);  
 
   const { setGemShopOpen } = useSiteStore()
@@ -114,7 +118,7 @@ const Lantern: FC = () => {
     <div className='w-full'>
 
       {/* Close button */}
-      <div className="absolute top-20 right-5 z-10 btn-no-body opacity-40 hover:opacity-90"
+      <div className="absolute top-5 right-5 z-10 btn-no-body opacity-40 hover:opacity-90"
       onClick={handleClose}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none">

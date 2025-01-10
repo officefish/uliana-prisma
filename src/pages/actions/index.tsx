@@ -94,6 +94,13 @@ const Action: FC = () => {
     navigate(-1)
   }
 
+
+  const { setFairDialogOpen } = useSiteStore()
+
+  const onResponseClick = () => {
+    setFairDialogOpen(true)
+  }
+
   const [
     checked, 
     setChecked
@@ -159,7 +166,7 @@ const Action: FC = () => {
               {mode === "incoming" && (
                  <div className="flex flex-row items-center justify-center gap-4 px-2 mt-4">
                  <div className="btn btn-accent bg-[#1ff7ba] btn-xl btn-md flex flex-row gap-2" 
-                 //onClick={onSendClick}
+                 onClick={onResponseClick}
                  >
                    {t('additional.response').toUpperCase()}
                    <img className="w-6 h-6" src="/additional/telegram-white.svg" alt="telegram" />
